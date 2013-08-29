@@ -15,4 +15,4 @@ project/plugins/project/
 
 # intellij spcific
 .idea/
-.idea-modules/
+.idea_modules/
