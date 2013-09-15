@@ -16,3 +16,4 @@ project/plugins/project/
 # intellij spcific
 .idea/
 .idea_modules/
+*.iml
