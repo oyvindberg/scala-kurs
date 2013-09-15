@@ -17,3 +17,6 @@ project/plugins/project/
 .idea/
 .idea_modules/
 *.iml
+
+# node specific
+node_modules
