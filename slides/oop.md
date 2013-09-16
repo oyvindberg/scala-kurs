@@ -145,21 +145,50 @@ p: Person = (1, Ola, None)
 trait DatabaseConnection {
 
 }
+```
+<aside class="notes">
+   Litt som interfaces is java - men veldig mye mer!
+   Kan gjøre det samme som klasser, bare ikke konstruktorer
+   Når skal man bruke traits og når klasser?
+   - traits bra hvis det skal gjenbrukes i klasser som ikke har noe med hverandre å gjøre (cross-cutting conserns)
+</aside>
+
+
+
+### Diamond problem ###
+
+![alt text](images/diamond-of-death.png)
+
+```scala
+trait C extends B1 with B2
+```
+<aside class="notes">
+- multiple inheritance - ambiguity
+- traits are mixins - not really inheritance - no ambiguity
+- den siste mixet inn vinner
+</aside>
+
+
+
+
+```scala
+trait DatabaseConnection {
+  def db: DB
+}
 
 trait InMemoryDbConnection extends DatabaseConnection {
+  lazy val db = H2Database{....}
+}
+
+trait BilforsikringDao extends DatabaseConnection {
 
 }
 
-trait MySqlDatabaseConnection {
+trait BilforsikringDaoTest extends InMemoryDbConnection {
 
 }
 
 ```
-<aside class="notes">
-   Kan gjøre det samme som klasser, bare ikke konstruktorer
-   Når skal man bruke traits og når klasser?
-   - traits bra hvis det skal gjenbrukes i klasser som ikke har noe med hverandre å gjøre
-</aside>
 
 
 
