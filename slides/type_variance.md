@@ -59,6 +59,7 @@ doesItCompile(new Invariant[String])
 ```
 
 ```
+// doesItCompile krever en mer spesifikk type
 class Covariant[+A]
 def doesItCompile(i: Covariant[Any]) {}
 doesItCompile(new Covariant[String]) 
@@ -81,6 +82,7 @@ doesItCompile(new Covariant[String])
 - B >: A __=>__ SomeType[A] >: SomeType[B]
 - Katt __=>__ Dyr
 - Hvis en OutputChannel[String] er påkrevd, så kan vi bruke en OutputChannel[AnyRef]
+
 ```
 class OutputChannel[-T] { 
   def write(x: T) {}
@@ -90,8 +92,9 @@ failz(new OutputChannel[String])
 // Man kan sende inn hva som helst til OutputChannel[Any] sin write,
 // men OutputChannel[String] krever string!
 
+// Krever en mindre spesifikk type
 def winz(oc: OutputChannel[String]) {}
-winz(new OutputChannel[Any])
+winz(new OutputChannel[AnyRef])
 ```
 
 --
