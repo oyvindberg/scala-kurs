@@ -138,42 +138,53 @@ def printPersonIfOlderThan28(person: Person) {
 
 
 
-### TODO Sealed classes ###
+### Sealed classes ###
 ```scala
-// foo
+sealed abstract class Expr
+case class Var(name: String) extends Expr
+case class Number(num: Double) extends Expr
+case class UnOp(operator: String, arg: Expr) extends Expr
+case class BinOp(operator: String, l: Expr, r: Expr) extends Expr
+
+def describe(e: Expr) = {
+  e match {
+    case Var(name) => "A variable with name = " + name
+    case Number(num) => "A number with value = " + num
+  }
+}
 ```
+Kompilatorhjelp:
+"match may not be exhaustive.
+It would fail on the following inputs: BinOp(_, _, _), UnOp(_, _)"
 
 
-### TODO Option matching ###
+### Option matching ###
 ```scala
-// foo
-```
-
-
-
-### TODO Patterns in variable matching ###
-```scala
-// foo
-```
-
-
-
-### TODO Case sequences as partial functions ###
-```scala
-// foo
-```
-
-
-
-
-### TODO Patterns in for comprehensions (bare hvis for-comprehensions har blitt tatt før denne delen) ###
-```scala
-// foo
+foo match {
+  case Some(value) => println value
+  case None => _
+}
 ```
 
 
 
-### TODO Extractors ###
+### Case sequences as partial functions ###
+Kan skrive funksjoner som en sekvens av case-uttrykk:
+```scala
+val generalSize: Any => Option[Int] = {
+    case l: List[_] => Some(l.size)
+    case a: Array[_] => Some(a.length)
+    case _ => None
+}
+
+val someList: List[Any] = List("foo", List(1, 2, 3), Map("a" -> "b"))
+
+someList.collect(generalSize).sum // res0: Int = 7
+```
+
+
+
+### Extractors: Pattern matching uten case classes ###
 ```scala
 // foo
 ```
