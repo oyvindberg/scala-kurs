@@ -96,7 +96,7 @@ object Person {
 
 ```
 ```scala
-scala> val p == Person(1, "Ola")
+scala> val p = Person(1, "Ola")
 // p: Person = Person@306b208
 ```
 <aside class="notes">
