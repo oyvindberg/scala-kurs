@@ -284,22 +284,6 @@ val (num1, num2) = someTuple
 
 
 
-### Case sequences som partial functions ###
-Kan skrive funksjoner som en sekvens av case-uttrykk:
-```scala
-val generalSize: Any => Option[Int] = {
-    case l: List[_] => Some(l.size)
-    case a: Array[_] => Some(a.length)
-    case _ => None
-}
-
-val someList: List[Any] = List("foo", List(1, 2, 3), Map("a" -> "b"))
-
-someList.collect(generalSize).sum // res0: Int = 7
-```
-
-
-
 ### Recap ###
 TODO: Finn ut om vi skal ha en slik slide... kan være greit
 å ha for å oppsummere mange av de ulike variantene pattern matching
