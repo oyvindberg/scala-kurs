@@ -54,14 +54,6 @@ def fib(n: Int) : Int = n match {
 
 
 
-### Noen forskjeller fra Java's 'switch': ###
-
-- 'match' er et uttrykk og vil alltid resultere i en verdi
-- ingen "fall-through"
-- Exception (MatchError) ved ingen treff på pattern
-
-
-
 ### Egenskaper: ###
 - Kan matche objekter med objekter
 - Patterns kan tillegges "guards" for flere regler
@@ -78,6 +70,7 @@ def fib(n: Int) : Int = n match {
 - Constructor pattern
 - Sequence pattern
 - Typed pattern
+
 
 
 ### Wildcard pattern ###
