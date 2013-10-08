@@ -276,7 +276,7 @@ warning: match is not exhaustive!"
 
 
 
-### Patterns i variabel-definisjoer: ###
+### Patterns i variabel-definisjoner: ###
 ```scala
 val someTuple = (1,2)
 val (num1, num2) = someTuple
@@ -285,14 +285,9 @@ val (num1, num2) = someTuple
 
 
 ### Recap ###
-TODO: Finn ut om vi skal ha en slik slide... kan være greit
-å ha for å oppsummere mange av de ulike variantene pattern matching
-som har blitt vist
-```scala
-abstract class Tree
-case class Node(value: Int, left: Tree, right: Tree) extends Tree
-case class Leaf() extends Tree
-```
+> Generally speaking, pattern matching is a technique for assigning names to things
+> and decomposing data structures and objects with a known structure into its underlying parts.
+
 ```scala
 def lol(p: Tree): String = {
   p match {
