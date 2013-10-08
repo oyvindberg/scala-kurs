@@ -54,14 +54,6 @@ def fib(n: Int) : Int = n match {
 
 
 
-### Egenskaper: ###
-- Kan matche objekter med objekter
-- Patterns kan tillegges "guards" for flere regler
-- Patterns kan nøstes
-- Scala-kompilatoren kan hjelpe til med å finne mulige manglende kombinasjoner
-
-
-
 ### Typer patterns: ###
 
 - Wildcard pattern
@@ -276,7 +268,7 @@ warning: match is not exhaustive!"
 
 
 
-### Patterns i variabel-definisjoner: ###
+### Patterns i variabel-definisjoer: ###
 ```scala
 val someTuple = (1,2)
 val (num1, num2) = someTuple
