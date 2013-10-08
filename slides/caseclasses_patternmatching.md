@@ -70,43 +70,6 @@ def fib(n: Int) : Int = n match {
 
 
 
-### Case classes: ###
-```scala
-case class Person(name: String, age: Int)
-```
-Generer boilerplate-kode som muliggjør pattern matching
-
-
-
-### Case classes reduserer boilerplate: ###
-- Får en factory-metode med samme navn som klassen:
-```scala
-val person = Person("Stig", 29)
-```
-- 'val' legges til foran alle argumenter i parameter-listen:
-```scala
-scala> person.name
-res1: String = Stig
-```
-- Implementasjoner av toString, hashCode og equals legges til
-```scala
-scala> Person("Ola", 10) == Person("Ola", 10)
-res3: Boolean = true
-```
-- 'copy'-metode legges til:
-```scala
-val person2 = person.copy(age = person.age + 1)
-```
-
-
-
-### Ulemper med case classes: ###
-
-- Klassene og metodene blir litt større (pga ekstra metoder og implisitte fields)
-- Andre vil kunne inspisere constructor-parametre (løses med Extractors)
-
-
-
 ### Typer patterns: ###
 
 - Wildcard pattern
