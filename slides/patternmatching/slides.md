@@ -292,42 +292,54 @@ def lol(p: Tree): String = {
 
 
 
-### Extractors: Pattern matching uten case classes ###
-Eksempel: Vi har trær med både "generelle" noder og binærnoder
+# Oppgaver! 
 
+
+
+## Extractors ###
+Eksempel: Analyse av strenger som representerer epost-adresser
+
+
+
+Mulig løsning:
 ```scala
-abstract class Tree(v: Int)
-case class Node(v: Int, children: List[Tree]) extends Tree(v)
-case class BinaryNode(v: Int, left: Tree, right: Tree) extends Tree(v)
-case class Leaf(v: Int) extends Tree(v)
+def isEmail(s: String): Boolean
+def domain(s: String): String
+def user(s: String): String  
 ```
 
-Problem: Scala vet ikke hvordan man matcher en Node med en BinaryNode:
+
+
+Men vi vil helst gjøre dette: 
 ```scala
-val node = Node(0, List(Leaf(1), Leaf(2)))
-node match {
-  case BinaryNode(value, left, right) => println("Binary node!")
-  case Node(value, children) => println("Some node")
-  case _ => "Not a node"
+s match {
+  case Email(user, domain) => ...
 }
-// => Some node
 ```
 
 
 
-
-Løsning: Vi definerer en måte å gå fra en Node til elementene av en BinaryNode:
-
+Løsning:
 ```scala
-object BinaryNode {
-  def unapply(node: Node): Option[(Int, Tree, Tree)] = {
-    node match {
-      case Node(value, List(left, right)) => Some(value, left, right)
-      case _ => None
-    }
+object Email {
+  // Injection 
+  def apply(user: String, domain: String) = user + "@" + domain
+
+  // Extraction
+  def unapply(str: String): Option[(String, String)] = {
+    val parts = str split "@"
+    if (parts.length == 2) Some(parts(0), parts(1)) else None
   }
 }
 ```
+Kan nå pattern matche:
+```scala
+s match {
+  case Email(user, domain) => ...
+}
+```
+
+
 
 ```scala
 val node = Node(0, List(Leaf(1), Leaf(2)))
@@ -341,45 +353,4 @@ node match {
 
 
 
-Litt mer forklaring: Når man definerer
-```scala
-case class BinaryNode(v: Int, left: Tree, right: Tree) extends Tree(v)
-```
-
-genererer Scala kode blant annet en 'apply'-metod og en 'unapply'-metode:
-```scala
-object BinaryNode {
-  def apply(value: Int, left: Tree, right: Tree): BinaryNode = {
-    new BinaryNode(value, left, right)
-  }
-  def unapply(binaryNode: BinaryNode): Option[(Int, Tree, Tree)] = {
-    Some((binaryNode.v, binaryNode.left, binaryNode.right))
-  }
-}
-```
-
-- apply: Bygger objekter fra deler
-- unapply: Trekker ut underliggende deler fra objekter
-
-
-
-unapply er den metoden Scala bruker for å gjøre pattern matching, og vår
-BinaryNode hadde
-
-```scala
-  def unapply(binaryNode: BinaryNode): Option[(Int, Tree, Tree)]
-```
-
-men manglet
-```scala
-  def unapply(node: Node): Option[(Int, Tree, Tree)]
-```
-og det var det vi la til!
-
-
-
-### Extractors, oppsummert ###
-- Extractors kan være nyttig hvis man f.eks. har et API og man vil muliggjøre
-  pattern matching uten å måtte bruke/eksponere case classer
-- Nyttig for å lage egne patterns (TODO: Epost-String eksempel?)
-- Gir litt dårligere ytelse enn å la Scala generere unapply via case
+# Oppgaver!
