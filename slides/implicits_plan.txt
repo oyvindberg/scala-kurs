@@ -1,0 +1,27 @@
+Innhold som må dekkes:
+
+
+implicit parameters
+- mekanisme/resolving
+- nytte
+- skyte seg i foten
+
+
+implicit conversions:
+- hva er en IC?
+    - forskjell fra IP
+    - basic syntax
+    - mekanisme/resolving
+
+- bruksområder:
+    - triviell utvidelse
+    - pyntig på java APIer
+
+
++: Typeklasser
+
+ forslag litt utenfor:
+-* vise hvordan Map «literal» er implementert:   Map.apply(any2ArrowAssoc("first").->("Test"), any2ArrowAssoc("second").->("Code"))
+-* vise hvordan man debugger implicits med scalac via -Xprint:typer
+
++vise hvordan Map «literal» er implementer:   Map.apply(any2ArrowAssoc("first").->("Test"), any2ArrowAssoc("second").->("Code"))

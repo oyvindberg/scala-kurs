@@ -1,0 +1,45 @@
+
+-------------
+Implicit Parameters
+
+Use these to either:
+
+    provide typeclass instances (like scalaz)
+    inject something obvious (like providing an ExecutorService to some worker invocation)
+    as a version of dependency injection (e.g. propagate the setting of service-type fields on instances)
+
+Don't use for laziness' sake!
+
+
+------
+
+implicit classes -restrictions:
+-1. They must be defined inside of another trait/class/object.
+-2. They may only take one non-implicit argument in their constructor.
+-3. There may not be any method, member or object in scope with the same name as the implicit class.
+-(Note: This means an implicit class cannot be a case class.)
+
+-(henta fra http://docs.scala-lang.org/overviews/core/implicit-classes.html)
+
+
+-------
+
+{ http://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits
+Speaking very briefly about the latter type, if one calls a method m on an object o of a class C, and that class does not support method m, then Scala will look for an implicit conversion from C to something that does support m. A simple example would be the method map on String:
+
+"abc".map(_.toInt)
+
+String does not support the method map, but StringOps does, and there's an implicit conversion from String to StringOps available (see implicit def augmentString on Predef).
+ }
+
+
+
+-----
+There's a fundamental difference between your own code and libraries of other people: you can change or extend your own code as you wish, but if you want to use someone else's libraries, you usually have to take them as they are.
+
+Scala's answer is implicit conversions and parameters. These can make existing libraries much more pleasant to deal with by letting you leave out tedious, obvious details that obscure the interesting parts of your code. Used tastefully, this results in code that is focused on the interesting, non-trivial parts of your program.
+
+
+
+
+odersky http://www.artima.com/pins1ed/implicit-conversions-and-parameters.html
