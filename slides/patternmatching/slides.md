@@ -239,7 +239,7 @@ def sillyTreeMatch(tree: Tree) {
 
 
 
-### Kompilatorhjelp please ###
+### Kompilatorhjelp ###
 Kompilerer uten advarsler:
 ```scala
 def sillyTreeMatch(tree: Tree) {
@@ -276,7 +276,6 @@ val (num1, num2) = someTuple
 
 
 
-### Recap ###
 > Generally speaking, pattern matching is a technique for assigning names to things
 > and decomposing data structures and objects with a known structure into its underlying parts.
 
