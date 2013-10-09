@@ -7,5 +7,5 @@ case object Nil extends Tree
 object Tree {
   def contains(t: Tree, v: Int): Boolean = ???
   def sumTree(t: Tree): Int = ???
-  def exists(t: Int => Boolean): Boolean = ???
+  def exists(t: Tree, f: Int => Boolean): Boolean = ???
 }

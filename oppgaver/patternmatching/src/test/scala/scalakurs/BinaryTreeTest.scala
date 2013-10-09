@@ -11,12 +11,12 @@ class BinaryTreeTest extends FunSuite with ShouldMatchers {
   }
 
   test("summer et tre") {
-    assert(Tree.sumTree(BinaryTree.exampleTree) equals 42)
+    assert(Tree.sumTree(BinaryTree.exampleTree) == 42)
   }
 
   test("det eksisterer noe i treet som passer et kriterie") {
-    assert(Tree.exists(_ < 5))
-    assert(!Tree.exists(_ > 100))
+    assert(Tree.exists(BinaryTree.exampleTree, _ < 5))
+    assert(!Tree.exists(BinaryTree.exampleTree, _ > 100))
   }
 }
 
