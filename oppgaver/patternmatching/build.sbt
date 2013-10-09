@@ -1,4 +1,4 @@
-name := "tom_mal"
+name := "patternmatching"
 
 version := "1.0"
 
