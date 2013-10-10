@@ -6,6 +6,7 @@
 class Person(id: Int, name: String)
 ```
 <aside class="notes">
+        ikke public class -> public by default
         Trenger ikke body.
         Private felter.
 </aside>
@@ -23,24 +24,27 @@ class Person(val id: Int, val name: String)
 
 ```scala
 class Person(val id: Int, val name: String) {
-  // def name(): String
-  // def id(): Int
+  // def name: String
+  // def id: Int
 }
 ```
 <aside class="notes">
         Transparant for klient om det er et felt eller en metode
+        OBS: Hvis metoder (def) er definert uten paranteser kan du ikke kalle
+            de MED paranteser
 </aside>
 
 
 
 ```scala
 class Person(var id: Int, var name: String) {
-  // def name(): String
+  // def name: String
   // def name_=(s: String): Unit
 
-  // def age(): Int
+  // def age: Int
   // def age_=(i: Int): Unit
 }
+scala>val p = new Person(29, "nina")
 ```
 <aside class="notes">
         Både setter og gettere
@@ -59,6 +63,7 @@ class Person(@BeanProperty val id: Int,
 ```
 <aside class="notes">
         Kompatibel med Java, f.eks. Spring MVC og Hibernate som krever Javabean
+        Finnes også en BooleanBeanProperty som lager isMetode istf get
 </aside>
 
 
@@ -73,7 +78,7 @@ class Person(id: Int, name: String) {
 }
 ```
 <aside class="notes">
-        Konstruktor er i bodyen!
+        Konstruktor er bodyen!
         Lage flere konstruktører med this, må kalle primær konstruktur først!
         Men - ser aldri bruk av this da det finnes bedre alternativer.
 </aside>
@@ -112,7 +117,7 @@ scala> val p = Person(1, "Ola")
 class Person(val id: Int, val name: String, 
                     val address: Option[String] = None) {
 
-  override def toString = "(" + id + ", " + name + ", " + address + ")"
+  override def toString() = "(" + id + ", " + name + ", " + address + ")"
 }
 ```
 ```scala
@@ -170,7 +175,6 @@ trait C extends B1 with B2
 
 
 
-
 ```scala
 trait DatabaseConnection {
   def db: DB
@@ -209,11 +213,75 @@ import java.sql._
 ```scala
 case class Person(name: String, age: Int)
 ```
-Generer boilerplate-kode som muliggjør pattern matching
+
+
+
+```java
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age){
+      this.name=name;
+      this.age=age;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public int getAge(){
+        return this.age;
+    }
+
+    public String toString(){
+        return "Person("+name+","+age+")";
+    }
+
+    public int hashCode(){
+        return name.length() * age;
+    }
+
+    public boolean equals(Object o){
+        if(o == null) return false;
+
+        if(!(o instanceof Person))
+            return false;
+
+        if(getName() == null)
+            return false;
+
+        Person p = (Person) o;
+        if(!(getName().equals(p.getName())))
+            return false;
+
+        if(!(getAge() == p.getAge()))
+            return false;
+
+        return true; 
+    }
+}
+```
+<aside class="notes">
+    Why do we care? Kode kan genereres, og ikke typinga som begrenser oss 
+</aside>
+
+
+
+> [..] a good programmer can reasonably maintain about 20,000 lines of code
+
+> [..] language doesn't matter. It's still 20,000 lines of code.
+> -- <cite>Guido Van Rossum, creator of Python</cite>
 
 
 
 ### Case classes reduserer boilerplate: ###
+
+- Implementasjoner av toString, hashCode og equals legges til
+```scala
+scala> Person("Ola", 10) == Person("Ola", 10)
+res3: Boolean = true
+```
 - Får en factory-metode med samme navn som klassen:
 ```scala
 val person = Person("Stig", 29)
@@ -223,11 +291,6 @@ val person = Person("Stig", 29)
 scala> person.name
 res1: String = Stig
 ```
-- Implementasjoner av toString, hashCode og equals legges til
-```scala
-scala> Person("Ola", 10) == Person("Ola", 10)
-res3: Boolean = true
-```
 - 'copy'-metode legges til:
 ```scala
 val person2 = person.copy(age = person.age + 1)
@@ -235,7 +298,99 @@ val person2 = person.copy(age = person.age + 1)
 
 
 
+### javap ###
+```scala
+$ javap Person.class
+Compiled from "Person.scala"
+public class Person implements scala.Product,scala.Serializable {
+  public static final scala.Function1<scala.Tuple2<java.lang.String, 
+    java.lang.Object>, Person> tupled();
+  public static final scala.Function1<java.lang.String, 
+    scala.Function1<java.lang.Object, Person>> curry();
+  public static final scala.Function1<java.lang.String, 
+    scala.Function1<java.lang.Object, Person>> curried();
+  public scala.collection.Iterator<java.lang.Object> productIterator();
+  public scala.collection.Iterator<java.lang.Object> productElements();
+  public java.lang.String name();
+  public int age();
+  public Person copy(java.lang.String, int);
+  public int copy$default$2();
+  public java.lang.String copy$default$1();
+  public int hashCode();
+  public java.lang.String toString();
+  public boolean equals(java.lang.Object);
+  public java.lang.String productPrefix();
+  public int productArity();
+  public java.lang.Object productElement(int);
+  public boolean canEqual(java.lang.Object);
+  public Person(java.lang.String, int);
+}
+```
+<aside class="notes">
+    - men her finnes f.eks. ikke apply!
+    - case class kompileres ned til to class-filer, en som heter Person.class og en som har en ekstra $
+</aside>
+
+
+
+### javap ###
+```scala
+$ javap Person$.class
+Compiled from "Person.scala"
+Compiled from "Person.scala"
+public final class Person$ extends scala.runtime.AbstractFunction2 implements scala.ScalaObject,scala.Serializable {
+  public static final Person$ MODULE$;
+  public static {};
+  public final java.lang.String toString();
+  public scala.Option unapply(Person);
+  public Person apply(java.lang.String, int);
+  public java.lang.Object readResolve();
+  public java.lang.Object apply(java.lang.Object, java.lang.Object);
+}
+```
+
+
+
+### Java/Scala interoperabilitet
+TODO?
+
+
+
 ### Ulemper med case classes: ###
 
 - Klassene og metodene blir litt større (pga ekstra metoder og implisitte fields)
 - Andre vil kunne inspisere constructor-parametre (løses med Extractors)
+
+
+
+### Access modifiers ###
+- public by default (classes/objects/methods/fields)
+- keywords private og protected
+- private virker som i Java
+- protected veldig forskjellig.
+
+
+
+### Protected ###
+- to former: protected og protected[something]
+- protected - kun tilgjengelig fra subclasses (IKKE pakken)
+- ønsker du pakke-protected: protected[pakkenavn]
+
+
+
+### Pakker og filnavn###
+- pakkenavn trenger ikke å matche mappestruktur
+- public klasser kan ligge i filer som heter hvasomhelst (eks. feature.scala)
+- en fil inneholder typisk en rekke klasser, objekter, og traits
+<aside class="notes">
+    Idiomatisk Scala har mange små klasser
+</aside>
+
+
+
+### Oppsummering/konklusjon ###
+- flere muligheter en Java
+- bruk Object for static stuff
+
+
+### Oppgaver ###
