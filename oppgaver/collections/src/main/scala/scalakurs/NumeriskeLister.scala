@@ -5,7 +5,7 @@ class NumeriskeLister {
 
   def summerRange(a: Int, b: Int): Int = ???
 
-  def summerOddetall(a: Int, b: Int) = ???
+  def summerOddetall(a: Int, b: Int): Int  = ???
 
   def oddetallP(i: Int): Boolean = ???
 
