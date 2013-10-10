@@ -17,6 +17,7 @@ scala-kurs
 - husk = !!! ("def foo() = {")
 - Unit/Nothing +++
 - for-comprehensions (ta med manglende yield?)
+- tupler
 - testing
 - intellij-tricks ( ctrl-shift-p )
 - idiomatisk scala
