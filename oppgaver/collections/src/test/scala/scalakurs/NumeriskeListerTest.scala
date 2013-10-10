@@ -58,7 +58,7 @@ class NumeriskeListerTest
     filtrerOddetallLister(List(List(1,2),List(3,4),List(5,7))) should be (List(1,3,5,7))
   }
 
-  test("lag en funksjon som lager partall av oddetall ved a legge til en") {
+  test("lag en funksjon som lager partall av oddetall ved å legge til en") {
     lagPartall(5) should be (6)
     lagPartall(6) should be (6)
   }
@@ -111,6 +111,4 @@ class NumeriskeLister {
   def divisorer(i: Int): List[Int] = (1 to i/2).filter(i % _ == 0).toList
 
   def perfektTallP(i: Int): Boolean = divisorer(i).sum == i
-
-//  def pefektTallNo(no: Int): Int = (6 to 100000)
 }

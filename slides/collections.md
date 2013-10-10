@@ -55,15 +55,7 @@ class List[A] {
   def nonEmpty: Boolean 
 
   def size: Int 
-  ..
-}
-```
 
----
-
-```scala
-class List[A] {
-  ..
   def min: A
   def max: A
 
@@ -74,6 +66,7 @@ class List[A] {
 <aside class="notes">
     ved "sorted" blir den opprinnelige listen er ikke endret
 </aside>
+
 
 ---
 
