@@ -28,13 +28,13 @@ scala-kurs
 - immutable
 - referential transparency
 
-### Slides og oppgaver: Feilhåndtering (option/either exception)
+### Slides og oppgaver: Feilhåndtering (option/either exception) (Kåre)
 
 ### Slides (kanskje oppgaver?): interoperabilitet
 
 ### Slides: "Andre temaer"
 - futures
-- erfaringer (fint som "pause"-tema)
+- erfaringer (fint som "pause"-tema) (Stig)
 
 ### Slides: ressurser
 - gode bøker
