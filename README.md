@@ -30,7 +30,7 @@ scala-kurs
 
 ### Slides og oppgaver: Feilhåndtering (option/either exception) (Kåre)
 
-### Slides (kanskje oppgaver?): interoperabilitet
+### Slides (kanskje oppgaver?): interoperabilitet (Stig)
 
 ### Slides: "Andre temaer"
 - futures
