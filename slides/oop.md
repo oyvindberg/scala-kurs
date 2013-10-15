@@ -351,11 +351,6 @@ public final class Person$ extends scala.runtime.AbstractFunction2 implements sc
 
 
 
-### Java/Scala interoperabilitet
-TODO?
-
-
-
 ### Ulemper med case classes: ###
 
 - Klassene og metodene blir litt større (pga ekstra metoder og implisitte fields)
