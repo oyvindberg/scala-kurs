@@ -1,4 +1,4 @@
-# Java/Scala interoperabilitet
+# Java + Scala
 
 
 
@@ -47,15 +47,9 @@ public class Foo {
 
 
 
-### Scala oversettes til Java-byte-kode
-- Scala- og Java-features som er like oversettes stort sett til samme type byte-kode
-- Annen Scala-kode må bruke en form for byte-kode-"encoding" vi skal se noen eksempler på
-
-
-
-### Java <-> Scala, generelt
-- Å kalle Java fra Scala er enkelt
-- Kan være mer arbeid å kalle Scala fra Java 
+### Scala oversettes til Java bytecode
+- Scala-features som har en ekvivalent Java-feature oversettes til tilnærmet lik bytecode
+- Annen Scala-kode må ta i bruk en enkoding vi skal se noen eksempler på
 
 
 
@@ -79,6 +73,11 @@ public class Person {
 
 
 get og set kan genereres med @BeanProperty:
+
+```scala
+class Person(@BeanProperty val name: String, @BeanProperty var age: Int)
+```
+
 ```java
 public class Person2 {
   public java.lang.String name();
@@ -88,7 +87,7 @@ public class Person2 {
   public void setAge(int);
   public int getAge();
   
-  public Person2(java.lang.String, int);
+  public Person(java.lang.String, int);
 }
 ```
 
@@ -98,21 +97,46 @@ public class Person2 {
 
 Scala:
 ```scala
-trait Calc {
-  def add(a: Int, b: Int): Int
-  def subtract(a: Int, b: Int): Int
-  def mult(a: Int, b: Int): Int
+trait Model {
+  def value: Any
 }
 ```
 
 Java:
-```java
-public interface Calc {
-  public abstract int add(int, int);
-  public abstract int subtract(int, int);
-  public abstract int mult(int, int);
+```scala
+$ scalac Model.scala
+$ javap Calc.class
+Compiled from "Model.scala"
+public interface Model {
+  public abstract java.lang.Object value();
 }
 ```
 
 
 
+### trait med implementert metode
+
+Scala:
+```scala
+trait Model {
+  def value: Any
+}
+```
+
+```scala
+public interface Model {
+  public abstract java.lang.Object value();
+}
+// Ekstra klasse:
+public abstract class Model$class {
+  public static java.lang.String printValue(Model);
+  public static void $init$(Model);
+}
+```
+
+
+
+### Java <-> Scala, generelt
+- Å kalle Java fra Scala er enkelt
+- Kan være litt mer arbeid å gå andre veien
+- Bruk javap ved problemer med bruk av Scala fra Java!
