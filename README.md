@@ -32,6 +32,10 @@ scala-kurs
 - futures (Kåre)
 - erfaringer (fint som "pause"-tema) (Stig)
 
+### Slides: Oppsummering
+- Kjapp oppsummering av gjennomgåtte språk-features
+- Java 8 vs Scala kanskje?
+
 ### Dag 3: 
 - Forberede scalatron-intro (Stig og Hans Kristian)
    - Oppsett
