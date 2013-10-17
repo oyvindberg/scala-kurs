@@ -1,10 +1,15 @@
 package scalakurs.solutions
 
-// Type class: Trait defining behaviour
+/**
+ * Trait defining behaviour
+ */
 trait OptionalTail[M[_]] {
   def tailOption(m: M[_]): Option[M[_]]
 }
 
+/**
+ * Companion object with type class implementations
+ */
 object OptionalTail {
 
   implicit def seqOptTail = new OptionalTail[Seq] {

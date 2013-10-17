@@ -13,7 +13,7 @@ object OptionalTail {
 
   def tailOption[???](m: ???) = {}
 
-  implicit class Tailed(m: Any) {
+  implicit class Tailed[???](m: ???) {
     def tailOption = {}
   }
 }
