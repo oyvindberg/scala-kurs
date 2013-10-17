@@ -5,19 +5,20 @@ scala-kurs
 
 # TODOs:
 
-### Slides og oppgaver: Scala-intro 
-- var Øyvind
-- val Øyvind
-- def Øyvind
-- ingen primitiver Øyvind
-- ingen operatorer Øyvind
-- paranteser osv frivillig Øyvind
-- tupler Øyvind
-- anonyme funksjoner Øyvind
-- Options Øyvind
-- husk = !!! ("def foo() = {") Øyvind
-- Unit/Nothing +++ Øyvind
-- for-comprehensions (ta med manglende yield?) Erik
+### Slides og oppgaver: Scala-intro (Øyvind)
+- var 
+- val 
+- def 
+- ingen primitiver 
+- ingen operatorer 
+- paranteser osv frivillig 
+- tupler 
+- anonyme funksjoner 
+- Options 
+- husk = !!! ("def foo() = {") 
+- Unit/Nothing +++ 
+
+### Slides og oppgaver: For-comprehensions (Erik)
 
 ### Slides og oppgaver: Funksjonelle konsepter (Nina)
 - immutable
