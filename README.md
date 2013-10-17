@@ -5,26 +5,21 @@ scala-kurs
 
 # TODOs:
 
-### Slides og oppgaver: Scala-intro (Karsten)
-- var
-- val
-- def
-- ingen primitiver
-- ingen operatorer
-- paranteser osv frivillig
-- anonyme funksjoner
-- Options
-- husk = !!! ("def foo() = {")
-- Unit/Nothing +++
-- for-comprehensions (ta med manglende yield?)
-- tupler
-- testing
-- intellij-tricks ( ctrl-shift-p )
-- idiomatisk scala
-   - feilhåndtering (ønsker ikke expcetions)
-   - immutability (ønsker ikke muterbar tilstand)
+### Slides og oppgaver: Scala-intro 
+- var Øyvind
+- val Øyvind
+- def Øyvind
+- ingen primitiver Øyvind
+- ingen operatorer Øyvind
+- paranteser osv frivillig Øyvind
+- tupler Øyvind
+- anonyme funksjoner Øyvind
+- Options Øyvind
+- husk = !!! ("def foo() = {") Øyvind
+- Unit/Nothing +++ Øyvind
+- for-comprehensions (ta med manglende yield?) Erik
 
-### Slides og oppgaver: Funksjonelle konsepter
+### Slides og oppgaver: Funksjonelle konsepter (Nina)
 - immutable
 - referential transparency
 
@@ -33,21 +28,15 @@ scala-kurs
 ### Slides (kanskje oppgaver?): interoperabilitet (Stig)
 
 ### Slides: "Andre temaer"
-- futures
+- futures (Kåre)
 - erfaringer (fint som "pause"-tema) (Stig)
 
-### Slides: ressurser
-- gode bøker
-- gode tutorial
-- gode blogger
-- folk som er verdt å følge på twitter?
-
 ### Dag 3: 
-- Forberede scalatron-intro
+- Forberede scalatron-intro (Stig og Hans Kristian)
    - Oppsett
    - Oppgaver
-- Forberede startprosjekt (unfiltered?) som bruker api-iad
-- Forberede liten presentasjon av andre ting man kan gjøre
+- Forberede startprosjekt (unfiltered?) som bruker api-iad (Kåre)
+- Forberede liten presentasjon av andre ting man kan gjøre (Nina)
    - Euler
    - Scala koans
    - Topcoder-liknende ting
