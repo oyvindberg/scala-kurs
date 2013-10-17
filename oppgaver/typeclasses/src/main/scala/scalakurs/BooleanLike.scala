@@ -10,18 +10,22 @@ object BooleanLike {
     def asBoolean(a: Int) = a == 1
   }
 
-  implicit val stringBooleanLike = ???
+  implicit val stringBooleanLike = false
 
-  implicit val optionBooleanLike = ???
+  implicit val optionBooleanLike = false
 
   /**
    * Get a hold of the implicit by adding a parameter list
    * or by calling {{implicitly}}
    */
-  def asBoolean[A](a: A): Boolean = ???
+  def asBoolean[A](a: A) = false
 
-  implicit class AsBoolean[???](a: ???)(implicit bla: ???) {
-    def boolean: Boolean = ???
+  /**
+   * Will this suffice for a container (M[_]) type?
+   */
+  implicit class AsBoolean[???](a: ???) {
+    def boolean = false
+    def mboolean = false
   }
 }
 

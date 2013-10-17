@@ -5,12 +5,13 @@ import scala.collection.mutable.ArrayBuffer
 
 class OptionalTailTest extends FunSuite {
 
+//  import solutions.OptionalTail._
   import OptionalTail._
 
   test("Add tailOption for Seq[A]") {
-    assert(seqOptTail.tailOption(Seq("head", "tail")) === Some(Seq("tail")))
-    assert(seqOptTail.tailOption(Seq("head")) === None)
-    assert(seqOptTail.tailOption(Seq.empty) === None)
+    assert(tailOption(Seq("head", "tail")) === Some(Seq("tail")))
+    assert(tailOption(Seq("head")) === None)
+    assert(tailOption(Seq.empty) === None)
   }
 
   test("Add syntactic sugar by adding Seq[A]().tailOption") {

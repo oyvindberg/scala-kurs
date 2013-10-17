@@ -1,9 +1,10 @@
 package scalakurs
 
-import org.scalatest.{Tag, FunSuite}
+import org.scalatest.FunSuite
 
 class BooleanLikeTest extends FunSuite {
 
+//  import solutions.BooleanLike._
   import BooleanLike._
 
   test("Example BooleanLike type class for Int") {
@@ -20,7 +21,7 @@ class BooleanLikeTest extends FunSuite {
 
   /**
    * You'll need to "convert" the type A into a type with the
-   * function boolean: Boolean
+   * function boolean: Boolean. Uncomment when ready.
    */
   bonus("Add some syntactic sugar to call asBoolean postfix") {
     assert(1.boolean)
@@ -29,12 +30,12 @@ class BooleanLikeTest extends FunSuite {
 
   /**
    * You'll need to abstract over a container type M[_] instead of an A,
-   * which takes no type parameter.
+   * which takes no type parameter. Uncomment when ready.
    */
-//  bonus("Implement BooleanLike type class for Option with syntactic sugar") {
-//    assert(Option("foo").mboolean)
-//    assert(!(None: Option[String]).mboolean)
-//  }
+  bonus("Implement BooleanLike type class for Option with syntactic sugar") {
+    assert(Option("foo").mboolean)
+    assert(!(None: Option[String]).mboolean)
+  }
 
   def bonus(testName: String) = test(s"Bonus: $testName") _
 }
