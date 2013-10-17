@@ -43,9 +43,4 @@ class IntQueueTest extends ShouldMatchers with FunSuite {
     queue.get() should be(40)
   }
 
-  // #1: new BasicIntQueue with Incrementing with Doubling
-  // #2: new BasicIntQueue with Doubling with Incrementing with NegativeNumberFiltering
-  // #3: new BasicIntQueue with Doubling with Incrementing
-  // #4: new BasicIntQueue with Doubling with NegativeNumberFiltering with OddNumberFiltering
-
 }
