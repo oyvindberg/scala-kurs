@@ -18,19 +18,23 @@ class BooleanLikeTest extends FunSuite {
     assert(!asBoolean(null: String))
   }
 
-  // You'll need to "convert" the type A into a type with the
-  // function boolean: Boolean
+  /**
+   * You'll need to "convert" the type A into a type with the
+   * function boolean: Boolean
+   */
   bonus("Add some syntactic sugar to call asBoolean postfix") {
     assert(1.boolean)
     assert(!"".boolean)
   }
 
-  // You'll need to abstract over a container type M[_] instead of an A,
-  // which takes no type parameter.
-  bonus("Implement BooleanLike type class for Option with syntactic sugar") {
-    assert(Option("foo").mboolean)
-    assert(!(None: Option[String]).mboolean)
-  }
+  /**
+   * You'll need to abstract over a container type M[_] instead of an A,
+   * which takes no type parameter.
+   */
+//  bonus("Implement BooleanLike type class for Option with syntactic sugar") {
+//    assert(Option("foo").mboolean)
+//    assert(!(None: Option[String]).mboolean)
+//  }
 
   def bonus(testName: String) = test(s"Bonus: $testName") _
 }

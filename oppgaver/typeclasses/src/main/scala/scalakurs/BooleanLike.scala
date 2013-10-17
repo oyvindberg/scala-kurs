@@ -10,22 +10,18 @@ object BooleanLike {
     def asBoolean(a: Int) = a == 1
   }
 
-  implicit val stringBooleanLike = new BooleanLike[String] {
-    def asBoolean(a: String): Boolean = Option(a).exists("true" ==)
-  }
+  implicit val stringBooleanLike = ???
 
-  implicit val optionBooleanLike = new BooleanLike[Option[_]] {
-    def asBoolean(a: Option[_]): Boolean = a.isDefined
-  }
+  implicit val optionBooleanLike = ???
 
-  def asBoolean[A](a: A)(implicit bla: BooleanLike[A]) = bla.asBoolean(a)
+  /**
+   * Get a hold of the implicit by adding a parameter list
+   * or by calling {{implicitly}}
+   */
+  def asBoolean[A](a: A): Boolean = ???
 
-  implicit class AsBoolean[A](a: A)(implicit bla: BooleanLike[A]) {
-    def boolean: Boolean = bla.asBoolean(a);
-  }
-
-  implicit class AsMBoolean[M[_]](m: M[_])(implicit blm: BooleanLike[M[_]]) {
-    def mboolean: Boolean = blm.asBoolean(m);
+  implicit class AsBoolean[???](a: ???)(implicit bla: ???) {
+    def boolean: Boolean = ???
   }
 }
 
