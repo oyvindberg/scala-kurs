@@ -1,4 +1,4 @@
-### Object-Oriented Scala ###
+## Object-Oriented Scala ##
 
 
 
@@ -18,6 +18,8 @@ class Person(val id: Int, val name: String)
 ```
 <aside class="notes">
         Kompilatoren genererer accessors (tilsvarende get)
+        Både klasser, metoder og felter er public by default, gitt at de har var/val
+        Også muligheter for å definere klasser med abstract klass -> som i Java
 </aside>
 
 
@@ -30,6 +32,7 @@ class Person(val id: Int, val name: String) {
 ```
 <aside class="notes">
         Transparant for klient om det er et felt eller en metode
+        Metode og felter har samme namespace => bruke val for å override def
         OBS: Hvis metoder (def) er definert uten paranteser kan du ikke kalle
             de MED paranteser
 </aside>
@@ -85,6 +88,21 @@ class Person(id: Int, name: String) {
 
 
 
+### Companion object ###
+```scala
+class Person(val id: Int, val name: String, val address: Option[String])
+
+object Person {
+
+}
+```
+<aside class="notes">
+        Companion object - må være i samme fil (funker dårlig i REPL uten scoping)
+        Ikke statiske metoder - object er singleton
+</aside>
+
+
+
 ```scala
 class Person(val id: Int, val name: String, val address: Option[String])
 
@@ -98,17 +116,11 @@ object Person {
   def apply(name: String) = new Person(0, name, None)
 
 }
-
 ```
 ```scala
 scala> val p = Person(1, "Ola")
 // p: Person = Person@306b208
 ```
-<aside class="notes">
-        Companion object - må være i samme fil (funker dårlig i REPL uten scoping)
-        Ikke statiske metoder - object er singleton
-</aside>
-
 
 
 ### Default arguments ###
@@ -164,9 +176,33 @@ trait DatabaseConnection {
 
 ![alt text](images/diamond-of-death.png)
 
+
+
 ```scala
-trait C extends B1 with B2
+class IntQueue {
+    def get:Int = 0
+    def put(x: Int) = println(x)
+}
+
+trait Doubling extends IntQueue {
+    abstract override def put(x:Int) = super.put(x * 2)
+}
+
+trait Incrementing extends IntQueue {
+    abstract override def put(x:Int) = super.put(x + 1)
+}
+
+class DoubleThenIncrement extends Incrementing with Doubling {
+   override def put(x:Int) = super.put(x) 
+}
 ```
+```scala
+> val q = new DoubleThenIncrement
+> q.put(2)
+// 5
+```
+
+
 <aside class="notes">
 - multiple inheritance - ambiguity
 - traits are mixins - not really inheritance - no ambiguity
@@ -348,17 +384,14 @@ public final class Person$ extends scala.runtime.AbstractFunction2 implements sc
   public java.lang.Object apply(java.lang.Object, java.lang.Object);
 }
 ```
+<aside class="notes">
+ En ulempe med case classes: Klassene og metodene blir litt større
+ (pga ekstra metoder og implisitte fields)
+</aside>
 
 
 
-### Ulemper med case classes: ###
-
-- Klassene og metodene blir litt større (pga ekstra metoder og implisitte fields)
-- Andre vil kunne inspisere constructor-parametre (løses med Extractors)
-
-
-
-### Access modifiers ###
+## Access modifiers ##
 - public by default (classes/objects/methods/fields)
 - keywords private og protected
 - private virker som i Java
@@ -373,19 +406,27 @@ public final class Person$ extends scala.runtime.AbstractFunction2 implements sc
 
 
 
-### Pakker og filnavn###
+### Pakker og filnavn ###
 - pakkenavn trenger ikke å matche mappestruktur
 - public klasser kan ligge i filer som heter hvasomhelst (eks. feature.scala)
 - en fil inneholder typisk en rekke klasser, objekter, og traits
 <aside class="notes">
-    Idiomatisk Scala har mange små klasser
+    Idiomatisk Scala har mange små klasser og objekter. Vanlig å gruppere ting i
+    filer etter features.
 </aside>
 
 
 
 ### Oppsummering/konklusjon ###
 - flere muligheter en Java
-- bruk Object for static stuff
+- case class når immutable, får fornuftig hashCode, equals og toString gratis
+- traits kan ha delvis implementasjon eller være ren abstrakt
+- bruk traits hvis du kan
+- ikke statiske metoder, det skal være i et object
 
 
-### Oppgaver ###
+
+### Oppgaver! ###
+I scalakurs/oop:
+- ShapeTest (arv)
+- IntQueueTest (traits og linarization)
