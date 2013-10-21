@@ -11,7 +11,7 @@
 
 
 
-Fancy greet-metode:
+Greet-metode:
 ```scala
 def greet(person: Person) {
   if (person.gender == MALE)
@@ -109,7 +109,7 @@ def printNameIfPerson(x: Any) = {
 
 
 ### Constructor pattern: ###
-Sjekker klassetilhørighet og constructor-argumenter for objekter:
+Sjekker klassetilhørighet og constructor-argumenter:
 ```scala
 abstract class Tree
 case class Node(value: Int, left: Tree, right: Tree) extends Tree
@@ -126,19 +126,29 @@ def bothDescendantsAreLeaves(tree: Tree) = {
 
 
 ### Sequence pattern: ###
-Kan matche på sekvens-typer som List og Array på samme måte som case-klasser:
+Kan matche på Sequences på samme måte som case-klasser:
 ```scala
-list match {
-  case List(0, _, _) => println("Found three-element list starting with 0!")
+seq match {
+  case Seq(0, _, _) => println("Found three-element seq starting with 0!")
   case _ =>
 }
 ```
 Kan bruke _* for å matche et vilkårlig antall elementer:
 
 ```scala
-list match {
-  case List(0, _*) => println("Found list starting with 0!")
+seq match {
+  case Seq(0, _*) => println("Found list starting with 0!")
   case _ =>
+}
+```
+
+
+
+### Annen syntaks for sequence matching (scala 2.10): ###
+```scala
+seq match {
+    case 0 +: rest => println("Found list starting with 0!")
+    case _ =>
 }
 ```
 
@@ -264,7 +274,7 @@ def sillyTreeMatch(tree: Tree) {
   }
 }
 ```
-warning: match is not exhaustive!"
+warning: match is not exhaustive!
 
 
 
@@ -292,7 +302,7 @@ def lol(p: Tree): String = {
 
 
 
-# Oppgaver! 
+# Oppgaver!
 
 
 
@@ -305,12 +315,12 @@ Mulig løsning:
 ```scala
 def isEmail(s: String): Boolean
 def domain(s: String): String
-def user(s: String): String  
+def user(s: String): String
 ```
 
 
 
-Men vi vil helst gjøre dette: 
+Men vi vil helst gjøre dette:
 ```scala
 s match {
   case Email(user, domain) => ...
@@ -322,7 +332,7 @@ s match {
 Løsning:
 ```scala
 object Email {
-  // Injection 
+  // Injection
   def apply(user: String, domain: String) = user + "@" + domain
 
   // Extraction
