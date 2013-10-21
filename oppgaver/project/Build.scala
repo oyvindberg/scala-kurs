@@ -10,12 +10,14 @@ object ScalaExercisesBuild extends Build {
     typeclasses,
     patternmatching,
     collections,
+    typevariance,
     oop
   )
 
   lazy val typeclasses     = module("typeclasses")()
   lazy val patternmatching = module("patternmatching")()
   lazy val collections     = module("collections")()
+  lazy val typevariance    = module("typevariance")()
   lazy val oop             = module("oop")()
 
   private def module(moduleName: String)(
