@@ -23,6 +23,8 @@ class Circle(center:Point, radius: Double) extends Shape(center) {
   def area: Double = Pi * radius * radius
 
   def circumference: Double = Pi
+
+  def draw = println
 }
 
 // TODO:

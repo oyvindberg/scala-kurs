@@ -11,8 +11,10 @@ object Build extends sbt.Build {
       name := "oop",
       libraryDependencies += scalatest
    )
+   lazy val patternMatching = Project("patternmatching", file("patternmatching")) settings(
+      name := "patternmatching",
+      libraryDependencies += scalatest
+   )
 
    lazy val scalatest = "org.scalatest" %% "scalatest" % "1.9.1"
 }
-
-
