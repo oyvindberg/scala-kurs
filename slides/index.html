@@ -59,7 +59,7 @@
                 <section id="history">
                     <h1>Scala i FINN:</h1>
                     <!--TODO: Jørgen eller Nina oppdaterer med korrekt og adekvat info om Penger-->
-                    <p  class="fragment roll-in">2010??: Penger tar i bruk Scala til Bilforsikring (tidspunkt)</p>
+                    <p  class="fragment roll-in">2011: Penger tar i bruk Scala til Bilforsikring og admin-appen</p>
                     <p  class="fragment roll-in">Våren 2012: Team API lager PoC i Java og Scala</p>
                     <p  class="fragment roll-in">Resultat: Halvert antall kodelinjer (uten rammeverk)</p>
                     <p  class="fragment roll-in">Våren 2012: Team API sender søknad om "ny teknologi"</p>
@@ -89,21 +89,19 @@
                 </section>
                 <section id="setup">
                     <h1>Setup:</h1>
-                    <div class="fragment roll-in">
-                        <p>Installér SBT:</p>
-                        <div  class="fragment roll-in"><pre><code data-trim>brew install sbt//elns</code> </pre></div>
+                    <div>
+                        <p>Installer Scala-plugin i IntelliJ</p>
                     </div>
-                    <div class="fragment roll-in">
-                        <p>Installér Scala:</p>
-                        <div  class="fragment roll-in"><pre><code data-trim>brew install scala //elns</code> </pre></div>
+                    <div>
+                        <p>Last ned kurs-opplegget fra Github:</p>
+                        <div><pre><code data-trim>git clone https://github.com/finn-no/scala-kurs.git</code></pre></div>
                     </div>
-                    <div class="fragment roll-in">
-                        <p>Last ned eksempler og oppgaver:</p>
-                        <div  class="fragment roll-in"><pre><code data-trim>git clone git@github.com:finn-no/scala-kurs.git</code> </pre></div>
+                    <div>
+                        <p>Start sbt og generer IntelliJ-filer:</p>
+                        <div><pre><code data-trim>cd scala-kurs/oppgaver/scalakurs</code></pre></div>
+                        <div><pre><code data-trim>sbt</code></pre></div>
+                        <div><pre><code data-trim>gen-idea</code></pre></div>
                     </div>
-
-                    Her ønsker vi vel å bruke ./sbt scriptet som ligger i hver oppgave-mappe.
-                    Vi trenger i tillegg noe info om hvordan man installerer plugin i IntelliJ
                 </section>
                 <section data-markdown="intro.md" data-separator="^\n\n\n" data-vertical="^\n\n" data-notes="^Note:" data-charset="utf-8"></section>
                 <section data-markdown="oop.md" data-separator="^\n\n\n" data-vertical="^\n\n" data-notes="^Note:" data-charset="utf-8"></section>
