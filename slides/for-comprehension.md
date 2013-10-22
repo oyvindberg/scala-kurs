@@ -64,7 +64,8 @@ val punkter: Seq[Punkt] = for {
 ```
 
 <aside class="notes">
-    man kan nøste flere for løkker
+    man kan nøste flere for løkker <br/>
+    bruker da krøllparentees for å slippe å ha semikolon etter hver generator
 </aside>
 
 ---
@@ -104,10 +105,8 @@ for {
     if even(i)
 } yield {
   // yield kan være en blokk
-  val a = ...
-  val b = ...
-  val c = ...
-  (a, b, c)
+  logger.debug("inne i blokken")
+  i
 }
 ```
 
@@ -213,6 +212,8 @@ implementerer map, flatMap og filter
 ---
 
 # Oppgaver #
+## bytt prosjekt ##
+## begynn med oppgave... ##
 
 <aside class="notes">
 <ul>
