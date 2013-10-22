@@ -7,7 +7,7 @@ class ForComprehensionsTest extends ForComprehensions with FunSuite {
     assert(alleFaktorerAv(98) === Seq(1, 2, 7, 14, 49, 98))
   }
 
-  test("finn alle pytagoreiske tripler der a < b < c < 100") {
+  test("finn alle pytagoreiske tripler der a < b < c < 100 (vha brute force)") {
     val tripler: Seq[(Int, Int, Int)] = pytagoreiskeTripler
 
     assert(tripler.size === 52)

@@ -1,38 +1,94 @@
-# For comprehension#
+# For comprehension #
 
 ---
 
+```java
+// java
+for (int i = 1; i <= 10; i++) {
+    System.out.println(i);
+}
+```
+
 ```scala
-for (i <- 1 to 10) { println i }
+// scala
+for (i <- 1 to 10) { println(i) }
+```
+
+```scala
+// type annotering kan være greit for debugging
+for (i: Int <- 1 to 10) { println(i) }
 ```
 
 <aside class="notes">
-likt som i java
+i sin enkleste form veldig lik som i java
 </aside>
 
 ---
 
-```scala
-for (i <- 1 to 10) yield i * 2
+```java
+// java
+List<Integer> list = new ArrayList<>();
+for (int i = 1; i <= 10; i++) {
+    list.add(i * 2)
+}
+```
 
-=> Vector(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
+```scala
+// scala
+val list: Seq[Int] = for (i <- 1 to 10) yield i * 2
 ```
 
 <aside class="notes">
-    for er en expression (ikke statement)
+    for er en expression (ikke statement) <br/>
+    dette betyr at den returnerer en verdi
 </aside>
 
 ---
 
+```java
+// java
+List<Punkt> punkter = new ArrayList<>();
+for (int x = 1; x <= 10; x++) {
+    for (int y = 1; y <= 10; y++) {
+        punkter.add(new Punkt(x, y))
+    }
+}
+```
+
 ```scala
+// scala
+val punkter: Seq[Punkt] = for {
+    x <- 1 to 10
+    y <- 1 to 10
+} yield new Punkt(x, y)
+```
+
+<aside class="notes">
+    man kan nøste flere for løkker
+</aside>
+
+---
+
+```java
+// java
+boolean even(int i) { ... }
+
+List<Integer> partall = new ArrayList<>();
+for (int i = 1; i <= 10; i++) {
+    if (even(i)) {
+        heltall.add(i)
+    }
+}
+```
+
+```scala
+// scala
 def even(i: Int): Boolean = ...
 
-for {
+val partall: Seq[Int] = for {
     i <- 1 to 10
     if even(i)
 } yield i
-
-=> Vector(2, 4, 6, 8, 10)
 ```
 
 <aside class="notes">
@@ -42,10 +98,12 @@ for {
 ---
 
 ```scala
+// scala
 for {
     i <- 1 to 10
     if even(i)
 } yield {
+  // yield kan være en blokk
   val a = ...
   val b = ...
   val c = ...
@@ -60,13 +118,24 @@ for {
 ---
 
 ```scala
-val fornavn   = List("Adolf",  "Henry",  "Josef")
-val etternavn = List("Hitler", "Rinnan", "Stalin")
+// scala
+val listeMedFornavn   = List("Adolf",  "Henry",  "Josef")
+val listeMedEtternavn = List("Hitler", "Rinnan", "Stalin")
 
-val enListeMedOndskap: List[String] = for {
-    f: String <- list1
-    e: String <- list2
-} yield s"$f $e"
+val listeMedStigmatiserendeNavn: List[String] = for {
+    fornavn: String   <- listeMedFornavn
+    etternavn: String <- listeMedEtternavn
+} yield s"$fornavn $etternavn"
+```
+
+```java
+// java
+List<String> listeMedStigmatiserendeNavn = new ArrayList<>();
+for (String fornavn: listeMedFornavn) {
+    for (String etternavn: listeMedEtternavn) {
+        listeMedStigmatiserendeNavn.add("%s %s".format(fornavn, etternavn))
+    }
+}
 ```
 
 <aside class="notes">
@@ -88,7 +157,35 @@ val person: Option[Person] = for {
 ```
 
 <aside class="notes">
+Man kan bruke Option i for-comprehension <br/>
+
+(Option brukes for å unngå NPE.
+Tenk på Option som en liste med ett eller ingen elementer) <br/>
+mer om Option senere <br/>
+</aside>
+
+---
+
+```java
+// java
+List<String> getNavn() { ... }
+List<String> getAlder() { ... }
+List<String> getAdresse() { ... }
+
+List<Person> p = emptyList();
+for (String navn: getNavn()) {
+    for (String alder: getAlder()) {
+        for (String adresse: getAdresse()) {
+            p.add(new Person(navn, alder, adresse));
+        }
+    }
+}
+return p;
+```
+
+<aside class="notes">
 Tenk på Option som en liste med ett eller ingen elementer
+Hva ville skjedd om getAlder returnerte en tom liste?
 </aside>
 
 ---
@@ -115,13 +212,11 @@ implementerer map, flatMap og filter
 
 ---
 
-Oppgaver:
+# Oppgaver #
 
-Pytagoreiske tripler
-
-finn alle faktorer av et tall
-
-ekstraoppgave:
-
-implementer map, flatMap og filter i en enkel Either
-
+<aside class="notes">
+<ul>
+<li>finn alle faktorer av et tall</li>
+<li> Pytagoreiske tripler </li>
+</ul>
+</aside>

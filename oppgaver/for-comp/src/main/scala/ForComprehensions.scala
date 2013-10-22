@@ -12,6 +12,9 @@ class ForComprehensions {
    * a^2 + b^2 = c^2 og
    * a < b < c
    *
+   * Hint: begynn med å generere alle permutasjoner av (a, b, c) der
+   * a, b og c er mellom 1 og 100. Filtrer deretter bort ett og ett kriterie.
+   *
    * ekstra utfordring: skriv hele metoden som _en_ for-comprehension
    */
   def pytagoreiskeTripler: Seq[(Int, Int, Int)] = for {
