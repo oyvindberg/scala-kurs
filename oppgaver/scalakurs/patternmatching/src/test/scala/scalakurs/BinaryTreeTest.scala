@@ -2,6 +2,7 @@ package scalakurs
 
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
+import PatternMatching._
 
 class BinaryTreeTest extends FunSuite with ShouldMatchers {
 
