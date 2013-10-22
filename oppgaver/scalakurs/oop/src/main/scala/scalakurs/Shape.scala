@@ -24,7 +24,6 @@ class Circle(center:Point, radius: Double) extends Shape(center) {
 
   def circumference: Double = Pi
 
-  def draw = println
 }
 
 // TODO:
