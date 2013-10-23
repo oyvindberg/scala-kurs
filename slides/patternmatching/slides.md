@@ -309,15 +309,16 @@ def lol(p: Tree): String = {
 
 
 
-# Oppgaver!
+# Oppgaver
 PatternMatching.scala
 
 
 
-## Extractors ###
-Eksempel: Analyse av strenger som representerer epost-adresser
+# Extractors ##
 
 
+
+Analyse av strenger som representerer epost-adresser
 
 Mulig løsning:
 ```scala
@@ -328,10 +329,83 @@ def user(s: String): String
 
 
 
-Men vi vil helst gjøre dette:
+Vi vil heller bruke pattern matching:
 ```scala
 s match {
   case Email(user, domain) => ...
+}
+```
+
+Men s er en String!
+
+
+
+Repetisjon case classes:
+
+```scala
+case class Person(name: String, age: Int)
+```
+
+To av metodene som blir generert:
+```scala
+case class Person(name: String, age: Int)
+object Person {
+  ...
+  def apply(name: String, age: Int): Person = ...
+  def unapply(p: Person): Option[(String, Int)] = ...
+  ...
+}
+```
+
+
+
+'apply' konstruerer et objekt fra argumentene:
+```scala
+  def apply(name: String, age: Int): Person = ...
+```
+
+
+
+'unapply' dekomponerer et objekt:
+ ```scala
+  def unapply(p: Person): Option[(String, Int)] = ...
+```
+F.eks:
+ ```scala
+  unapply(Person("Ola", 55)) // == Some(("Ola", 55))
+```
+
+
+
+Ved pattern matching prøver kompilatoren å finne en passende unapply-metode!
+
+
+
+Så når vi skriver dette:
+
+```scala
+person match {
+  case Person(name, age) => println(name + " ," + age)
+}
+```
+
+... forsøker kompilatoren å finne og kalle Person.unapply:
+```scala
+object Person {
+   ...
+   def unapply(p: Person): Option[(String, Int)] = ...
+   ...
+}
+```
+
+
+
+Hva om vi vil matche på strenger som "Stig 29", "Ola 55"  osv:
+
+```scala
+val s = "Ola 55"
+s match {
+    case Person(name, age) => println(name + ", " + age)
 }
 ```
 
@@ -339,36 +413,37 @@ s match {
 
 Løsning:
 ```scala
-object Email {
-  // Injection
-  def apply(user: String, domain: String) = user + "@" + domain
-
-  // Extraction
-  def unapply(str: String): Option[(String, String)] = {
-    val parts = str split "@"
-    if (parts.length == 2) Some(parts(0), parts(1)) else None
-  }
+object Person {
+  // Ny unapply-metode som tar inn en String:
+  def unapply(s: String): Option[(String, Int)] = ...
 }
 ```
-Kan nå pattern matche:
+
+
+
+Tilbake til opprinnelig problem:
 ```scala
 s match {
   case Email(user, domain) => ...
 }
 ```
+Kompilator vil klage på at det ikke finnes noen Email.unapply(String): Option[(String, String)]
 
 
 
+Løsning:
 ```scala
-val node = Node(0, List(Leaf(1), Leaf(2)))
-node match {
-    case BinaryNode(value, left, right) => println("Binary node!")
-    case Node(value, children) => println("Some node")
-    case _ => println("Not a binary node")
+object Email {
+  def unapply(str: String): Option[(String, String)] = {
+    str.split("@") match {
+      case Array(user, domain) => Some((user, domain))
+      case _ => None
+    }
+  }
 }
-// => Binary node!
 ```
 
 
 
-# Oppgaver!
+# Oppgaver
+Extractors.scala
