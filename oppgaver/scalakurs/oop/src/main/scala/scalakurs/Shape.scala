@@ -16,15 +16,13 @@ trait Drawing extends Shape {
   def draw = s"Drawing $name with area $area and circumference $circumference with center at $center"
 }
 
-class Circle(center:Point, radius: Double) extends Shape(center) {
+class Circle(center:Point, radius: Double) extends Shape(center) with Drawing {
 
   def name: String = "circle"
 
   def area: Double = Pi * radius * radius
 
-  def circumference: Double = Pi
-
-  def draw {}
+  def circumference: Double = 2 * Pi * radius
 
 }
 
