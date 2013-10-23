@@ -5,12 +5,15 @@ import org.scalatest.matchers.ShouldMatchers
 
 class ExtractorsTest extends FunSuite with ShouldMatchers {
 
-  test("Unapply telefonnummer-streng til et PhoneNumber-objekt") {
+  test("Exercise 1: Int.unapply") {
+    assert(Extractors.Int.unapply("1") == Some(1))
+    assert(Extractors.Int.unapply("a") == None)
+  }
+
+  test("Exercise 2: PhoneNumber.unapply") {
     val prefix = 47
-    val number =  22048700
-      prefix + " " + number match {
-        case PhoneNumber(47, 22048700) => assert(true)
-        case _ => assert(false, s"Forventet et PhoneNumber-objekt med prefiks $prefix og nummber $number.")
-      }
+    val number = 22048700
+    assert(Extractors.PhoneNumber.unapply(prefix + " " + number ) == Some((prefix, number)))
+    assert(Extractors.PhoneNumber.unapply("asdf" + " " + number ) == Some(None))
   }
 }
