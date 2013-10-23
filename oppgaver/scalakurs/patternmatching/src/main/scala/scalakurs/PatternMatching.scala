@@ -14,8 +14,6 @@ object PatternMatching {
   // Return None if there's less than three elements in the list.
   def extractFirst3Elems[A](seq: Seq[A]): Option[(A, A, A)] = ???
 
-  // ------------- Part 2 -----------------------------------
-
   abstract sealed class Tree
   case class Node(value: Int, left: Tree, right: Tree) extends Tree
   case object Nil extends Tree
