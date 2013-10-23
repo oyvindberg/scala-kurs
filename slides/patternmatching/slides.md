@@ -13,6 +13,12 @@
 
 Greet-metode:
 ```scala
+sealed abstract class Gender
+case object MALE extends Gender
+case object FEMALE extends Gender
+
+case class Person(gender: Gender, name: String)
+
 def greet(person: Person) {
   if (person.gender == MALE)
     println("Hello, Mr. " + person.name)
@@ -70,7 +76,7 @@ _ matcher hva som helst:
 ```scala
 def printNameIfPerson(x: Any) = {
   x match {
-    case Person(name, _) => println("Name: " + name)
+    case Person(_, name) => println("Name: " + name)
     case _ => println("Not a person")
   }
 }
@@ -100,7 +106,7 @@ variabelen til objektet man matcher på:
 ```scala
 def printNameIfPerson(x: Any) = {
   x match {
-    case Person(name, _) => println("Name: " + name)
+    case Person(_, name) => println("Name: " + name)
     case somethingElse => println("Not a person: " + somethingElse)
   }
 }
@@ -193,9 +199,10 @@ foo match {
 ### Variabel-binding: ###
 
 ```scala
-def leftLeaf(tree: Tree) {
+def leftLeaf(tree: Tree): Option[Leaf] = {
   tree match {
-    case Node(_, leaf @ Leaf(_), child) => leaf
+    case Node(_, leaf @ Leaf(_), child) => Some(leaf)
+    case _ => None
   }
 }
 ```
@@ -264,11 +271,11 @@ Hva om vil vil at kompilatoren skal advare om at vi mangler patterns?
 
 ### Sealed classes ###
 ```scala
-sealed  abstract class Tree
+sealed abstract class Tree
 case class Node(value: Int, left: Tree, right: Tree) extends Tree
-case class Leaf(value: Int) extends Tree
+case class Leaf(value: Int) extends def
 
-def sillyTreeMatch(tree: Tree) {
+Tree sillyTreeMatch(tree: Tree) {
   tree match {
     case Leaf(_) => println("Matched leaf")
   }
