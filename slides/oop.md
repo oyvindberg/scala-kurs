@@ -8,6 +8,7 @@ class Person(id: Int, name: String)
 <aside class="notes">
         ikke public class -> public by default
         Trenger ikke body.
+        parametrene til konstruktoren
         Private felter.
 </aside>
 
@@ -19,7 +20,7 @@ class Person(val id: Int, val name: String)
 <aside class="notes">
         Kompilatoren genererer accessors (tilsvarende get)
         Både klasser, metoder og felter er public by default, gitt at de har var/val
-        Også muligheter for å definere klasser med abstract klass -> som i Java
+        Også muligheter for å definere klasser med abstract class -> som i Java
 </aside>
 
 
@@ -32,7 +33,8 @@ class Person(val id: Int, val name: String) {
 ```
 <aside class="notes">
         Transparant for klient om det er et felt eller en metode
-        Metode og felter har samme namespace => bruke val for å override def
+        Metode og felter har samme namespace => kan bruke val for å override def
+        MEN gjør den lazy
         OBS: Hvis metoder (def) er definert uten paranteser kan du ikke kalle
             de MED paranteser
 </aside>
@@ -121,6 +123,7 @@ object Person {
 scala> val p = Person(1, "Ola")
 // p: Person = Person@306b208
 ```
+
 
 
 ### Default arguments ###
@@ -220,11 +223,11 @@ trait InMemoryDbConnection extends DatabaseConnection {
   lazy val db = H2Database{....}
 }
 
-trait BilforsikringDao extends DatabaseConnection {
-
+trait BilforsikringRepository extends DatabaseConnection {
+  lazy val db = PostgreSql{....}
 }
 
-trait BilforsikringDaoTest extends InMemoryDbConnection {
+trait BilforsikringRepositoryTest extends InMemoryDbConnection {
 
 }
 
@@ -422,11 +425,11 @@ public final class Person$ extends scala.runtime.AbstractFunction2 implements sc
 - case class når immutable, får fornuftig hashCode, equals og toString gratis
 - traits kan ha delvis implementasjon eller være ren abstrakt
 - bruk traits hvis du kan
-- ikke statiske metoder, det skal være i et object
+- ikke statiske metoder, de skal være i et object
 
 
 
 ### Oppgaver! ###
 I scalakurs/oop:
+- IntQueueTest (traits)
 - ShapeTest (arv)
-- IntQueueTest (traits og linarization)
