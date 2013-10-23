@@ -6,26 +6,26 @@ trait BooleanLike[A] {
 
 object BooleanLike {
 
-  implicit val intBooleanLike = new BooleanLike[Int] {
-    def asBoolean(a: Int) = a == 1
+  implicit lazy val intBooleanLike = new BooleanLike[Int] {
+    def asBoolean(a: Int) = a != 0
   }
 
-  implicit val stringBooleanLike = false
+  implicit lazy val stringBooleanLike: BooleanLike[String] = ???
 
-  implicit val optionBooleanLike = false
+  implicit lazy val optionBooleanLike: BooleanLike[Option[_]] = ???
 
   /**
    * Get a hold of the implicit by adding a parameter list
    * or by calling {{implicitly}}
    */
-  def asBoolean[A](a: A) = false
+  def asBoolean[A](a: A)(implicit bla: BooleanLike[A]) = bla.asBoolean(a)
 
   /**
    * Will this suffice for a container (M[_]) type?
    */
   implicit class AsBoolean[???](a: ???) {
-    def boolean = false
-    def mboolean = false
+    def boolean: Boolean = ???
+    def mboolean: Boolean = ???
   }
 }
 

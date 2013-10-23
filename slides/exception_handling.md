@@ -1,5 +1,4 @@
-# Feilhåndtering og containere #
-Hvordan håndtere null, exceptions, flere resultater og noen ganger uønskede resultater?
+# Containertyper fra ferskvaredisken #
 
 ---
 
@@ -25,7 +24,7 @@ case class None extends Option[Nothing]
 ## Hvorfor? ##
 
 ```
-def hello(str: String) = s"$Hello, $str"
+def hello(str: String) = s"Hello, $str"
 
 scala> Option(null)
 res1: Option[Null] = None
@@ -44,6 +43,67 @@ res4: Option[String] = Some(Hello, Foo)
 - Tvinger deg til å håndtere `None`-caset når verdien skal realiseres
 - Som vanlig i Scala: Compile-time checks i stedet for runtime!
 - Ofte kan `None` i seg selv være semantisk verdifull
+
+--
+
+## Hvordan ? ##
+
+```
+def getAd(int: adId): Option[Ad]
+def getOrg(int: orgId): Option[Organisation]
+```
+
+«Imperativ» bruk av nøstet `Option`
+```
+val adOpt = getAd(1337)
+// Ser helt greit ut om man bare skal nøste to Options, 
+// men man må bygge kontrollstrukturene selv. URK!
+val orgOpt = if (adOpt.isDefined) getOrg(adOpt.get.orgId) else None
+```
+
+`map` og `flatMap` til unsetning!
+```
+// Option[Option[Organisation]], hmmm!
+val orgOptOpt = getAd(1337).map(ad => getOrg(ad.orgId)) 
+// Option[Organisation]
+val orgOpt = orgOptOpt.flatten
+```
+
+--
+
+### Just `flatMap` that shit ###
+
+```
+getAd(1337).flatMap(ad => getOrg(ad.orgId)) 
+```
+
+--
+
+## Og litt sukkerstrø på topp ##
+
+for-comprehensions
+```
+for {
+  ad  <- getAd(1337)
+  org <- getOrg(ad.orgId)
+} yield org
+```
+
+Kommer med alle filtre, folds, maps som man burde forvente
+```
+val name: Option[String] = request.getParameter("name")
+val upper = name.map(_.trim).filter(_.nonEmpty).map(_.toUpperCase)
+println(upper.mkString)
+```
+
+Og selvfølgelig pattern matching
+```
+request.getParameter("name") match {
+  case Some(param) if param.trim.nonEmpty => println(param.trim.toUpperCase)
+  case _ => println("")
+}
+
+```
 
 ---
 
@@ -90,8 +150,8 @@ res1: String = This is a LEFTY-foo
 
 --
 
-## Akk, det er så dyrt med Exception-drevet utvikling ##
-Nei da, det trenger det ikke være. La oss ta vare på denne `Exception`-greia uten å kaste opp hele stack tracen
+## Exception-drevet utvikling suger! ##
+Ja, da, men det trenger det egentlig ikke å gjøre. La oss ta vare på denne `Exception`-greia uten å spy ut hele stack tracen
 ```
 scala> def getThatAd(id: Int) = {
      |   if(Random.nextBoolean()) 
@@ -115,4 +175,13 @@ res1: scala.util.Either[Throwable,String] =
 ```
 res2: scala.util.Either[Throwable,String] = 
         Left(java.lang.Exception: No ad of that sort in the db?)
+```
+
+--
+
+Det finnes noe deilig sukker for dette også, som man kan bruke om man vil
+
+```
+scala> scala.util.control.Exception.allCatch.either(getThatAd(1337))
+res0: scala.util.Either[Throwable,String] = Left(...)
 ```

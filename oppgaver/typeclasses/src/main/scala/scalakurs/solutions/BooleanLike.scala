@@ -7,7 +7,7 @@ trait BooleanLike[A] {
 object BooleanLike {
 
   implicit val intBooleanLike = new BooleanLike[Int] {
-    def asBoolean(a: Int) = a == 1
+    def asBoolean(a: Int) = a != 0
   }
 
   implicit val stringBooleanLike = new BooleanLike[String] {

@@ -1,6 +1,6 @@
 package scalakurs.solutions
 
-import scala.concurrent.{Await, Future}
+import scala.concurrent.{Await, Future, future}
 import scala.concurrent.duration._
 
 object PiCalculator extends App {
@@ -14,11 +14,10 @@ object PiCalculator extends App {
     )
   }
 
-
   def calculate(nrOfElements: Int, nrOfWorkers: Int) = {
     val workSize = nrOfElements / nrOfWorkers
     val delegatedWork = (0 to workSize).map { start =>
-      Future {
+      future {
         calculatePiFor(start * workSize, workSize)
       }
     }
@@ -26,5 +25,5 @@ object PiCalculator extends App {
     val asyncApprox = Future.reduce(delegatedWork)(_ + _)
     Await.result(asyncApprox, 10 seconds)
   }
-
 }
+
