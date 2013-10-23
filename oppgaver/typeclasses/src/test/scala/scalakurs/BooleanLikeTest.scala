@@ -1,8 +1,6 @@
 package scalakurs
 
-import org.scalatest.{Tag, FunSuite}
-
-class BooleanLikeTest extends FunSuite {
+class BooleanLikeTest extends FunSuiteHelper {
 
 //  import solutions.BooleanLike._
   import BooleanLike._
@@ -35,19 +33,5 @@ class BooleanLikeTest extends FunSuite {
   bonus("Implement BooleanLike type class for Option with postfixed mboolean") {
       assert(Option("foo").mboolean)
       assert(!(None: Option[String]).mboolean)
-  }
-
-
-  override protected def test(testName: String, testTags: Tag*)
-                             (testFun: => Unit): Unit = {
-    super.test(testName, testTags:_*)(isImplemented(testFun))
-  }
-
-  def bonus(testName: String) = test(s"Bonus: $testName") _
-
-  def isImplemented[A](block: => A) = {
-    try block catch {
-      case err: NotImplementedError => fail(err)
-    }
   }
 }
