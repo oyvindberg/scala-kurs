@@ -35,10 +35,10 @@ class MapOppgaverTest
   }
 
   test("map groupBy") {
-    val personerGrupperPaKjonn: Map[Kjonn, List[Person]] = personer.groupBy(_.kjonn)
-    println(personerGrupperPaKjonn.groupBy {
-      case (k, v: List[Person]) => v.alk / 10
-    }       )
+//    val personerGrupperPaKjonn: Map[Kjonn, List[Person]] = personer.groupBy(_.kjonn)
+//    println(personerGrupperPaKjonn.groupBy {
+//      case (k, v: List[Person]) => v.alk / 10
+//    }       )
   }
 
   test("lag en funksjon som først slår opp i Map A og hvis det ikke finnes der slår opp i Map B") {
