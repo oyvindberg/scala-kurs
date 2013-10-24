@@ -1,4 +1,4 @@
-package scalakurs
+package scalakurs.collections
 
 object MapOppgaver {
   def nyttMap[K, V](key: K, value: V): Map[K, V] = Map(key -> value)
