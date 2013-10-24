@@ -1,95 +1,54 @@
-# Java + Scala
+# Interop med Java
 
 
 
-### Javap
-- Verktøy som følger med JDKen
-- Dekompilerer Java klasse-filer
+### Scala er kompatibelt med java:
 
-Eksempel:
+- Scala bruker JVMen som standard-backend
+- Scala-klasser er Java-klasser (og motsatt)
+- I Java-kode kan man arve fra Scala-klasser (og motsatt)
+
+
+
+Eksempel: Vanlig klasse
 ```scala
-// Foo.scala:
-class Foo {
-  def bar = "bar"
+class Animal {
+  def sound = "generic animal sound"
 }
 ```
 
-Scalac og Javap:
-```scala
-$ scalac Foo.scala 
-$ javap Foo.class
-Compiled from "Foo.scala"
-public class Foo {
-  public java.lang.String bar();
-  public Foo();
-}
-```
-
-
-
-Kan velge å se byte-kode:
-```scala
-$ javap -c Foo.class
-Compiled from "Foo.scala"
-public class Foo {
-  public java.lang.String bar();
-    Code:
-       0: ldc           #11       // String bar
-       2: areturn       
-
-  public Foo();
-    Code:
-       0: aload_0       
-       1: invokespecial #17       // Method java/lang/Object."<init>":()V
-       4: return        
-}
-```
-
-
-
-### Scala oversettes til Java bytecode
-- Scala-features som har en ekvivalent Java-feature oversettes til tilnærmet lik bytecode
-- Annen Scala-kode må ta i bruk en enkoding vi skal se noen eksempler på
-
-
-
-### Val og var
-
-```scala
-class Person(val name: String, var age: Int)
-```
-
+Java-kode (fra javap):
 ```java
-public class Person {
-  public java.lang.String name();
-  
-  public int age();
-  public void age_$eq(int);
-  
-  public Person(java.lang.String, int);
+$ scalac Animal.scala
+$ javap Animal.class
+Compiled from Animal.scala"
+public class Animal {
+  public java.lang.String sound();
+  public Anima();
 }
 ```
 
 
 
-get og set kan genereres med @BeanProperty:
-
+Eksempel: Abstrakt klasse
 ```scala
-class Person(@BeanProperty val name: String, @BeanProperty var age: Int)
+abstract class Animal {
+  def sound: String
+}
+
 ```
 
+Java-kode (fra javap):
 ```java
-public class Person2 {
-  public java.lang.String name();
-  
-  public int age();
-  public void age_$eq(int);
-  public void setAge(int);
-  public int getAge();
-  
-  public Person(java.lang.String, int);
+$ scalac Animal.scala
+$ javap Animal.class
+Compiled from Animal.scala"
+public abstract class Animal {
+  public abstract java.lang.String sound();
+  public Animal();
 }
 ```
+
 
 
 
@@ -97,41 +56,66 @@ public class Person2 {
 
 Scala:
 ```scala
-trait Model {
-  def value: Any
+trait Animal {
+  def sound: String
 }
 ```
 
 Java:
 ```scala
-$ scalac Model.scala
-$ javap Calc.class
-Compiled from "Model.scala"
-public interface Model {
-  public abstract java.lang.Object value();
+$ scalac Animla.scala
+$ javap Animal.class
+Compiled from "Animal.scala"
+public interface Animal {
+  public abstract java.lang.String sound();
 }
 ```
 
 
 
-### trait med implementert metode
 
+### Men hva med Scala-features uten en Java-ekvivalent?
+
+
+
+
+### trait med implementasjon av metoder
 Scala:
 ```scala
-trait Model {
-  def value: Any
+trait Animal {
+  def sound: String
+
+  def eat: Unit = println("Spiser litt da")
+}
+
+class Cow extends Animal {
+  val sound = "moo"
 }
 ```
 
+
+
+Java:
 ```scala
-public interface Model {
-  public abstract java.lang.Object value();
+public interface Animal {
+  public abstract java.lang.String sound();
+  public abstract void eat();
 }
-// Ekstra klasse:
-public abstract class Model$class {
-  public static java.lang.String printValue(Model);
-  public static void $init$(Model);
+public abstract class Animal$class { // Klasse med implementasjon av eat
+  public static void eat(Animal) {
+     System.out.println("Spiser litt da");
+  }
 }
+public class Cow implements Animal {
+  public void eat() {
+    Animal$class.eat(this); // Delegerer til Animal$class
+  }
+  public java.lang.String () {
+    return "moo";
+  }
+  public Cow();
+}
+
 ```
 
 
