@@ -7,6 +7,11 @@ import scala.Some
 import scalakurs.PatternMatching.Person
 
 class PatternMatchingTest extends FunSuite with ShouldMatchers {
+//  describe("Exercise 1: Match 5") {
+//    it("should match 5") { assert(match5(5))}
+//    it("""should match "5"""") { assert(match5("5"))}
+//    it("should return false for everything else") { assert(!match5("everythingElse"))}
+//  }
 
   test("Exercise 1: Match 5") {
     assert(match5("5") && match5(5) && !match5(4) && !match5(""))
