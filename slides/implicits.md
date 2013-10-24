@@ -7,44 +7,64 @@
 
 
 
-# Hvordan?
-<br/>
-###implicit parameters
-- f()           => f(x)
+##Implicit conversions (I)
 
-<br/>
-###implicit conversions:
+Konvertere fra en type til en annen ved behov
+```scala
+def decimalYear(dt: org.joda.time.DateTime): Double = {
+    val daysInYear = if (dt.year.isLeap) 366.0 else 365.0
+    dt.getYear + dt.getDayOfYear / daysInYear
+}
 
-- f(p: *Type*)   => f(p: *AnnenType*)
-- *Type*.f(p)    => *AnnenType*.f(p)
+implicit def date2datetime(d: java.util.Date) = new DateTime(d.getTime())
 
-
-
-## Umiddelbare effekter
-
- - Fjerning av repeterende kode
- - Nydelige APIer
+decimalYear(new java.util.Date)
+//res0: Double = 2013.813698630137
+```
 
 
 
-## Muliggjør
- - programmering med typeklasser
- - assimilasjon av eksterne typer
+##Implicit conversions (II)
+Legge ekstra funksjonalitet til eksisterende type
+```scala
+class RichInt(val self: Int){
+  def until(end: Int): Range = Range(self, end)
+  ...
+}
+
+implicit def intWrapper(x: Int) = new RichInt(x)
+
+scala> 2 until 4
+//res0: scala.collection.immutable.Range = Range(2, 3)
+```
 
 
 
-##Ingen magi
-<table align="center">
-<tr><td> **Marking**        </td><td> markert med keywordet implicit</td></tr>
-<tr><td> **Scope**          </td><td> importert, deklarert, eller assosiert med type</td></tr>
-<tr><td> **Non-Ambiguity**  </td><td> to passende implisits samtidig vil ikke bygge\*</td></tr>
-<tr><td> **One-at-a-time**  </td><td> ingen nøsting, *f(x)* vil aldri bli omskrevet til *f(y2z(x2y(x)))*\*\*</td></tr>
-<tr><td> **Explicits-First**</td><td> ignorerer implisits om koden bygger uten</td></tr>
-</table>
-<br/>
-\* En implicit kan bli foretrukket om den er i klart nærmere scope
-\*\* men *x2y()* vil selv kunne ta implisitt parameter
+##Implicit conversions (III)
+Legge på hva som oppleves som syntax
 
+```scala
+/* Lager tupler av ting som blir satt sammen med → */
+class ArrowAssoc[A](val x: A) {
+ def →[B](y: B): (A, B) = (x, y)
+}
+implicit def any2ArrowAssoc[A](x: A): ArrowAssoc[A] = new ArrowAssoc(x)
+
+1 → "one"
+//res0: (Int, String) = (1,one)
+```
+
+
+
+##Implicit conversion (class)
+Genererer konverteringsfunksjonen for deg
+```scala
+implicit class DateParser(val s: String) extends AnyVal {
+    def parseDate: LocalDate = LocalDate.parse(s);
+}
+"2013-01-1".parseDate
+//res0: org.joda.time.LocalDate = 2013-01-01
+```
 
 
 
@@ -92,66 +112,27 @@ prefixed("Arne")
 
 
 
-##Implicit conversions (I)
+## Umiddelbare effekter
 
-Funksjon som konverterer fra en type til en annen ved behov
-```scala
-import org.joda.time.DateTime
-
-implicit def date2datetime(d: java.util.Date) = new DateTime(d.getTime())
-
-new java.util.Date().plusYears(3)
-//res0: org.joda.time.DateTime = 2016-10-10T17:49:05.411+02:00
-````
+ - Fjerning av repeterende kode
+ - Nydelige APIer
 
 
 
-##Implicit conversions (II)
-Brukt til å legge ekstra funksjonalitet til eksisterende type
-```scala
-class RichInt(val self: Int){
-  def until(end: Int): Range = Range(self, end)
-  ...
-}
-
-implicit def intWrapper(x: Int) = new RichInt(x)
-
-scala> 2 until 4
-//res0: scala.collection.immutable.Range = Range(2, 3)
-```
+## Muliggjør
+ - programmering med typeklasser
+ - assimilasjon av eksterne typer
 
 
 
-##Implicit conversions (III)
-Brukt til å legge på hva som oppleves som syntax
-
-```scala
-/* Har tilsammen effekten å lage tupler av ting som blir satt sammen med → */
-class ArrowAssoc[A](val x: A) {
- def →[B](y: B): (A, B) = (x, y)
-}
-implicit def any2ArrowAssoc[A](x: A): ArrowAssoc[A] = new ArrowAssoc(x)
-
-/* Denne apply-funksjonen, som tar i mot et variabelt antall tupler, får
-    det i sum til å se ut som at vi har et map literal i scala */
-object Map{
-    def apply[A, B](elems: (A, B)*) = ...
-}
-
-/* Dette er hva konsumenten av APIet ser */
-Map(1 → "one", 2 → "two", 3 → "three")
-```
-
-
-
-##Implicit conversion (class)
-Får
-```scala
-implicit class DateString(val s: String) extends AnyVal {
-    def parseDate: java.util.Date = {
-        new java.text.SimpleDateFormat("yyyy-MM-dd").parse(s)
-    }
-}
-"2013-01-01".parseDate
-//res0: java.util.Date = Tue Jan 01 00:00:00 CET 2013
-```
+##Ingen magi
+<table align="center">
+<tr><td> **Marking**        </td><td> markert med keywordet implicit</td></tr>
+<tr><td> **Scope**          </td><td> importert, deklarert, eller assosiert med type</td></tr>
+<tr><td> **Non-Ambiguity**  </td><td> to passende implisits samtidig vil ikke bygge\*</td></tr>
+<tr><td> **One-at-a-time**  </td><td> ingen nøsting, *f(x)* vil aldri bli omskrevet til *f(y2z(x2y(x)))*\*\*</td></tr>
+<tr><td> **Explicits-First**</td><td> ignorerer implisits om koden bygger uten</td></tr>
+</table>
+<br/>
+\* En implicit kan bli foretrukket om den er i klart nærmere scope
+\*\* men *x2y()* vil selv kunne ta implisitt parameter
