@@ -3,4 +3,9 @@
 ---
 
 # Oppgaver #
-collections String*
+scalakurs.collections.StrengerSomListerTest
+
+```scala
+sbt:
+> ~ test-only scalakurs.collections.StrengerSomListerTest
+```
