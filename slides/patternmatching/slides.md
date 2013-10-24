@@ -62,25 +62,12 @@ def fib(n: Int) : Int = n match {
 
 ### Typer patterns: ###
 
-- Wildcard pattern
 - Constant pattern
 - Variable pattern
+- Typed pattern
+- Wildcard pattern
 - Constructor pattern
 - Sequence pattern
-- Typed pattern
-
-
-
-### Wildcard pattern ###
-_ matcher hva som helst:
-```scala
-def printNameIfPerson(x: Any) = {
-  x match {
-    case Person(_, name) => println("Name: " + name)
-    case _ => println("Not a person")
-  }
-}
-```
 
 
 
@@ -108,6 +95,33 @@ def printNameIfPerson(x: Any) = {
   x match {
     case Person(_, name) => println("Name: " + name)
     case somethingElse => println("Not a person: " + somethingElse)
+  }
+}
+```
+
+
+
+### Typed pattern: ###
+```scala
+def generalSize(x: Any) {
+  x match {
+    case s: String => s.length
+    case m: Map[_, _] => m.size
+    case l: List[_] => l.length
+    case _ => -1
+  }
+}
+```
+
+
+
+### Wildcard pattern ###
+_ matcher hva som helst:
+```scala
+def printNameIfPerson(x: Any) = {
+  x match {
+    case Person(_, name) => println("Name: " + name)
+    case _ => println("Not a person")
   }
 }
 ```
@@ -166,20 +180,6 @@ def printTuple(x: Any) {
   x match {
     case (a, b) => println(a + " " + b)
     case _ =>
-  }
-}
-```
-
-
-
-### Typed pattern: ###
-```scala
-def generalSize(x: Any) {
-  x match {
-    case s: String => s.length
-    case m: Map[_, _] => m.size
-    case l: List[_] => l.length
-    case _ => -1
   }
 }
 ```
