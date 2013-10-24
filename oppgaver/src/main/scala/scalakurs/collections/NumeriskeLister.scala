@@ -11,6 +11,7 @@ object NumeriskeLister {
 
   def filtrerOddetall(l: List[Int]): List[Int] = ???
 
+  // hint: partition
   def delOddetallOgPartall(l: List[Int]): (List[Int], List[Int]) = ???
 
   def detFinnesEtOddetall(l: List[Int]): Boolean = ???
@@ -22,12 +23,14 @@ object NumeriskeLister {
   def filtrerListerSomKunInneholderOddetall(l: List[List[Int]]): List[List[Int]] = ???
 
   // hint se på signaturen for å se hva denne metoden skal gjøre
-  def filtrerOddetallLister(l: List[List[Int]]): List[Int] = ???
+  def hentUtAlleOddetall(l: List[List[Int]]): List[Int] = ???
 
   def lagPartall(i: Int): Int = ???
 
   def lagPartallsliste(l: List[Int]): List[Int] = ???
 
+  // ekteDivisor == faktor
+  // ekteDivisor(21) == List(1, 3, 7)
   def ekteDivisorer(i: Int): List[Int] = ???
 
   // Et perfekt tall er et tall der summen av tallets alle ekte divisorer er lik tallet selv

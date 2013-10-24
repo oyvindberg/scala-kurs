@@ -52,7 +52,7 @@ class NumeriskeListerTest
   }
 
   test("lag en funksjon som returnerer en liste med oddetall") {
-    NumeriskeLister.filtrerOddetallLister(
+    NumeriskeLister.hentUtAlleOddetall(
       List(List(1,2),List(3,4),List(5,7))) should be (List(1,3,5,7))
   }
 
