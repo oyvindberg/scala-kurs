@@ -8,14 +8,6 @@
 
 
 
-- immutability
-- pure function
-- referential transparency
-- side effect
-- shared mutable state
-
-
-
 ### Immutability ###
 Et objekt kan ikke bli modifisert etter at det er laget
 
@@ -24,8 +16,8 @@ Et objekt kan ikke bli modifisert etter at det er laget
 ### Immutability - implikasjoner ###
 - kan ikke legge til nye elementer i en datastruktur
 - bruker ikke var, kun val
-- 'settere' er ikke lov, det modifiserer et objekt
-- Ikke looper, for da må man jo ha en teller som man muterer
+- 'settere' er ikke lov
+- Ikke tradisjonelle looper
 
 
 
@@ -45,6 +37,44 @@ for (int i = 1; i <= 10; i++) {
 
 
 
+```java
+package java.util;
+
+public class Date {
+    private int year;
+    private int month;
+    private int day;
+
+    public Date(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    // + a bunch of other methods
+}
+```
+<aside class='notes'>
+    - eksempel på idiotisk bruk at settere, fra java.util
+    - når man klarer å gjøre sånne idiotiske ting som en del av java,
+      hvor mye galskap gjør den jevne utvikleren?
+    (riktignok deprecated i dag)
+</aside>
+
+
+
 ### Hvorfor immutable?###
 - trådsikkert
 - trygt å dele med klienter
@@ -53,29 +83,33 @@ for (int i = 1; i <= 10; i++) {
 <aside class='notes'>
  - trådsikkert: Alle tråder har samme bilde av hva variabelen er, den endrer seg ikke
  - Dele med klienter - f.eks. at en klasse kan eksponere en liste uten å være redd for at den blir endret
+ - lett å teste - fjerner tidsaspektet, minimerer antall variabler big time
  - Lett å resonnere rundt fordi at metoder og funksjoner er referentially transparent
+   ... kommer tilbake til dette.
 </aside>
 
 
 
 ### Pure functions ###
 En funksjon som alltid returnerer den samme verdien basert på den samme input
-Dvs resultatet avhenger kun av input
+<aside class='notes'>
+    Dvs resultatet avhenger kun av input
+</aside>
 
 
-
-### Referential transparency ###
-- et uttrykk er referentially transparent hvis man kan
-bytte ut uttrykket med verdien.
 
 ```scala
-val x = 2
-val y = x * x => val y = 4
+// pure functions
+def add(x: Int, y: Int) = x + y
+
+def inc(x: Int) = x + 1
+
 ```
 
 
 
 ```scala
+// impure functions
 var global = 0
 
 def f(x: Int) = x + global
@@ -85,12 +119,22 @@ def inc() = global + 1
 
 
 
+### Referential transparency ###
+Et uttrykk er referentially transparent hvis man kan
+bytte ut uttrykket med verdien.
+
+
+
+
 ```scala
-def add(x: Int, y: Int) = x + y
-
-def inc(x: Int) = x + 1
-
+val x = 2
+val y = x * x => val y = 4
 ```
+<aside class='notes'>
+    - pure funcitons er referentially transparent
+    - uttrykk kan også være referentially transparent
+    - fjerner tidsaspektet
+</aside>
 
 
 
@@ -105,10 +149,10 @@ def inc(x: Int) = x + 1
 
 
 
-### Three (two) ways to fix it ###
+### Two (three) ways to fix it ###
 * Don't share the state variable accross threads
 * Make the state variable immutable
-* Use synchronization whenever accessing the state variable
+* (Use synchronization whenever accessing the state variable)
 
 
 
