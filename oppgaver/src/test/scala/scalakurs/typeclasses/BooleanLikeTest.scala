@@ -14,7 +14,6 @@ class BooleanLikeTest extends FunSuiteHelper {
       assert(asBoolean("true"))
       assert(!asBoolean("false"))
       assert(!asBoolean(""))
-      assert(!asBoolean(null: String))
   }
 
   /**
