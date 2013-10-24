@@ -90,21 +90,6 @@ class List[A] {
   ..
 }
 ```
-<aside class="notes">
-    mangler tailOption og initOption
-</aside>
-
----
-
-##### tailOption #####
-```scala
-def tailOption[A](list: List[A]): Option[List[A]] =
-    list.headOption.map(_ => list.tail)
-```
-<aside class="notes">
-    Forutsetter at Option og map er gjennomgått
-    Denne hadde vært fin å pimpe på List
-</aside>
 
 ---
 
