@@ -1,6 +1,21 @@
 ## Map ##
 
-Mangler en slide om Literals
+Literals
+```scala
+Map(1 -> 2, 2 -> 3)
+Map((1, 2), (2, 3))
+List((1, 2), (2, 3)).toMap
+
+Map(1 -> 2, 2 -> 3) withDefaultValue 42
+```
+
+---
+
+```scala
+Map(1 -> 1) + (2 -> 2)     == Map(1 -> 1, 2 -> 2)
+Map(1 -> 1, 2 -> 2) - 1    == Map(2 -> 2)
+Map(1 -> 1) ++ Map(2 -> 2) == Map(1 -> 1, 2 -> 2)
+```
 
 ---
 
@@ -45,5 +60,9 @@ class Map[A, +B] {
 ---
 
 # Oppgaver #
-collections Map*
+scalakurs.collections.MapOppgaverTest
 
+```scala
+sbt:
+> ~ test-only scalakurs.collections.MapOppgaverTest
+```
