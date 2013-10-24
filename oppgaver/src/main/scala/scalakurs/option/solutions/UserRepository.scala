@@ -1,4 +1,4 @@
-package scalakurs.solution
+package scalakurs.option.solutions
 
 sealed trait Gender
 case object Female extends Gender

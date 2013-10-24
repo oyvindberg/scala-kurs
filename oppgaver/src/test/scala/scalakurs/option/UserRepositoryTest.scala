@@ -1,10 +1,11 @@
-package scalakurs
+package scalakurs.option
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 
 class UserRepositoryTest extends FlatSpec with ShouldMatchers {
 
+//  import solutions.UserRepository._
   import UserRepository._
 
   it should "return a Some[User] if id is found" in {

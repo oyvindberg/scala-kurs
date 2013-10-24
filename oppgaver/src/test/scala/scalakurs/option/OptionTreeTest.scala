@@ -3,7 +3,6 @@ package scalakurs.option
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 
-
 class OptionTreeTest extends FlatSpec with ShouldMatchers {
 
   import Trees._

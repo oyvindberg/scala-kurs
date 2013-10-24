@@ -1,4 +1,4 @@
-package scalakurs.solution
+package scalakurs.either.solutions
 
 import java.io.File
 import scala.io.Source

@@ -1,4 +1,4 @@
-package scalakurs
+package scalakurs.either
 
 import java.io.File
 
