@@ -1,0 +1,12 @@
+*.iml
+*.ipr
+*.iws
+.idea/
+target/
+.DS_Store
+.idea_modules/
+.lib/
+project/boot
+project/plugins/project
+*.*~
+*.~lock.*
