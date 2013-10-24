@@ -109,9 +109,9 @@ def inc(x: Int) = x + 1
 
 
 ```scala
-// impure functions
 var global = 0
 
+// impure functions
 def f(x: Int) = x + global
 
 def inc() = global + 1
@@ -131,9 +131,11 @@ val x = 2
 val y = x * x => val y = 4
 ```
 <aside class='notes'>
-    - pure funcitons er referentially transparent
-    - uttrykk kan også være referentially transparent
-    - fjerner tidsaspektet
+<ul>
+  <li> pure functions er referentially transparent </li>
+  <li> uttrykk kan også være referentially transparent </li>
+  <li> fjerner tidsaspektet </li>
+</ul>
 </aside>
 
 
@@ -141,16 +143,17 @@ val y = x * x => val y = 4
 ### Shared mutable state ###
 > If multiple threads access the same mutable state variable without
 > appropriate synchronization, your program is broken
+>
 > -- Brian Goetz, author of Java Concurrency in Practice
 <aside class='notes'>
-    shared = på tvers av tråder
-    mutable = at den kan endres
+    shared = på tvers av tråder <br/>
+    mutable = at den kan endres <br/>
 </aside>
 
 
 
 ### Two (three) ways to fix it ###
-* Don't share the state variable accross threads
+* Don't share the state variable across threads
 * Make the state variable immutable
 * (Use synchronization whenever accessing the state variable)
 
