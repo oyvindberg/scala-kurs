@@ -19,5 +19,46 @@ class OptionTreeTest extends FlatSpec with ShouldMatchers {
   it should "traverse the tree depth first, left to right, and create a word by concatenating all the leaf values" in {
     tree2.mkString should equal("foo")
   }
+}
 
+
+object Trees {
+
+  ////////////////
+  //     *      //
+  //      \     //
+  //       *    //
+  ////////////////
+
+  lazy val tree1 =
+    Node(
+      None,
+      Some(Leaf("baz")))
+
+
+  ////////////////
+  //      *     //
+  //     /\     //
+  //    *  *    //
+  //   /\   \   //
+  //  f  o   *  //
+  //        /   //
+  //       *    //
+  //      /     //
+  //     o      //
+  ////////////////
+
+  lazy val tree2 =
+    Node(
+      Some(Node(
+        Some(Leaf("f")),
+        Some(Leaf("o")))),
+      Some(Node(
+        None,
+        Some(Node(
+          Some(Node(
+            Some(Leaf("o")),
+            None
+          )),
+          None)))))
 }
