@@ -212,8 +212,12 @@ implementerer map, flatMap og filter
 ---
 
 # Oppgaver #
-## bytt prosjekt ##
-## begynn med oppgave... ##
+scalakurs.for_comprehensions.ForComprehenstionsTest
+
+```scala
+sbt:
+> ~ test-only scalakurs.for_comprehensions.ForComprehenstionsTest
+```
 
 <aside class="notes">
 <ul>
