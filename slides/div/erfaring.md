@@ -5,7 +5,6 @@
 - Vi mener Scala gjør oss mer produktive
   - Mer hjelp fra kompilator enn i andre språk vi bruker til daglig
   - Mer konsis kode og lesbar kode
-  - Lettere å lage abstrahere boilerplate-kode
 
 
 
