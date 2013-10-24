@@ -1,5 +1,0 @@
-package scalakurs
-
-class Functional {
-
-}

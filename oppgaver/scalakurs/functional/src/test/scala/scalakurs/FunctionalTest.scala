@@ -1,7 +1,0 @@
-package scalakurs
-
-class FunctionalTest {
-
-
-
-}
