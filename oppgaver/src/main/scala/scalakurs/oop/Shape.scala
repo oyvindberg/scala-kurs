@@ -7,11 +7,10 @@ abstract class Shape(val center: Point) {
 
   def circumference: Double
 
-//  def draw: String // TODO: Jeg kommenterte ut draw for å få ting til å bygge - så ikke helt intensjonen
 }
 
 trait Drawing extends Shape {
-//  def draw = s"Drawing $name with area $area and circumference $circumference with center at $center"
+  def draw = s"Drawing $name with area $area and circumference $circumference with center at $center"
 }
 
 class Circle(center:Point, radius: Double) extends Shape(center) {

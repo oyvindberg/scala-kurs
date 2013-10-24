@@ -8,12 +8,11 @@ class ShapeTest extends FunSuite with ShouldMatchers {
 
   val origo = Point(0,0)
 
-  // 1: Make this compile and run green
+  // 1: Comment in draw-method. Make this compile and run green
   test("circle with radius 2") {
     val circle = new Circle(origo, 2)
-//    circle.draw should not be "" //TODO: fjernet
-    circle.area should be >= 12.56
-    circle.area should be <= 12.6
+//    circle.draw should not be ""
+    circle.area should be (12.56 plusOrMinus 0.2)
   }
 
   // 2: Implement rectangle and make the tests pass
