@@ -1,6 +1,6 @@
 package scalakurs.collections.solutions
 
-class StrengerSomLister {
+object StrengerSomLister {
    val engelskAlfabet = 'a' to 'z'
 
    def char2int(c: Char): Int = engelskAlfabet.indexOf(c.toLower)
