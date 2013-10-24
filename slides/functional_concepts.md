@@ -81,11 +81,13 @@ public class Date {
 - lett å teste
 - lett å resonnere rundt
 <aside class='notes'>
- - trådsikkert: Alle tråder har samme bilde av hva variabelen er, den endrer seg ikke
- - Dele med klienter - f.eks. at en klasse kan eksponere en liste uten å være redd for at den blir endret
- - lett å teste - fjerner tidsaspektet, minimerer antall variabler big time
- - Lett å resonnere rundt fordi at metoder og funksjoner er referentially transparent
-   ... kommer tilbake til dette.
+<ul>
+<li> trådsikkert: Alle tråder har samme bilde av hva variabelen er, den endrer seg ikke </li>
+<li> Dele med klienter - f.eks. at en klasse kan eksponere en liste uten å være redd for at den blir endret </li>
+<li> lett å teste - fjerner tidsaspektet, minimerer antall variabler big time </li>
+<li> Lett å resonnere rundt fordi at metoder og funksjoner er referentially transparent
+   ... kommer tilbake til dette. </li>
+</ul>
 </aside>
 
 
