@@ -14,13 +14,19 @@ Map("Resident Evil" -> "Umbrella Corp",
      )
 ```
 
+<aside class="notes">
+Half Life -> Black Mesa<br/>
+Oddworld -> RuptureFarms 1029<br/>
+BioShock -> <br/>
+</aside>
+
 ---
 
 
 ### Mutable / Immutable ###
-mutable.List / immutable.List
-mutable.Set / immutable.Set
-mutable.Map / immutable.Map
+mutable.List / immutable.List <br/>
+mutable.Set / immutable.Set <br/>
+mutable.Map / immutable.Map <br/>
 
 <aside class="notes">
     immutable er foretrukket (og default)
@@ -214,65 +220,9 @@ gamers.groupBy(_.clan) => Map[String, List[Gamer]]
 
 # Oppgaver #
 
-collections: scalakurs.NumeriskeListerTest
+scalakurs.collections.NumeriskeListerTest
 
 ```scala
 sbt:
-> project collections
-> ~ test-only scalakurs.NumeriskeListerTest
+> ~ test-only scalakurs.collections.NumeriskeListerTest
 ```
-
----
-
-## Map ##
-```scala
-class Map[A, +B] {
-  ..
-  def isEmpty: Boolean
-  def nonEmpty: Boolean
-
-  def size: Int
-
-  def mkString: String
-  def mkString(sep: String): String
-  def mkString(start: String, sep: String, end: String): String
-  ..
-}
-```
-<aside class="notes">
-    mye likt som List
-</aside>
-
----
-
-```scala
-class Map[A, +B] {
-  ..
-  def filter(p: ((A, B)) ⇒ Boolean): Map[A, B]
-  def filterKeys(p: (A) ⇒ Boolean): Map[A, B]
-
-  def map[B](f: (A) ⇒ B): Map[B]
-  def mapValues[C](f: (B) ⇒ C): Map[A, C]
-
-  def partition(p: ((A, B)) ⇒ Boolean): (Map[A, B], Map[A, B])
-
-  def default(key: A): B
-
-  def orElse[A1 <: A, B1 >: B](that: PartialFunction[A1, B1]): PartialFunction[A1, B1]
-  ..
-}
-```
-
----
-
-# Oppgaver #
-collections Map*
-
----
-
-### Strenger kan behandles som collections ###
-
----
-
-# Oppgaver #
-collections String*
