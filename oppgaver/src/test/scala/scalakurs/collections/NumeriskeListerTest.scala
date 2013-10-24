@@ -7,7 +7,7 @@ class NumeriskeListerTest
   extends FunSuite
   with ShouldMatchers {
 
-  val numeriskeLister = solutions.NumeriskeLister
+  val numeriskeLister = NumeriskeLister
 
   // Range
   test("lag en range fra a til b") {

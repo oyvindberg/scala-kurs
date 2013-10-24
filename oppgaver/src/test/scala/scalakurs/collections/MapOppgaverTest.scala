@@ -3,10 +3,7 @@ package scalakurs.collections
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
 
-class MapOppgaverTest
-  extends FunSuite
-  with ShouldMatchers {
-
+class MapOppgaverTest extends FunSuite with ShouldMatchers {
   val mapOppgaver = MapOppgaver
 
   test("lag et funksjon som lager et map med initiell verdi") {

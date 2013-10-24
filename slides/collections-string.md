@@ -3,7 +3,7 @@
 ---
 
 # Oppgaver #
-scalakurs.collections.StrengerSomListerTest
+StrengerSomListerTest (SSLT)
 
 ```scala
 sbt:

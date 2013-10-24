@@ -205,7 +205,7 @@ gamers.groupBy(_.clan) => Map[String, List[Gamer]]
 
 # Oppgaver #
 
-scalakurs.collections.NumeriskeListerTest
+NumeriskeListerTest (NLT)
 
 ```scala
 sbt:

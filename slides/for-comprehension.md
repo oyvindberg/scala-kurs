@@ -212,11 +212,11 @@ implementerer map, flatMap og filter
 ---
 
 # Oppgaver #
-scalakurs.for_comprehensions.ForComprehenstionsTest
+ForComprehensionsTest (FCT)
 
 ```scala
 sbt:
-> ~ test-only scalakurs.for_comprehensions.ForComprehenstionsTest
+> ~ test-only scalakurs.for_comprehensions.ForComprehensionsTest
 ```
 
 <aside class="notes">

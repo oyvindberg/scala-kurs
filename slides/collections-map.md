@@ -60,7 +60,7 @@ class Map[A, +B] {
 ---
 
 # Oppgaver #
-scalakurs.collections.MapOppgaverTest
+MapOppgaverTest (MOT)
 
 ```scala
 sbt:
