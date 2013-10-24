@@ -1,10 +1,12 @@
+package scalakurs
+
 import java.io.File
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
-import scalakurs.FileCensor
 
 class FileCensorTest extends FlatSpec with ShouldMatchers {
 
+//  import solution.FileCensor._
   import FileCensor._
 
   lazy val erroneousFile = new File("src/test/resources/scala-propaganda.txt")
