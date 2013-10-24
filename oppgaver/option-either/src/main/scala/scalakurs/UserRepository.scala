@@ -29,5 +29,4 @@ object UserRepository {
   def findAllWithSpouse: Iterable[User] = ???
 
   def findPairById(id: Int): Option[(User, User)] = ???
-
 }
