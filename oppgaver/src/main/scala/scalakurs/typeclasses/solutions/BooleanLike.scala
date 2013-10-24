@@ -1,7 +1,7 @@
 package scalakurs.typeclasses
 package solutions
 
-trait BooleanLike[A] {
+trait BooleanLike[-A] {
   def asBoolean(a: A): Boolean
 }
 
@@ -15,24 +15,23 @@ object BooleanLike {
     def asBoolean(a: String): Boolean = a == "true"
   }
 
-  implicit val optionBooleanLike = new BooleanLike[Option[_]] {
-    def asBoolean(a: Option[_]): Boolean = a.isDefined
+  implicit val optionBooleanLike = new BooleanLike[Option[Any]] {
+    def asBoolean(a: Option[Any]): Boolean = a.isDefined
   }
 
   /**
    * Get a hold of the implicit by adding a parameter list
    * or by calling {{implicitly}}
    */
-  def asBoolean[A : BooleanLike](a: A): Boolean =
-    implicitly[BooleanLike[A]].asBoolean(a)
+  def asBoolean[A](a: A)(implicit bla: BooleanLike[A]) = bla.asBoolean(a)
 
-  implicit class AsBoolean[A](a: A)(implicit bla: BooleanLike[A]) {
-    def boolean: Boolean = bla.asBoolean(a)
+  /**
+   * Will this suffice for a container M[_], like Option[String]?
+   * Maybe you need to take a look at the variance of the BooleanLike trait,
+   * and also at the signature of the relevant implicit BooleanLike?
+   */
+  implicit class AsBoolean[M](m: M)(implicit blm: BooleanLike[M]) {
+    def boolean: Boolean = blm.asBoolean(m)
   }
-
-  implicit class AsBooleanM[M[_]](a: M[_])(implicit bla: BooleanLike[M[_]]) {
-    def mboolean: Boolean = bla.asBoolean(a)
-  }
-
 }
 

@@ -17,8 +17,8 @@ class BooleanLikeTest extends FunSuiteHelper {
   }
 
   /**
-   * You'll need to "convert" the type A into a type with the
-   * function boolean: Boolean.
+   * You'll need to (implicitly) convert the type A into an AsBoolean[A]
+   * with the function boolean: Boolean.
    */
   bonus("Add some syntactic sugar to call asBoolean postfix") {
       assert(1.boolean)
@@ -26,11 +26,13 @@ class BooleanLikeTest extends FunSuiteHelper {
   }
 
   /**
-   * You'll need to abstract over a container type M[_] instead of an A,
-   * which takes no type parameter. This requires a spescialised mboolean.
+   * You'll need to abstract over a container type M[_] in addition to A,
+   * which takes no type parameter. This will require the BooleanLike[A] to
+   * support some BooleanLike[B] where a B <: A. You can do this now, or wait
+   * until after the type variance talk.
    */
-  bonus("Implement BooleanLike type class for Option with postfixed mboolean") {
-      assert(Option("foo").mboolean)
-      assert(!(None: Option[String]).mboolean)
+  bonus("Implement BooleanLike type class for Option with postfixed .boolean") {
+      assert(Option("foo").boolean)
+      assert(!(None: Option[String]).boolean)
   }
 }

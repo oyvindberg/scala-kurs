@@ -12,4 +12,10 @@ object ContentFetcher {
     else
       Right(Source.fromURL(url))
 
+  def formatResponse(response: Either[String, Source]): String =
+    response.fold(
+      err => s"Error:\n$err",
+      res => s"Response:\n${res.getLines().mkString("\n")}"
+    )
+
 }

@@ -21,11 +21,12 @@ object BooleanLike {
   def asBoolean[A](a: A)(implicit bla: BooleanLike[A]) = bla.asBoolean(a)
 
   /**
-   * Will this suffice for a container (M[_]) type?
+   * Will this suffice for a container M[_], like Option[String]?
+   * Maybe you need to take a look at the variance of the BooleanLike trait,
+   * and also at the signature of the relevant implicit BooleanLike?
    */
   implicit class AsBoolean[???](a: ???) {
     def boolean: Boolean = ???
-    def mboolean: Boolean = ???
   }
 }
 
