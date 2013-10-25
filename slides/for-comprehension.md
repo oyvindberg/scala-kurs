@@ -84,7 +84,7 @@ for (int i = 1; i <= 10; i++) {
 
 ```scala
 // scala
-def even(i: Int): Boolean = ...
+def even(i: Int): Boolean = i % 2 == 0
 
 val partall: Seq[Int] = for {
     i <- 1 to 10
@@ -144,14 +144,14 @@ for (String fornavn : listeMedFornavn) {
 ---
 
 ```scala
-def getNavn: Option[String] = ...
-def getAlder: Option[String] = ...
-def getAdresse: Option[String] = ...
+val navnOption: Option[String] = ...
+val alderOption: Option[Int] = ...
+val adresseOption: Option[String] = ...
 
 val person: Option[Person] = for {
-    navn <- getNavn
-    alder <- getAlder
-    adresse <- getAdresse
+  navn <- navnOption
+  alder <- alderOption
+  adresse <- adresseOption
 } yield new Person(navn, alder, adresse)
 ```
 
