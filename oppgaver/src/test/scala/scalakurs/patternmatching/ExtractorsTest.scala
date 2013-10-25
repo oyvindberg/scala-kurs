@@ -15,6 +15,6 @@ class ExtractorsTest extends FunSpec with ShouldMatchers {
     val number = 22048700
     it("(\"4722048700\") should return None") {assert(Extractors.PhoneNumber.unapply(prefix.toString + number.toString) == None)}
     it("(\"47 22048700\") should return" + s"Some(($prefix, $number))") {assert(Extractors.PhoneNumber.unapply(prefix + " " + number ) == Some((prefix, number)))}
-    it("(\"asdf 22048700\") should return Some(None)") {assert(Extractors.PhoneNumber.unapply("asdf" + " " + number) == Some(None))}
+    it("(\"asdf 22048700\") should return None") {assert(Extractors.PhoneNumber.unapply("asdf" + " " + number) == None)}
   }
 }
