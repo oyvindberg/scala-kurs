@@ -211,3 +211,7 @@ NumeriskeListerTest (NLT)
 sbt:
 > ~ test-only scalakurs.collections.NumeriskeListerTest
 ```
+
+scaladoc: [immutable.List][1]
+
+[1]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List

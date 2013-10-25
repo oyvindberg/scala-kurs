@@ -66,3 +66,7 @@ MapOppgaverTest (MOT)
 sbt:
 > ~ test-only scalakurs.collections.MapOppgaverTest
 ```
+
+scaladoc: [immutable.Map][1]
+
+[1]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map
