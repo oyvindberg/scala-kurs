@@ -24,7 +24,7 @@ $ javap Animal.class
 Compiled from Animal.scala"
 public class Animal {
   public java.lang.String sound();
-  public Anima();
+  public Animal();
 }
 ```
 
