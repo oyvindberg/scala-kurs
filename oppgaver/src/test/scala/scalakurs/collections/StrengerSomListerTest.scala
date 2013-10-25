@@ -1,9 +1,9 @@
 package scalakurs.collections
 
 import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.FunSuite
+import scalakurs.typeclasses.FunSuiteHelper
 
-class StrengerSomListerTest extends FunSuite with ShouldMatchers {
+class StrengerSomListerTest extends FunSuiteHelper with ShouldMatchers {
 
   val strengerSomLister = StrengerSomLister
 

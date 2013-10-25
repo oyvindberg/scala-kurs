@@ -1,9 +1,9 @@
 package scalakurs.collections
 
-import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
+import scalakurs.typeclasses.FunSuiteHelper
 
-class MapOppgaverTest extends FunSuite with ShouldMatchers {
+class MapOppgaverTest extends FunSuiteHelper with ShouldMatchers {
   val mapOppgaver = MapOppgaver
 
   test("lag et funksjon som lager et map med initiell verdi") {
@@ -41,7 +41,7 @@ class MapOppgaverTest extends FunSuite with ShouldMatchers {
     map(10) should be (42)
   }
 
-  test("lag en funksjon som først slår opp i Map A og hvis det ikke finnes der slår opp i Map B") {
+  bonus("lag en funksjon som først slår opp i Map A og hvis det ikke finnes der slår opp i Map B") {
     val mapA = Map(1 -> 2)
     val mapB = Map(1 -> 3, 2 -> 3)
 

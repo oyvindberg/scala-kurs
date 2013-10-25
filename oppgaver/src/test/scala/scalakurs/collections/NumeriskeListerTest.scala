@@ -1,10 +1,10 @@
 package scalakurs.collections
 
-import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
+import scalakurs.typeclasses.FunSuiteHelper
 
 class NumeriskeListerTest
-  extends FunSuite
+  extends FunSuiteHelper
   with ShouldMatchers {
 
   val numeriskeLister = NumeriskeLister
@@ -67,11 +67,11 @@ class NumeriskeListerTest
     numeriskeLister.lagPartallsliste(List(1,2,3,4)) should be (List(2,2,4,4))
   }
 
-  test("lag en funksjon som finner alle ekte divisorer til et gitt heltall") {
+  bonus("lag en funksjon som finner alle ekte divisorer til et gitt heltall") {
     numeriskeLister.ekteDivisorer(10) should be (List(1,2,5))
   }
 
-  test("lag et predikat som sjekker om et tall er et perfekt tall") {
+  bonus("lag et predikat som sjekker om et tall er et perfekt tall") {
     numeriskeLister.perfektTallP(6) should be (true)
     numeriskeLister.perfektTallP(10) should be (false)
   }
