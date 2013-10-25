@@ -11,7 +11,7 @@ case class User(id: Int,
                 gender: Option[Gender],
                 spouseId: Option[Int]) {
 
-  val printable = ???
+  lazy val printable = ???
 }
 
 object UserRepository {
