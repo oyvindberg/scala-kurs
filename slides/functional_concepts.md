@@ -2,8 +2,10 @@
 <aside class='notes'>
   Ikke et kurs om funksjonell programmering, men viktig å kjenne til de
   viktigste konseptene.
-  Poenget er: Ha dette i bakhodet, så blir det enklere å skjønne en del
-  av finurlighetene til Scala
+  Funksjonelle aspektet viktig(ste) grunn til at Scala er et bedre valg en
+  Java
+  Ha dette i bakhodet, så blir det enklere å skjønne en del av
+  finurlighetene til Scala
 </aside>
 
 
@@ -17,7 +19,7 @@ Et objekt kan ikke bli modifisert etter at det er laget
 - kan ikke legge til nye elementer i en datastruktur
 - bruker ikke var, kun val
 - 'settere' er ikke lov
-- Ikke tradisjonelle looper
+- Ikke tradisjonelle kontrollstrukturer som looper
 
 
 
@@ -29,10 +31,11 @@ for (int i = 1; i <= 10; i++) {
 }
 ```
 <aside class='notes'>
-    - java lager lista først og legger til et element i lista
+    - java lager lista først og legger til et og et element i lista
     - hver gang du legger til et element, muterer man lista,
     - variabelen i er en sak som man muterer, men innenfor dette scopet er det ok.
     - Off-by-one-feil veldig vanlig.
+    - funksjonelle språk lager lista og fyller den med verdier samtidig
 </aside>
 
 
@@ -93,7 +96,8 @@ public class Date {
 
 
 ### Pure functions ###
-En funksjon som alltid returnerer den samme verdien basert på den samme input
+En funksjon som alltid returnerer den samme verdien basert på den samme input,
+og ikke har side-effekter.
 <aside class='notes'>
     Dvs resultatet avhenger kun av input
 </aside>
@@ -111,13 +115,62 @@ def inc(x: Int) = x + 1
 
 
 ```scala
-var global = 0
-
 // impure functions
+var global = 0
 def f(x: Int) = x + global
 
 def inc() = global + 1
+
 ```
+
+
+
+```java
+// impure function
+Collections.sort(List<T> list) // returnerer void
+```
+
+
+
+```
+public class Bilforhandler {
+    // lots of code omitted
+
+    public List[Biler] biler {
+        return biler;
+    }
+
+}
+
+public class Biler implements Comparable {....}
+
+public class Client {
+    public Bilforhandler bfh;
+
+    public List[Biler] biler {
+        // muterer Bilforhandler-klassen
+        Collections.sort(bfh.biler);
+    }
+
+}
+```
+
+
+
+```scala
+// pure
+scala> val list = List('d', 'e', 'a')
+list: List[Char] = List(d, e, a)
+
+scala> val sortedList  = list.sorted
+sortedList: List[Char] = List(a, d, e)
+
+scala> list
+res0: List[Char] = List(d, e, a)
+```
+<aside class='notes'>
+Et eksempel på hvor (Java) språket virkelig ikke hjelper deg.
+</aside>
 
 
 
@@ -127,13 +180,18 @@ bytte ut uttrykket med verdien.
 
 
 
-
 ```scala
-val x = 2
-val y = x * x => val y = 4
+def square(x: Int) = x * x
+
+square(2 + 4)
+=> square(6)
+=> 6 * 6
+=> 36
+
 ```
 <aside class='notes'>
 <ul>
+  <li> ikke mulig å få til hvis koden har side-effekter</li>
   <li> pure functions er referentially transparent </li>
   <li> uttrykk kan også være referentially transparent </li>
   <li> fjerner tidsaspektet </li>
@@ -165,7 +223,13 @@ val y = x * x => val y = 4
 - Collections, variabler, objekter osv bør være immutable
 - mutable state på et så lite scope som mulig
 - foretrekk pure functions
+- hvis impure function (eks til database) - returner Unit
 - shared mutable state er fy-fy
+<aside class='notes'>
+    - hvis impure function - returner Unit
+    Unit impliserer at det skjer en side-effekt.
+    - skummelt med funksjonelle idiomer i Java (eks. rekursjon, lazy evaluation)
+</aside>
 
 
 
