@@ -285,7 +285,7 @@ warning: match is not exhaustive!
 
 
 
-### Patterns i variabel-definisjoer: ###
+### Patterns i variabel-definisjoner: ###
 ```scala
 val someTuple = (1,2)
 val (num1, num2) = someTuple

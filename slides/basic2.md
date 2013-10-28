@@ -184,10 +184,10 @@ delayed computation
 
 ```scala
 def time[T](f: => T) = {
-    val t0  = System.currentTimeMillis
-    val ret = f
-    logger.debug(s"evaluation took ${System.currentTimeMillis - t0} ms")
-    ret
+  val t0  = System.currentTimeMillis
+  val ret = f
+  logger.debug(s"evaluation took ${System.currentTimeMillis - t0} ms")
+  ret
 }
 
 time {
