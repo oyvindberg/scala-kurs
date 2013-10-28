@@ -18,17 +18,15 @@ object Basics {
     while (true) { callback(); Thread.sleep(seconds * 1000) }
   }
 
-  def sum(f: Int => Int, a: Int, b: Int): Int =
-    if (a > b) 0 else f(a) + sum(f, a + 1, b)
+  // use this method in the following implementations
+  def sum(f: Int => Int)(a: Int, b: Int): Int =
+    if (a > b) 0 else f(a) + sum(f)(a + 1, b)
 
-//  def sum(f: Int => Int)(a: Int, b: Int): Int = {
-//    if (a > b) 0 else f(a) + sum(f)(a + 1, b)
-//  }
-
-  def sumCubes: (Int, Int) => Int  = ???
+  def sumCubes: (Int, Int) => Int  = sum(cube)
   def sumSquares = ???
-  def sumInt     = ???
+  def sumInt     = {
+    def identity(x: Int): Int = x
 
-  def id(x: Int): Int = x
-
+    ???
+  }
 }
