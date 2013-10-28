@@ -47,8 +47,11 @@ def plusOne(i: Int): Int = i + 1
 
 ```scala
 //infered retur type:
-def plusOne(i: Int) = i + 1 //ta med for "lib interfaces"
+def plusOne(i: Int) = i + 1
 ```
+<aside class='notes'>
+    ta med returtyper for public API
+</aside>
 
 ---
 
