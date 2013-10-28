@@ -26,6 +26,10 @@ def factorial(of: Int) = {
 ```scala
 def reverseList[T](ts: List[T]) = ts.reverse
 ```
+```java
+//tilsvarende signatur i java
+public static <T> List<T> reverseList(final List<T> ts){...}
+```
 
 ---
 
@@ -64,12 +68,16 @@ class BigDecimal{
 }
 ```
 
-et voilà
+*et voilà*
 ```scala
 val a: BigDecimal = 1e25
 a + 0.01
 //res0: scala.math.BigDecimal = 10000000000000000000000000.01
 ```
+
+---
+
+#Annet
 
 ---
 
@@ -160,6 +168,8 @@ def format(i: Int, formatter: Int => String) = formatter(i)
 format(2, (i: Int) => i.toString)
 //res0: String = 2
 
+//kortere. (Fungerer så lenge compileren skjønner typen på
+// parameteret til den anonyme funksjonen)
 format(3, _.toString)
 //res1: String = 3
 
