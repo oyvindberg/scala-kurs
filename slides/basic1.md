@@ -48,6 +48,10 @@ og inneholde tegn som " og ' """
 
 #Variabler
 
+---
+
+##Variabler
+
 ```scala
 var e: Int = 42 // var <navn>: <Type> = <value> (eksplisitt typet)
 
@@ -63,7 +67,7 @@ var i = 43 /look ma, no Type!
 
 ---
 
-#Konstanter
+##Konstanter
 
 ```scala
 val messageStart: String = "Hei..." // val <navn>: <Type> = <value>
@@ -76,6 +80,9 @@ val messageEnd = "..og hå"
 
 #Metoder
 
+---
+
+##Definisjon
 ```scala
 //def <navn>(<parameter_navn>: <parameter_type>): <retur_Type> = {body...}
 def plusOne(i: Int): Int = {
@@ -103,10 +110,10 @@ def plusOne(i: Int) = i + 1
 
 ---
 
-#Metoder
+##default parameters
 
 ```scala
-//default parametere
+
 def createPerson(name: String, home: String = "127.0.0.1") =
     new Person(name, home)
 
@@ -114,9 +121,22 @@ createPerson("Arne")
 //res0: Person = Person(Arne, 127.0.0.1)
 ```
 
+---
 
+##named parameters
 ```scala
-//varargs
+def createPerson(name: String, home: String = "127.0.0.1") =
+    new Person(name, home)
+
+createPerson(home = "where the computer is", name="Bjarne")
+//res0: Person = Person(Bjarne,where the computer is)
+```
+
+---
+
+##varargs
+```scala
+
 def printThings(things: String*) {
     for (thing <- things) println(thing)
 }
@@ -126,7 +146,7 @@ printThings("arne", "bjarne")
 
 ---
 
-#no return
+##ingen retur
 Unit er Scalas void
 ```scala
 def sideEffect(): Unit = {
@@ -134,8 +154,8 @@ def sideEffect(): Unit = {
 }
 ```
 
-syntax: uten = returneres ingenting
 ```scala
+//ekstra syntax
 def sideEffect() {
     println("Dette er en sideeffekt!")
 }

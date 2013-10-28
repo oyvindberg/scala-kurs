@@ -5,7 +5,7 @@
 # Option[A] #
 (╯°□°)╯︵sɹǝʇuıodllnu
 
---
+---
 
 ## Hva? ##
 
@@ -19,7 +19,7 @@ case class None extends Option[Nothing]
 - Hvis `A` er tilstede, så er `Option[A]` en instanse av `Some[A]`
 - Hvis `A` ikke er tilstede, så er `Option[A]` en instanse av `None`
 
---
+---
 
 ## Hvorfor? ##
 
@@ -44,7 +44,7 @@ res4: Option[String] = Some(Hello, Foo)
 - Som vanlig i Scala: Compile-time checks i stedet for runtime!
 - Ofte kan `None` i seg selv være semantisk verdifull
 
---
+---
 
 ## Hvordan ? ##
 
@@ -69,7 +69,7 @@ val orgOptOpt = getAd(1337).map(ad => getOrg(ad.orgId))
 val orgOpt = orgOptOpt.flatten
 ```
 
---
+---
 
 ### Just `flatMap` that shit ###
 
@@ -77,7 +77,7 @@ val orgOpt = orgOptOpt.flatten
 getAd(1337).flatMap(ad => getOrg(ad.orgId)) 
 ```
 
---
+---
 
 ## Og litt sukkerstrø på topp ##
 
@@ -111,7 +111,7 @@ println(request.getParameter("name").map(_.trim).filter(_.nonEmpty).getOrElse(""
 # Either[A, B] #
 Hva om du faktisk har lyst til å legge litt mer i dette `None`-caset som vi så på i `Option`?
 
---
+---
 
 ## Hva? ##
 
@@ -125,7 +125,7 @@ case class Right[+A, +B](b: B) extends Either[A, B]
 - Hvis en `Either[A,B]` inneholder en `A`, så er den en `Left`, og hvis `B` så er det en `Right`
 - Det er ingenting i semantikken til denne typen som sier noe om den ene eller andre siden er en suksess eller feil, og man kan bruke denne i alle tilfeller hvor man forventer den ene eller andre typen
 
---
+---
 
 ## Hvordan? ##
 
@@ -152,7 +152,7 @@ scala> timeOrDate match {
 res1: String = The time is 4:15 PM
 ```
 
---
+---
 
 ## Exception-drevet utvikling suger! ##
 Ja, da, men det trenger det egentlig ikke å gjøre. La oss ta vare på denne `Exception`-greia uten å spy ut hele stack tracen
@@ -181,7 +181,7 @@ res2: scala.util.Either[Throwable,String] =
         Left(java.lang.Exception: No ad of that sort in the db?)
 ```
 
---
+---
 
 Det finnes noe deilig sukker for dette også, som man kan bruke om man vil
 

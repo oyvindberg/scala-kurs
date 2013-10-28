@@ -66,16 +66,6 @@ a + 0.01
 
 ---
 
-##named parameters
-```scala
-def createPerson(name: String, home: String = "127.0.0.1") =
-    new Person(name, home)
-
-createPerson(home = "where the computer is", name="Bjarne")
-//res0: Person = Person(Bjarne,where the computer is)
-```
-
----
 
 # kontrollstrukturer
 
