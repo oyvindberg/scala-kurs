@@ -13,17 +13,6 @@ class BasicsTest extends FunSuite with ShouldMatchers {
     * De som er kommentert ut, må kommenteres inn.
     */
 
-  test("Basics should contain a constant 'constant'") {
-//    constant should be("Constant")
-//    Basics.constant = "new value" // <- must not compile
-  }
-
-  test("Basics should contain a variable") {
-//    variable should be("Variable")
-//    Basics.variable = "new value"
-//    variable should be("new value")
-  }
-
   test("Say hello") {
     sayHello("Joe") should be("Hello, Joe!")
   }
@@ -58,7 +47,7 @@ class BasicsTest extends FunSuite with ShouldMatchers {
 
   test("sum of squares") {
     // lag en metode sumSquare som kombinerer sum og square, til sumSquare
-    // sumSquares(1, 3) should be(12)
+//    sumSquares(1, 3) should be(14)
   }
 
   test("reimplement sum of integer") {
