@@ -16,7 +16,7 @@ Et objekt kan ikke bli modifisert etter at det er laget
 
 
 ### Immutability - implikasjoner ###
-- kan ikke legge til nye elementer i en datastruktur
+- kan ikke endre en datastruktur
 - bruker ikke var, kun val
 - 'settere' er ikke lov
 - Ikke tradisjonelle kontrollstrukturer som looper
@@ -73,6 +73,7 @@ public class Date {
 <aside class='notes'>
   <ul>
     <li>eksempel på idiotisk bruk at settere, fra java.util</li>
+    <li>veldig lett å lage en ugyldig dato, eks. 30. februar</li>
     <li>når man klarer å gjøre sånne idiotiske ting som en del av java,
       hvor mye galskap gjør den jevne utvikleren?
     (riktignok deprecated i dag)</li>
@@ -220,13 +221,13 @@ square(2 + 4)
 
 
 ### Oppsummering ###
-- Collections, variabler, objekter osv bør være immutable
+- Collections, variabler, objekter, ALT bør være immutable
 - mutable state på et så lite scope som mulig
 - foretrekk pure functions
-- hvis impure function (eks til database) - returner Unit
+- hvis impure function -  returner Unit
 - shared mutable state er fy-fy
 <aside class='notes'>
-    - hvis impure function - returner Unit
+    - hvis impure function - eks. skrive til fil, gjøre betaling
     Unit impliserer at det skjer en side-effekt.
     - skummelt med funksjonelle idiomer i Java (eks. rekursjon, lazy evaluation)
 </aside>
@@ -234,3 +235,4 @@ square(2 + 4)
 
 
 ### Oppgaver ###
+FunctionalTest
