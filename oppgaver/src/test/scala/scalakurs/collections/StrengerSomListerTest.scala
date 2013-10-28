@@ -8,12 +8,12 @@ class StrengerSomListerTest extends FunSuiteHelper with ShouldMatchers {
   val strengerSomLister = StrengerSomLister
 
   test("finn nummer på bokstav i alfabet") {
-    strengerSomLister.char2int('e') should be(4)
-    strengerSomLister.char2int('E') should be(4)
+    strengerSomLister.alfabetPosisjon('e') should be(4)
+    strengerSomLister.alfabetPosisjon('E') should be(4)
   }
 
   test("lag en funksjon som mapper fra tall til bokstav") {
-    strengerSomLister.int2char(4) should be('e')
+    strengerSomLister.alfabetBokstav(4) should be('e')
   }
 
   test("lag en funksjon som konverterer en list med char til en streng") {
