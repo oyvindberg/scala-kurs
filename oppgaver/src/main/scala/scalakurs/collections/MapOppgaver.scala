@@ -17,7 +17,5 @@ object MapOppgaver {
   def mapMedDefault[K, V](l: List[(K, V)], default: V): Map[K, V] = ???
 
   // hint: orElse
-  def hentMedFallbackMap[K, V](key: K, mapA: Map[K, V], fallbackMap: Map[K, V]): V = ???
+  def hentMedFallbackMap[K, V](key: K, mapA: Map[K, V], fallbackMap: Map[K, V]): Option[V] = ???
 }
-
-
