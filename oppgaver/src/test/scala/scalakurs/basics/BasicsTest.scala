@@ -62,14 +62,6 @@ class BasicsTest extends FunSuite with ShouldMatchers {
     // oncePerTime(...)(...)
   }
 
-  test("sum of cubes") {
-    // Endre metodedeklarasjon til sum til å ta inn to parameterlister
-    // en for f, og en for a og b
-
-    // lag en metode sumCube som kombinerer metodene sum og cube
-    // sumCubes(1, 3) should be(36)
-  }
-
   test("sum of squares") {
     // lag en metode sumSquare som kombinerer sum og square, til sumSquare
     // sumSquares(1, 3) should be(12)
