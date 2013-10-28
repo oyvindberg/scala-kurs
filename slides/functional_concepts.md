@@ -31,11 +31,12 @@ for (int i = 1; i <= 10; i++) {
 }
 ```
 <aside class='notes'>
-    - java lager lista først og legger til et og et element i lista
-    - hver gang du legger til et element, muterer man lista,
-    - variabelen i er en sak som man muterer, men innenfor dette scopet er det ok.
-    - Off-by-one-feil veldig vanlig.
-    - funksjonelle språk lager lista og fyller den med verdier samtidig
+  <ul>
+    <li>java lager lista først og legger til et element i lista</li>
+    <li>hver gang du legger til et element, muterer man lista,</li>
+    <li>variabelen i er en sak som man muterer, men innenfor dette scopet er det ok.</li>
+    <li>Off-by-one-feil veldig vanlig.</li>
+  </ul>
 </aside>
 
 
@@ -70,10 +71,12 @@ public class Date {
 }
 ```
 <aside class='notes'>
-    - eksempel på idiotisk bruk at settere, fra java.util
-    - når man klarer å gjøre sånne idiotiske ting som en del av java,
+  <ul>
+    <li>eksempel på idiotisk bruk at settere, fra java.util</li>
+    <li>når man klarer å gjøre sånne idiotiske ting som en del av java,
       hvor mye galskap gjør den jevne utvikleren?
-    (riktignok deprecated i dag)
+    (riktignok deprecated i dag)</li>
+  </ul>
 </aside>
 
 
@@ -133,25 +136,22 @@ Collections.sort(List<T> list) // returnerer void
 
 
 ```
+public class Bil implements Comparable {....}
 public class Bilforhandler {
     // lots of code omitted
 
-    public List[Biler] biler {
+    public List[Bil] biler {
         return biler;
     }
-
 }
-
-public class Biler implements Comparable {....}
 
 public class Client {
     public Bilforhandler bfh;
 
-    public List[Biler] biler {
+    public List[Bil] biler {
         // muterer Bilforhandler-klassen
         Collections.sort(bfh.biler);
     }
-
 }
 ```
 

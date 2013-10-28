@@ -16,7 +16,7 @@ object MapOppgaver {
   def mapMedDefault[K, V](l: List[(K, V)], default: V): Map[K, V] =
     l.toMap.withDefaultValue(default)
 
-  def letMedFallbackMap[K, V](key: K, mapA: Map[K, V], mapB: Map[K, V]): V = (mapA orElse mapB)(key)
+  def hentMedFallbackMap[K, V](key: K, mapA: Map[K, V], mapB: Map[K, V]): V = (mapA orElse mapB)(key)
 }
 
 
