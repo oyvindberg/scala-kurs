@@ -1,4 +1,14 @@
 # Type variance #
+- Hensikten med typevarians er å definere arverelasjoner
+- Typeparametre defaulter til invarians
+- De kan eksplisitt defineres til å være ko- eller kontravariant
+
+Noen eksempler:
+```
+List[+A]
+Writer[-A]
+Function1[-T, +R]
+```
 
 ---
 
@@ -79,27 +89,65 @@ doesItCompile(new Covariant[String])
 ## Contravariance ##
 `SomeType[-A]`
 
-- B >: A __=>__ SomeType[A] >: SomeType[B]
-- Katt __=>__ Dyr
-- Hvis en OutputChannel[String] er påkrevd, så kan vi bruke en OutputChannel[AnyRef]
+- `B >: A` __=>__ `SomeType[A] >: SomeType[B]`
+- `Katt` __=>__ `Dyr`
 
 ```
-class OutputChannel[-T] { 
-  def write(x: T) {}
+trait EventListener[-E] { 
+  def listen(e: E) 
 }
-def failz(oc: OutputChannel[Any]) {}
-failz(new OutputChannel[String]) 
-// Man kan sende inn hva som helst til OutputChannel[Any] sin write,
-// men OutputChannel[String] krever string!
 
-// Krever en mindre spesifikk type
-def winz(oc: OutputChannel[String]) {}
-winz(new OutputChannel[AnyRef])
+def addKeyEventListener(l: EventListener[KeyEvent]) //KeyEvent <: Event
+def addMouseEventListener(l: EventListener[MouseEvent]) //MouseEvent <: Event
+
+class LogEventListener extends EventListener[Event] {
+   def listen(e: Event) { log(event) }
+}
+```
+
+---
+
+## Dagligdagse variansproblemer ##
+
+Hvorfor funker ikke dette?
+```
+scala> class Test[+A] {
+| def test(a: A): String = a.toString 
+|}
+<console>:8: error: covariant type A occurs in
+contravariant position in type A of value a
 ```
 
 --
 
-## Liskov Substitution Principle ##
-- T er en subtype av U hvis man kan bytte ut en verdi med T selv om det er U som er påkrevd
-- Gjelder hvis T «krever mindre» og «returnerer mer», altså den kan ikke være mer restriktiv verken i input eller output
-- Fører oss til __`Function1[-I, +O]`__!
+### `Function1[-T, +R]` ###
+
+- Disse er kontravariante på parametre og kovariante på returtype
+- Hvis `A <: B` og `C <: D` så kan vi erstatte `Function1[A, D]` med `Function1[B, C]`
+
+```
+class Test[+A] {
+ def test(a: A): String = a.toString 
+}
+```
+
+- Type A skulle egentlig vært invariant eller kontravariant, men her er den kovariant
+- Kan løses med en bounded type, hvor vi sier at input til test alltid er en supertype av A!
+
+```
+class Test[+A] {
+ def test[B >: A](b: B): String = b.toString 
+}
+```
+
+--
+
+Og det er hvorfor muterbare strukturer ikke kan være kovariante!
+
+```
+trait Mutable[+T] {
+    var t: T // generate a setter:
+}            // def t_=(t: T) {this.t = t}
+```
+
+
