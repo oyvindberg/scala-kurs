@@ -39,8 +39,8 @@ mutable.Map / immutable.Map <br/>
 List()        == Nil
 List(1, 2, 3) == 1 :: 2 :: 3 :: Nil
 
-1 :: List(2, 3)        => List(1, 2, 3): List[Int] // append
-List(1, 2) :+ 3        => List(1, 2, 3): List[Int] // prepend
+1 :: List(2, 3)        => List(1, 2, 3): List[Int] // prepend
+List(1, 2) :+ 3        => List(1, 2, 3): List[Int] // append
 List(1) ::: List(2, 3) => List(1, 2, 3): List[Int] // join
 ```
 
@@ -154,7 +154,7 @@ class List[A] {
 
 ```scala
 gamers.filter(_.clan == "aimbots")
-gamers.filter(_.rank > 10)
+gamers.filter(_.rank < 10)
 ```
 
 ---

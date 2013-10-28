@@ -27,7 +27,7 @@ def factorial(of: Int) = {
 def reverseList[T](ts: List[T]) = ts.reverse
 ```
 
---
+---
 
 ##stil
 ```scala
@@ -199,7 +199,7 @@ time {
 ---
 
 ##Partial application
-kan fylle ut parametersett av gangen
+kan fylle ut ett parametersett av gangen
 ```scala
 def add(i1: Int)(i2: Int) = i1 + i2
 

@@ -30,7 +30,7 @@ scala> :q    //quit, evt. Ctrl + c
 var e: Int = 42 // var <navn>: <Type> = <verdi> (eksplisitt typet)
 
 //med "type inference":
-var i = 43 /look ma, no Type!
+var i = 43 //look ma, no Type!
 ```
 <aside class='notes'>
     Rekkefølge ikke som Java, lesbarhet
@@ -75,7 +75,7 @@ def plusOne(i: Int): Int = i + 1
 ```
 
 ```scala
-//infered retur type:
+//inferred retur type:
 def plusOne(i: Int) = i + 1
 ```
 <aside class='notes'>
