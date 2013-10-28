@@ -60,7 +60,7 @@ scala>val p = new Person(29, "nina")
 
 ```scala
 class Person(@BeanProperty val id: Int,
-             @BeanProperty val name: String) {
+             @BeanProperty var name: String) {
   // def getName(): String
   // def setName(name:String): Unit
   // def getId:Int
