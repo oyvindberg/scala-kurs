@@ -1,8 +1,15 @@
 #REPL
 
 Read Evaluate Print Loop
+
 ```
-$ scala
+//1. Via SBT:
+$ sbt console //fra prosjekt-dir
+
+//2. Direkte:
+$ scala //hvis du har Scala installert
+
+//REPL:
 scala> 2 + 2
 res0: Int = 4
 
