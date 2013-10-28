@@ -88,12 +88,12 @@ def describe(x: Any) = {
 
 
 ### Variable pattern: ###
-Matcher hva som helst (på samme måte som wildcard patterns), men binder
+Matcher hva som helst, men binder
 variabelen til objektet man matcher på:
 ```scala
 def printNameIfPerson(x: Any) = {
   x match {
-    case Person(_, name) => println("Name: " + name)
+    case Person(gender, name) => println("Name: " + name)
     case somethingElse => println("Not a person: " + somethingElse)
   }
 }
