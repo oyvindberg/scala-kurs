@@ -6,8 +6,8 @@ import org.scalatest.matchers.ShouldMatchers
 
 class FileCensorTest extends FlatSpec with ShouldMatchers {
 
-//  import solutions.FileCensor._
-  import FileCensor._
+  import solutions.FileCensor._
+//  import FileCensor._
 
   lazy val erroneousFile = new File("src/test/resources/either/scala-propaganda.txt")
   lazy val anonymousFile = new File("src/test/resources/either/unnamed-propaganda.txt")
@@ -28,7 +28,13 @@ class FileCensorTest extends FlatSpec with ShouldMatchers {
     formatResponse(fetchUncensoredContent(erroneousFile)) should equal (s"Error:\n$errorMessage")
   }
 
-  it should "format the Either, but censor any errors or responses containing the word 'scala'" in {
-    formatResponse(fetchCensoredContent(anonymousFile)) should include (censoredReplacement)
+  it should "provide a function from a String to String, with the word 'scala' censored" in {
+    censorLine("wow, SCalA rox!") should equal ("wow, *** CENSORED *** rox!")
+  }
+
+  it should "format the Either, but censor any responses containing the word 'scala'" in {
+    lazy val censored = formatResponse(fetchCensoredContent(anonymousFile))
+    censored should include ("*** CENSORED *** ")
+    censored should include ("Period.")
   }
 }

@@ -6,7 +6,6 @@ import java.io.File
 object FileCensor {
 
   val errorMessage = "Wait for Java 8, you filthy hound! It's backward compatible!!!"
-  val censoredReplacement = "*** CENSORED ***"
 
   // projection should contain errorMessage if file name contains the wrong words
   // Hint: scala.io.Source.fromFile(file)
@@ -16,7 +15,9 @@ object FileCensor {
   // Hint: either.fold
   def formatResponse(response: Either[String, Seq[String]]): String = ???
 
+  // Syntax for ignoring case in regex is "(?i)expr"
+  def censorLine(line: String): String = ???
+
   // reuse where practical. remember the collection functions from earlier.
-  // Hint: filter and map in one operation...
   def fetchCensoredContent(file: File): Either[String, Seq[String]] = ???
 }
