@@ -177,7 +177,7 @@ class List[A] {
 ```scala
 val bestGamer = Gamer("Mrs. Robinson", "1337 Squad", 1)
 
-val allGamers = bestGamer :: gamers.map(g => g.copy(rank = g.rank + 1)
+val allGamers = bestGamer :: gamers.map(g => g.copy(rank = g.rank + 1))
 ```
 
 ---
