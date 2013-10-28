@@ -33,11 +33,11 @@ class BasicsTest extends FunSuite with ShouldMatchers {
     //shout("hello") should be("HELLO")
   )
 
-  test("method that adds two numbers") {
+  test("method that adds two integers") {
     add(1, 2) should be (3)
   }
 
-  test("method that computes the square of a number") {
+  test("method that computes the square of an integer") {
     square(9) should be (81)
   }
 
@@ -61,7 +61,7 @@ class BasicsTest extends FunSuite with ShouldMatchers {
     // sumSquares(1, 3) should be(12)
   }
 
-  test("sum of id") {
+  test("reimplement sum of integer") {
     // reimplementer sumInt til å bruke sum-funskjonen med to parameterlister
   }
 
