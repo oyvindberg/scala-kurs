@@ -99,7 +99,7 @@ lazy val content = {
   Source.fromURL(new URL("..."))
 }
 println("start")
-person.name
+content
 //start
 //henter
 ```
