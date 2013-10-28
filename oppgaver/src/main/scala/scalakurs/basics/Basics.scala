@@ -6,7 +6,7 @@ object Basics {
 
   def add(a: Int, b: Int): Int = ???
 
-  def sumInt(a: Int, b: Int): Int = ???
+  def sumInt(fromInclusive: Int, toInclusive: Int): Int = ???
 
   def square(x: Int): Int = ???
 
