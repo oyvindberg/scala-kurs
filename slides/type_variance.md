@@ -10,7 +10,7 @@ Writer[-A]
 Function1[-T, +R]
 ```
 
----
+--
 
 ## Invariance ##
 `SomeType[A]`
@@ -51,7 +51,7 @@ a2(0) = 17                //   but class Array is invariant in type T
 val s: String = a2(0)      
 ```
 
----
+--
 
 ## Covariance ##
 `SomeType[+A]`
@@ -84,7 +84,7 @@ doesItCompile(new Covariant[String])
   One option is to make the class invariant (drop the +). Another option is that if you take a method parameter, to allow any superclass as well: m[S >: T](s: S). Now if T changes to U, it's no big deal: a superclass of T is also a superclass of U, and the method will work. (However, you then have to change your method to be able to handle such things.)
 </aside>
 
----
+--
 
 ## Contravariance ##
 `SomeType[-A]`
@@ -105,7 +105,7 @@ class LogEventListener extends EventListener[Event] {
 }
 ```
 
----
+--
 
 ## Dagligdagse variansproblemer ##
 
@@ -150,4 +150,7 @@ trait Mutable[+T] {
 }            // def t_=(t: T) {this.t = t}
 ```
 
+--
 
+## Oppgaver ##
+- `scalakurs.typeclasses.TypeVarianceTest`

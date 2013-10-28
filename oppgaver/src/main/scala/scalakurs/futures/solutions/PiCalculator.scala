@@ -23,8 +23,7 @@ object PiCalculator extends App {
       }
     }
 
-    val asyncApprox = Future.reduce(delegatedWork)(_ + _)
-    Await.result(asyncApprox, 10 seconds)
+    Future.reduce(delegatedWork)(_ + _)
   }
 }
 
