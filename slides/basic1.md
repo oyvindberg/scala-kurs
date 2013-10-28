@@ -1,3 +1,51 @@
+#REPL
+
+Read Evaluate Print Loop
+```
+$ scala
+scala> 2 + 2
+res0: Int = 4
+
+scala> :help //printer ut alle tilgjengelige kommandoer
+scala> :q    //quit, evt. Ctrl + c
+
+```
+
+---
+
+#Literals
+
+---
+
+##Tall
+```scala
+42
+0xCAFE
+1000L
+8f
+1e30f
+2.2
+1.0e-100
+```
+<aside class='notes'>
+    Scala støtter alle primitive typer i Java
+</aside>
+
+---
+
+##Strenger
+
+```scala
+"vanlig string"
+
+s"interpolerte strenger $variabel ${annen.property}"
+
+"""triple quoted string kan gå over flere linjer
+og inneholde tegn som " og ' """
+```
+
+---
+
 #Variabler
 
 ```scala
@@ -58,11 +106,6 @@ def plusOne(i: Int) = i + 1
 #Metoder
 
 ```scala
-//uten parametere: kan droppe "()" (hvis det ikke er sideeffekter)
-def foo = "bar"
-```
-
-```scala
 //default parametere
 def createPerson(name: String, home: String = "127.0.0.1") =
     new Person(name, home)
@@ -84,39 +127,16 @@ printThings("arne", "bjarne")
 ---
 
 #no return
-
+Unit er Scalas void
 ```scala
-def sideEffect(): Unit = { //Unit ~= void
+def sideEffect(): Unit = {
     println("Dette er en sideeffekt!")
 }
 ```
 
+syntax: uten = returneres ingenting
 ```scala
-//return type inference og ingen "="
-def sideEffect() { // () er med pga. sideeffekt
+def sideEffect() {
     println("Dette er en sideeffekt!")
 }
 ```
-
----
-
-#Metode, ikke operator
-```scala
-scala> 2 + 2 // -> 2.+(2)
-```
-
----
-
-#REPL
-
-Read Evaluate Print Loop
-```
-$ scala
-scala> 2 + 2
-res0: Int = 4
-
-scala> :help //printer ut alle tilgjengelige kommandoer
-scala> :q    //quit, evt. Ctrl + c
-
-```
-
