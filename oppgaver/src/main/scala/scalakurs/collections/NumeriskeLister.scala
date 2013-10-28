@@ -5,8 +5,6 @@ object NumeriskeLister {
 
   def summerRange(a: Int, b: Int): Int = ???
 
-  def summerOddetall(a: Int, b: Int): Int  = ???
-
   def oddetallP(i: Int): Boolean = ???
 
   def filtrerOddetall(l: List[Int]): List[Int] = ???
