@@ -28,6 +28,17 @@ class BasicsTest extends FunSuite with ShouldMatchers {
     sayHello("Joe") should be("Hello, Joe!")
   }
 
+  test("shout") (
+    // Create method:
+    //shout("hello") should be("HELLO")
+  )
+
+  test("unless is a method with two parameter sets") {
+    // pass in an anonymous function that prints Hello World to the oncePerTime function
+    // that should be executed every ten seconds
+    // oncePerTime(...)(...)
+  }
+
   test("method that adds two numbers") {
     add(1, 2) should be (3)
   }
@@ -40,9 +51,32 @@ class BasicsTest extends FunSuite with ShouldMatchers {
     cube(3) should be (27)
   }
 
-  test("compute the sum of ints between a and b") {
-    sum(1, 6) should be (21)
+  test("method that computes both square and cube of an integer") {
+    squareAndCube(3) should be ((9, 27))
   }
 
+  test("compute the sum of ints between a and b") {
+    // Hint: for-loop eller lineær rekursjon
+    sumInt(1, 6) should be (21)
+  }
+
+  /** NB!: Ja, dette er vanskelig hvis du ikke har sett anonyme funksjoner før **/
+
+  test("sum of cubes") {
+    // Endre metodedeklarasjon til sum til å ta inn to parameterlister
+    // en for f, og en for a og b
+
+    // lag en metode sumCube som kombinerer metodene sum og cube
+    // sumCubes(1, 3) should be(36)
+  }
+
+  test("sum of squares") {
+    // lag en metode sumSquare som kombinerer sum og square, til sumSquare
+    // sumSquares(1, 3) should be(12)
+  }
+
+  test("sum of id") {
+    // reimplementer sumInt til å bruke sum-funskjonen med to parameterlister
+  }
 
 }
