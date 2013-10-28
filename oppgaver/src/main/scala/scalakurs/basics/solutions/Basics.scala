@@ -14,10 +14,6 @@ object Basics {
 
   def shout(s: String) = s.toUpperCase
 
-  def oncePerTime(seconds: Long)(callback: () => Unit) {
-    while (true) { callback(); Thread.sleep(seconds * 1000) }
-  }
-
   def sum(f: Int => Int, a: Int, b: Int): Int =
     if (a > b) 0 else f(a) + sum(f, a + 1, b)
 
