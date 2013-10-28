@@ -3,6 +3,8 @@ scala-kurs
 
 3-dagers Scala-kurs for nybegynnere 29.-31. oktober i [Teknologihuset](http://www.teknologihuset.no "Teknologihuset")
 
+Slides kan sees [her](http://finn-no.github.io/scala-kurs/slides "her")
+
 # Agenda
 
 ## Dag 1 - the basics
