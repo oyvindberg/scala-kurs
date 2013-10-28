@@ -15,7 +15,7 @@ for (i <- 1 to 10) { println(i) }
 ```
 
 ```scala
-// type annotering kan være greit for debugging
+// type-annotering kan være greit for debugging
 for (i: Int <- 1 to 10) { println(i) }
 ```
 
