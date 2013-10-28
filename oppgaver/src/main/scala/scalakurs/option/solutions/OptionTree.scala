@@ -4,8 +4,13 @@ package solutions
 import scala.annotation.tailrec
 
 class Tree {
-  //TODO: Fiks warnings her
-  def mkString: String = {
+
+  lazy val rootValue = this match {
+    case Leaf(l) => Some(l)
+    case _ => None
+  }
+
+  lazy val mkString: String = {
     @tailrec
     def inner(result: String, toVisit: List[Tree]): String = {
       toVisit.headOption match {
@@ -17,7 +22,7 @@ class Tree {
     inner("", this :: Nil)
   }
 
-  def countVertices: Int = {
+  lazy val countVertices: Int = {
     @tailrec
     def inner(count: Int, toVisit: List[Tree]): Int = {
       toVisit.headOption match {
