@@ -51,6 +51,10 @@ class BasicsTest extends FunSuite with ShouldMatchers {
     cube(3) should be (27)
   }
 
+  test("method that computes both square and cube of an integer") {
+    squareAndCube(3) should be ((9, 27))
+  }
+
   test("compute the sum of ints between a and b") {
     // Hint: for-loop eller lineær rekursjon
     sumInt(1, 6) should be (21)

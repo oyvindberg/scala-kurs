@@ -12,6 +12,8 @@ object Basics {
 
   def cube(x: Int): Int = ???
 
+  def squareAndCube(x: Int): (Int, Int) = ???
+
   def oncePerTime(seconds: Long)(callback: () => Unit) {
     while (true) { callback(); Thread.sleep(seconds * 1000) }
   }
