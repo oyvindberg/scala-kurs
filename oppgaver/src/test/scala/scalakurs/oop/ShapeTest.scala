@@ -17,6 +17,7 @@ class ShapeTest extends FunSuite with ShouldMatchers {
 
 //  test("a rectangle with height of 4 and width of 6") {
 //    val rectangle = new Rectangle(origo, height = 4, width = 6)
+//    rectangle.name should be ("rectangle")
 //    rectangle.area should be (24)
 //    rectangle.circumference should be (20)
 //  }
@@ -26,6 +27,7 @@ class ShapeTest extends FunSuite with ShouldMatchers {
 //  // 3: Implement square by extending rectangle, and make the tests pass
 //  test("a square with sides of 4") {
 //    val square = new Square(origo, length = 4)
+//    square.name should be ("square")
 //    square.area should be (16)
 //    square.circumference should be (16)
 //  }
