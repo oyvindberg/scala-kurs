@@ -146,7 +146,7 @@ def bothDescendantsAreLeaves(tree: Tree) = {
 
 
 ### Sequence pattern: ###
-Kan matche på Sequences på samme måte som case-klasser:
+Kan matche på Sequences:
 ```scala
 seq match {
   case Seq(0, _, _) => println("Found three-element seq starting with 0!")
