@@ -45,8 +45,8 @@ class MapOppgaverTest extends FunSuiteHelper with ShouldMatchers {
     val mapA = Map(1 -> 2)
     val fallbackMap = Map(1 -> 3, 2 -> 3)
 
-    mapOppgaver.letMedFallbackMap(1, mapA, fallbackMap) should be(2)
-    mapOppgaver.letMedFallbackMap(2, mapA, fallbackMap) should be(3)
+    mapOppgaver.hentMedFallbackMap(1, mapA, fallbackMap) should be(2)
+    mapOppgaver.hentMedFallbackMap(2, mapA, fallbackMap) should be(3)
   }
 }
 
