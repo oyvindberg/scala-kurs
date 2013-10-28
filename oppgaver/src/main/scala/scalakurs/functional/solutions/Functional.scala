@@ -1,5 +1,4 @@
-package scalakurs.functional
-
+package scalakurs.functional.solutions
 
 object Functional {
 
@@ -15,17 +14,23 @@ object Functional {
     nth
   }
 
-  // factorial = fakultet (5! = 5 * 4 * 3 * 2 * 1)
   def factorial(n: Int): Int = {
     def fac0(n: Int, acc: Int): Int = {
-      if (n <= 0) ???
-      else ???
+      if (n <= 0) acc
+      else fac0(n - 1, acc * n)
     }
     fac0(n, 1)
   }
 
-  // hvis det er vanskelig å lage en indre metode, slik at den blir tail recursive,
-  // kan du forsøke lineær rekursjon
-  def fib(n: Int): Int = ???
+  def fib(n: Int): Int = {
+    def fib0(n: Int, i0: Int, i1: Int): Int = {
+      if (n <= 1) i0
+      else fib0(n - 1, i1, i0 + i1)
+    }
+
+    fib0(n, 0, 1)
+  }
+
+
 
 }
