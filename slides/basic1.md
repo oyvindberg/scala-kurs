@@ -134,3 +134,7 @@ def sideEffect() {
     println("Dette er en sideeffekt!")
 }
 ```
+<aside class='notes'>
+    void metode
+    Kan droppe returtype og "=", OBS: Kan glemme = for ekte returtyper
+</aside>
