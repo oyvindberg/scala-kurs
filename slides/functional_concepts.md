@@ -136,25 +136,22 @@ Collections.sort(List<T> list) // returnerer void
 
 
 ```
+public class Bil implements Comparable {....}
 public class Bilforhandler {
     // lots of code omitted
 
-    public List[Biler] biler {
+    public List[Bil] biler {
         return biler;
     }
-
 }
-
-public class Biler implements Comparable {....}
 
 public class Client {
     public Bilforhandler bfh;
 
-    public List[Biler] biler {
+    public List[Bil] biler {
         // muterer Bilforhandler-klassen
         Collections.sort(bfh.biler);
     }
-
 }
 ```
 
