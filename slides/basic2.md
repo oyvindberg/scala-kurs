@@ -168,3 +168,7 @@ format(3, _.toString)
 - vise funksjon fra ()
 - vise call by name
 - ta funksjon som parameter
+
+### Oppgaver ###
+BasicsTest
+
