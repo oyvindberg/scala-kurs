@@ -22,6 +22,13 @@ def factorial(of: Int) = {
 
 ---
 
+##generisk funksjon
+```scala
+def reverseList[T](ts: List[T]) = ts.reverse
+```
+
+--
+
 ##stil
 ```scala
 //metode uten parametere kalles uten parenteser
@@ -146,29 +153,65 @@ def minmax(a: Int, b: Int): (Int, Int) =
 
 ---
 
-##Ta som parameter
-Flere måter å sende med funksjoner på
+##Anonyme funksjoner
 ```scala
 def format(i: Int, formatter: Int => String) = formatter(i)
 
-//function literal
-val starsOfLength = length => "*" * length
-format(42, starsOfLength)
+format(2, (i: Int) => i.toString)
+//res0: String = 2
 
-//anonym funksjon
-format(2, i => i.toString)
 format(3, _.toString)
+//res1: String = 3
+
 ```
 
 ---
 
-- definere funksjon som val (val length:String => Int =)
-- vise hvordan du tar i mot en funksjon som funksjonsparameter
-- vise hvordan du passer som parameter og hvordan du skriver en inline
-- vise funksjon fra ()
-- vise call by name
-- ta funksjon som parameter
+##Funksjonsliteraler
+```scala
+def format(i: Int, formatter: Int => String) = formatter(i)
 
-### Oppgaver ###
+val starsOfLength1: Int => String = (length) => "*" * length
+
+format(42, starsOfLength)
+//res0: String = ******************************************
+```
+
+---
+
+##Call by name
+delayed computation
+
+```scala
+def time[T](f: => T) = {
+    val t0  = System.currentTimeMillis
+    val ret = f
+    logger.debug(s"evaluation took ${System.currentTimeMillis - t0} ms")
+    ret
+}
+
+time {
+  (0 to 100000).foreach(_ => new Exception)
+}
+//evaluation took 292 ms
+```
+
+---
+
+##Partial application
+kan fylle ut parametersett av gangen
+```scala
+def add(i1: Int)(i2: Int) = i1 + i2
+
+val oneAdder = add(1) _
+//oneAdder: Int => Int = <function1>
+
+oneAdder(1)
+//res0: Int = 2
+```
+
+---
+
+# Oppgaver #
 BasicsTest
 
