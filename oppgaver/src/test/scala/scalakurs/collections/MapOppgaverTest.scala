@@ -43,10 +43,10 @@ class MapOppgaverTest extends FunSuiteHelper with ShouldMatchers {
 
   bonus("lag en funksjon som først slår opp i Map A og hvis det ikke finnes der slår opp i Map B") {
     val mapA = Map(1 -> 2)
-    val mapB = Map(1 -> 3, 2 -> 3)
+    val fallbackMap = Map(1 -> 3, 2 -> 3)
 
-    mapOppgaver.letMedFallbackMap(1, mapA, mapB) should be(2)
-    mapOppgaver.letMedFallbackMap(2, mapA, mapB) should be(3)
+    mapOppgaver.letMedFallbackMap(1, mapA, fallbackMap) should be(2)
+    mapOppgaver.letMedFallbackMap(2, mapA, fallbackMap) should be(3)
   }
 }
 
