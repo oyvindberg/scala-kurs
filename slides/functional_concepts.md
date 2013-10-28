@@ -160,17 +160,19 @@ public class Client {
 
 ```scala
 // pure
-scala> val list = List('d', 'e', 'a')
-list: List[Char] = List(d, e, a)
+> val list = List('d', 'e', 'a')
+//list: List[Char] = List(d, e, a)
 
-scala> val sortedList  = list.sorted
-sortedList: List[Char] = List(a, d, e)
+> val sortedList  = list.sorted
+//sortedList: List[Char] = List(a, d, e)
 
-scala> list
-res0: List[Char] = List(d, e, a)
+> list
+// res0: List[Char] = List(d, e, a)
 ```
 <aside class='notes'>
-Et eksempel på hvor (Java) språket virkelig ikke hjelper deg.
+Sort er et eksempel på hvor (Java) språket virkelig ikke hjelper deg.
+(selv om det kan være eksempler sort in-place gir mening)
+Hva hvis klientet sletter elementer fra lista???
 </aside>
 
 
@@ -192,12 +194,34 @@ square(2 + 4)
 ```
 <aside class='notes'>
 <ul>
+  <li> ligner mistenkelig på matte!</li>
+  <li> skjønner hvorfor Scala ikke har return, right?
   <li> ikke mulig å få til hvis koden har side-effekter</li>
   <li> pure functions er referentially transparent </li>
   <li> uttrykk kan også være referentially transparent </li>
-  <li> fjerner tidsaspektet </li>
+  <li> fjerner tidsaspektet - gjør den enklere å resonnere rundt</li>
 </ul>
 </aside>
+
+
+
+```scala
+> val x = new StringBuilder("Hello")
+// x: java.lang.StringBuilder = Hello
+> val y = x.append(", World")
+// y: java.lang.StringBuilder = Hello, World
+> val r1 = y.toString
+// r1: java.lang.String = Hello, World
+> val r2 = y.toString
+// r2: java.lang.String = Hello, World
+
+> val x = new StringBuilder("Hello")
+// x: java.lang.StringBuilder = Hello
+> val r1 = x.append(", World").toString
+// r1: java.lang.String = Hello, World
+> val r2 = x.append(", World").toString
+//r2: java.lang.String = Hello, World, World
+```
 
 
 
