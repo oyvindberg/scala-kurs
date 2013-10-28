@@ -1,12 +1,8 @@
-#Intro
-
----
-
 #Literals
 
 ---
 
-#tall
+#Tall
 ```scala
 42
 0xCAFE
@@ -16,12 +12,15 @@
 2.2
 1.0e-100
 ```
+<aside class='notes'>
+    Scala støtter alle primitive typer i Java
+</aside>
 
 ---
 
-#strenger
+#Strenger
 
-```python
+```scala
 "vanlig string"
 
 s"interpolerte strenger $variabel ${annen.property}"
@@ -39,130 +38,6 @@ true false
 null
 <root/>                  // xml
 ’tataaa                  // symbol
-```
-
----
-
-##variabler
-
-```scala
-
-var i: Int = 25
-i += 1
-
-//uten eksplisitt type
-var i = 25
-```
-
----
-
-##values
-```scala
-val d = 0.0
-d = d + 1.0
-//error: reassignment to val
-
-val Φ = (math.sqrt(5) + 1)/2
-```
-
----
-
-#Metodedefinisjoner
-
----
-
-##Full definisjon
-```java
-//java
-public double timesThousand(int i){
-    return 1000.0 * i;
-}
-
-```
-```scala
-def timesThousand(i: Int): Double = {
-    return 1000.0 * i
-}
-```
-
----
-
-##inferred returtype
-```scala
-def plusOne(i: Int): Int = {
-    return i + 1
-}
-
-def plusOne(i: Int) = {
-    return i + 1
-}
-
-```
-
----
-
-##return
-Kodeblokker returnerer siste verdi
-```scala
-def plusOne(i: Int) = {
-    return i + 1
-}
-
-def plusOne(i: Int) = {
-    i + 1
-}
-```
-
----
-
-##braces
-Enlinjers kodeblokker trenger ikke braces
-```scala
-def plusOne(i: Int) = i + 1
-
-def plusTwo(i: Int) = {
-    val increasedByOne = i + 1
-    increasedByOne + 1
-}
-```
-
----
-
-##no return
-void -> Unit
-```scala
-def pointOf(): Unit = {
-    println("here")
-}
-```
-
-ekstra syntax
-```scala
-def pointOf() {
-    println("here")
-}
-```
-
----
-
-##varargs
-```scala
-def printThings(things: String*) {
-    for (thing <- things) println(thing)
-}
-
-printThings("arne", "bjarne")
-```
-
----
-
-##default parameters
-```scala
-def createPerson(name: String, home: String = "127.0.0.1") =
-    new Person(name, home)
-
-createPerson("Arne")
-//res0: Person = Person(Arne, 127.0.0.1)
 ```
 
 ---

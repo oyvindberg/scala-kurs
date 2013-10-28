@@ -104,39 +104,6 @@ scala> 2 + 2 // -> 2.+(2)
 
 ---
 
-#Literals
-
----
-
-#Tall
-```scala
-42
-0xCAFE
-1000L
-8f
-1e30f
-2.2
-1.0e-100
-```
-<aside class='notes'>
-    Scala støtter alle primitive typer i Java
-</aside>
-
----
-
-#Strenger
-
-```scala
-"vanlig string"
-
-s"interpolerte strenger $variabel ${annen.property}"
-
-"""triple quoted string kan gå over flere linjer
-og inneholde tegn som " og ' """
-```
-
----
-
 #REPL
 
 Read Evaluate Print Loop
