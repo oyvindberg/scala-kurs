@@ -2,7 +2,7 @@ package scalakurs.for_comprehensions
 
 object ForComprehensions {
   implicit class IntWithPower(i: Int) {
-    def **(pow: Int) = math.pow(i, pow)
+    def **(pow: Int) = math.pow(i, pow).toInt
   }
 
   def alleFaktorerAv(x: Int): Seq[Int] = ???
