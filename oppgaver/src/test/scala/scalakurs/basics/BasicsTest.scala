@@ -33,12 +33,6 @@ class BasicsTest extends FunSuite with ShouldMatchers {
     //shout("hello") should be("HELLO")
   )
 
-  test("unless is a method with two parameter sets") {
-    // pass in an anonymous function that prints Hello World to the oncePerTime function
-    // that should be executed every ten seconds
-    // oncePerTime(...)(...)
-  }
-
   test("method that adds two numbers") {
     add(1, 2) should be (3)
   }
@@ -61,6 +55,12 @@ class BasicsTest extends FunSuite with ShouldMatchers {
   }
 
   /** NB!: Ja, dette er vanskelig hvis du ikke har sett anonyme funksjoner før **/
+
+  test("unless is a method with two parameter sets") {
+    // pass in an anonymous function that prints Hello World to the oncePerTime function
+    // that should be executed every ten seconds
+    // oncePerTime(...)(...)
+  }
 
   test("sum of cubes") {
     // Endre metodedeklarasjon til sum til å ta inn to parameterlister

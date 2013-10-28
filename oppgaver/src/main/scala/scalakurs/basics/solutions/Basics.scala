@@ -12,6 +12,8 @@ object Basics {
 
   def cube(x: Int): Int = x * x * x
 
+  def shout(s: String) = s.toUpperCase
+
   def oncePerTime(seconds: Long)(callback: () => Unit) {
     while (true) { callback(); Thread.sleep(seconds * 1000) }
   }
