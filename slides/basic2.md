@@ -66,11 +66,6 @@ a + 0.01
 
 ---
 
-
-# kontrollstrukturer
-
----
-
 ##Statements er expressions
 ```scala
 val res1 = if (x > y) x else y
@@ -104,6 +99,19 @@ person.name
 
 ---
 
+##Strenger
+
+```scala
+"vanlig string"
+
+s"interpolerte strenger $variabel ${annen.property}"
+
+"""triple quoted string kan gå over flere linjer
+og inneholde tegn som " og ' """
+```
+
+---
+
 ## equality
 ```scala
 new String("Kake") == new String("Kake") //true  (javas equals)
@@ -120,30 +128,40 @@ new String("Kake") eq new String("Kake") //false (javas ==)
 val t = (1, "Hola", 313)
 //t: (Int, String, Int) = (1,Hola,313)
 
-t._1                //hent ett av elementene (1-indeksert)
-val (i, s, bil) = t //pakk ut tuppel
-(1,2).swap          //bytte om
+//hent ett av elementene (1-indeksert)
+t._1
+
+//pakk ut tuppel
+val (i, s, bil) = t
 
 //returnere flere ting fra funksjon
 def minmax(a: Int, b: Int): (Int, Int) =
   if (a < b) (a, b) else (b, a)
 
-//lage nytt tuppel basert på eksisterende
-t.copy(_2 = "Hei")
-//res0: (Int, String, Int) = (1,Hei,313)
 ```
 
 ---
 
-- mangel av kontrollstrukturer
-- expressions istedet for statements
-- if/else
-- for
-- while?
+#funksjoner
 
 ---
 
-##funksjoner
+##Ta som parameter
+Flere måter å sende med funksjoner på
+```scala
+def format(i: Int, formatter: Int => String) = formatter(i)
+
+//function literal
+val starsOfLength = length => "*" * length
+format(42, starsOfLength)
+
+//anonym funksjon
+format(2, i => i.toString)
+format(3, _.toString)
+```
+
+---
+
 - definere funksjon som val (val length:String => Int =)
 - vise hvordan du tar i mot en funksjon som funksjonsparameter
 - vise hvordan du passer som parameter og hvordan du skriver en inline
