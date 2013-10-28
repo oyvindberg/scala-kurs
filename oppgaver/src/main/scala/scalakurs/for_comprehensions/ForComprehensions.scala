@@ -9,7 +9,7 @@ object ForComprehensions {
 
   /**
    * Et pytagoreisk trippel er (a, b, c) der
-   * a^2 + b^2 = c^2 og
+   * a ** 2 + b ** 2 = c ** 2 og
    * a < b < c
    *
    * Hint: begynn med å generere alle permutasjoner av (a, b, c) der
