@@ -43,10 +43,6 @@ null
 
 ---
 
-#Variabler
-
----
-
 ##variabler
 
 ```scala

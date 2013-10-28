@@ -13,7 +13,7 @@ var i = 43 /look ma, no Type!
     Enkle typer er deklarert med stor forbkostav: Int
 </aside>
 
---
+---
 
 #Konstanter
 
@@ -24,7 +24,7 @@ val messageStart: String = "Hei..." // val <navn>: <Type> = <value>
 val messageEnd = "..og hå"
 ```
 
---
+---
 
 #Metoder
 
@@ -50,6 +50,10 @@ def plusOne(i: Int): Int = i + 1
 def plusOne(i: Int) = i + 1 //ta med for "lib interfaces"
 ```
 
+---
+
+#Metoder
+
 ```scala
 //uten parametere: kan droppe "()" (hvis det ikke er sideeffekter)
 def foo = "bar"
@@ -64,8 +68,6 @@ createPerson("Arne")
 //res0: Person = Person(Arne, 127.0.0.1)
 ```
 
---
-
 
 ```scala
 //varargs
@@ -76,7 +78,7 @@ def printThings(things: String*) {
 printThings("arne", "bjarne")
 ```
 
---
+---
 
 #no return
 
@@ -93,22 +95,18 @@ def sideEffect() { // () er med pga. sideeffekt
 }
 ```
 
+---
 
-#REPL
-Read Evaluate Print Loop
-```
-$ scala
-scala> 2 + 2
-res0: Int = 4
-
-scala> :help //printer ut alle tilgjengelige kommandoer
-scala> :q    //quit, evt. Ctrl + c
-
+#Metode, ikke operator
+```scala
+scala> 2 + 2 // -> 2.+(2)
 ```
 
+---
 
 #Literals
 
+---
 
 #Tall
 ```scala
@@ -124,6 +122,7 @@ scala> :q    //quit, evt. Ctrl + c
     Scala støtter alle primitive typer i Java
 </aside>
 
+---
 
 #Strenger
 
@@ -136,8 +135,18 @@ s"interpolerte strenger $variabel ${annen.property}"
 og inneholde tegn som " og ' """
 ```
 
+---
 
-#Metode, ikke operator
-```scala
-scala> 2 + 2 // egentlig: 2.+(2)
+#REPL
+
+Read Evaluate Print Loop
+```
+$ scala
+scala> 2 + 2
+res0: Int = 4
+
+scala> :help //printer ut alle tilgjengelige kommandoer
+scala> :q    //quit, evt. Ctrl + c
+
+```
 
