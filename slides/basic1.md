@@ -27,7 +27,7 @@ scala> :q    //quit, evt. Ctrl + c
 ##Variabler
 
 ```scala
-var e: Int = 42 // var <navn>: <Type> = <value> (eksplisitt typet)
+var e: Int = 42 // var <navn>: <Type> = <verdi> (eksplisitt typet)
 
 //med "type inference":
 var i = 43 /look ma, no Type!
@@ -35,7 +35,7 @@ var i = 43 /look ma, no Type!
 <aside class='notes'>
     Rekkefølge ikke som Java, lesbarhet
     Scala kompilator antar type hvis ikke angitt for variabler og funksjoner, mindre boilerplate
-    var er lite brukt i imperativ Scala kode, "er det egentlig hva jeg vil?" Typisk bruk: performance og mutable Java API
+    var er lite brukt i ideomatisk Scala kode, "er det dette jeg egentlig?" Typisk bruk: performance og mutable Java API
     Enkle typer er deklarert med stor forbkostav: Int
 </aside>
 
@@ -44,7 +44,7 @@ var i = 43 /look ma, no Type!
 ##Konstanter
 
 ```scala
-val messageStart: String = "Hei..." // val <navn>: <Type> = <value>
+val messageStart: String = "Hei..." // val <navn>: <Type> = <verdi>
 
 //med "type inference":
 val messageEnd = "..og hå"
