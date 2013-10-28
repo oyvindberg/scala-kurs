@@ -4,7 +4,7 @@ Read Evaluate Print Loop
 
 ```
 //1. Via SBT:
-$ sbt console //fra prosjekt-dir
+$ ./sbt console //fra prosjekt-dir
 
 //2. Direkte:
 $ scala //hvis du har Scala installert
