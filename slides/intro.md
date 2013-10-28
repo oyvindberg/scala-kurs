@@ -1,11 +1,10 @@
 #Intro
 
-
+---
 
 #Literals
 
-
-
+---
 
 #tall
 ```scala
@@ -18,8 +17,7 @@
 1.0e-100
 ```
 
-
-
+---
 
 #strenger
 
@@ -32,8 +30,7 @@ s"interpolerte strenger $variabel ${annen.property}"
 og inneholde tegn som " og ' """
 ```
 
-
-
+---
 
 #annet
 ```scala
@@ -44,24 +41,24 @@ null
 ’tataaa                  // symbol
 ```
 
-
+---
 
 #Variabler
 
-
-
+---
 
 ##variabler
 
 ```scala
 
-var i = 25
+var i: Int = 25
 i += 1
 
-var i2: Int = 25 //eksplisitt typet
+//uten eksplisitt type
+var i = 25
 ```
 
-
+---
 
 ##values
 ```scala
@@ -72,47 +69,55 @@ d = d + 1.0
 val Φ = (math.sqrt(5) + 1)/2
 ```
 
-
+---
 
 #Metodedefinisjoner
 
-
+---
 
 ##Full definisjon
 ```java
 //java
-public int plusOne(int i){
-    return i + 1;
+public double timesThousand(int i){
+    return 1000.0 * i;
 }
 
 ```
+```scala
+def timesThousand(i: Int): Double = {
+    return 1000.0 * i
+}
+```
+
+---
+
+##inferred returtype
 ```scala
 def plusOne(i: Int): Int = {
     return i + 1
 }
-```
 
-
-
-##inferred returtype
-
-```scala
 def plusOne(i: Int) = {
     return i + 1
 }
+
 ```
 
-
+---
 
 ##return
 Kodeblokker returnerer siste verdi
 ```scala
 def plusOne(i: Int) = {
+    return i + 1
+}
+
+def plusOne(i: Int) = {
     i + 1
 }
 ```
 
-
+---
 
 ##braces
 Enlinjers kodeblokker trenger ikke braces
@@ -125,7 +130,7 @@ def plusTwo(i: Int) = {
 }
 ```
 
-
+---
 
 ##no return
 void -> Unit
@@ -142,7 +147,7 @@ def pointOf() {
 }
 ```
 
-
+---
 
 ##varargs
 ```scala
@@ -153,7 +158,7 @@ def printThings(things: String*) {
 printThings("arne", "bjarne")
 ```
 
-
+---
 
 ##default parameters
 ```scala
@@ -164,8 +169,7 @@ createPerson("Arne")
 //res0: Person = Person(Arne, 127.0.0.1)
 ```
 
-
-
+---
 
 ##flere parametersett
 
@@ -177,7 +181,7 @@ unless(x < 5) {
 }
 ```
 
-
+---
 
 ##lokale funksjoner
 ```scala
@@ -189,42 +193,51 @@ def factorial(of: Int) = {
 }
 ```
 
-
-
-#Funksjonskall
-
-
+---
 
 ##stil
 ```scala
 //metode uten parametere kalles uten parenteser
-def noarg: Int = ???
-val ret = noarg
+def secretNumber: Int = ???
+val ret = secretNumber
 
 //tomt parametersett indikerer sideeffekt
-def applySideEffect() { ??? }
-applySideEffect()
+rollback()
 
-..mer her?
+//kan bruke blokker - disse skriver begge ut 2
+println{
+  val i = 1
+  i + 1
+}
+println(2)
 ```
 
+---
 
+##«Operatorer»
 
-##Scalas «operatorer»
-
-forskjellen på metodekall og operator? *infix notasjon*
+Infix notasjon
 ```scala
 "skolebrød".contains("skole")
 "skolebrød" contains "brød"
 ```
 
-og *ikke-alfanumeriske identifiere* <3
+Ikke-alfanumeriske identifiere
 ```scala
-(2).-(1).-(1)
-res0: Int = 0
+class BigDecimal{
+  def +(that: BigDecimal): BigDecimal = ...
+  ...
+}
 ```
 
+et voilà
+```scala
+val a: BigDecimal = 1e25
+a + 0.01
+//res0: scala.math.BigDecimal = 10000000000000000000000000.01
+```
 
+---
 
 ##named parameters
 ```scala
@@ -235,27 +248,83 @@ createPerson(home = "where the computer is", name="Bjarne")
 //res0: Person = Person(Bjarne,where the computer is)
 ```
 
-
+---
 
 # kontrollstrukturer
+
+---
+
+##Statements er expressions
+```scala
+val res1 = if (x > y) x else y
+//res1: Int = 3
+
+val res2 = try {1/0} catch {case e: ArithmeticException => -1}
+//res2: Int = -1
+
+//mer generelt:
+val res3 = {
+    2.3
+    3.2
+}
+//res3: Double = 3.2
+```
+
+---
+
+##lazy
+utsatt kjøring av kode
+```scala
+lazy val content = {
+  println("henter")
+  Source.fromURL(new URL("..."))
+}
+println("start")
+person.name
+//start
+//henter
+```
+
+---
+
+## equality
+```scala
+new String("Kake") == new String("Kake") //true  (javas equals)
+new String("Kake") eq new String("Kake") //false (javas ==)
+
+"a" ne "b" //true
+"a" != "b" //true
+```
+
+---
+
+##tupler
+```scala
+val t = (1, "Hola", 313)
+//t: (Int, String, Int) = (1,Hola,313)
+
+t._1                //hent ett av elementene (1-indeksert)
+val (i, s, bil) = t //pakk ut tuppel
+(1,2).swap          //bytte om
+
+//returnere flere ting fra funksjon
+def minmax(a: Int, b: Int): (Int, Int) =
+  if (a < b) (a, b) else (b, a)
+
+//lage nytt tuppel basert på eksisterende
+t.copy(_2 = "Hei")
+//res0: (Int, String, Int) = (1,Hei,313)
+```
+
+---
+
 - mangel av kontrollstrukturer
 - expressions istedet for statements
 - if/else
 - for
 - while?
 
-
-
-
-##lazy
-
-## equality? == versus eq
-
-##tuples
-- vise vanlig bruk
-
-## null </3
-- Option
+---
 
 ##funksjoner
 - definere funksjon som val (val length:String => Int =)
