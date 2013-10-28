@@ -1,7 +1,7 @@
 package scalakurs.collections
 
 object NumeriskeLister {
-  def lagRange(a: Int, b: Int): Range = ???
+  def lagRange(fraInklusiv: Int, tilInklusiv: Int): Range = ???
 
   def summerRange(a: Int, b: Int): Int = ???
 
