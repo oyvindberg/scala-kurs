@@ -40,33 +40,6 @@ def greet(person: Person) {
 
 
 
-Greet-metode:
-```scala
-case class Person(gender: Gender, name: String)
-
-def greet(person: Person) = {
-  if (person.gender == MALE)
-    "Hello, Mr. " + person.name
-  else if (person.gender == FEMALE)
-    "Hello, Mrs. " + person.name
-  else
-    "Hello, " + person.name
-}
-```
-
-Med pattern matching:
-```scala
-def greet(person: Person) {
-  person match {
-    case Person(MALE, name)   => "Hello, Mr. " + name
-    case Person(FEMALE, name) => "Hello, Mrs. " + name
-    case Person(_, name)      => "Hello, " + name
-  }
-}
-```
-
-
-
 ### Syntaks: ###
 > selector match { alternatives }
 
