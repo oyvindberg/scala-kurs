@@ -289,7 +289,7 @@ body {
 	margin: 15px auto;
 
 	text-align: left;
-	font-size: 0.55em;
+	font-size: 0.7em;
 	font-family: monospace;
 	line-height: 1.2em;
 
@@ -303,7 +303,7 @@ body {
 .reveal pre code {
 	padding: 5px;
 	overflow: auto;
-	max-height: 400px;
+	max-height: 600px;
 	word-wrap: normal;
 }
 
