@@ -476,3 +476,4 @@ Extractors
 ```scala
 sbt:
 > ~ test-only scalakurs.patternmatching.ExtractorsTest
+```
