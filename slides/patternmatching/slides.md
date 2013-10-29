@@ -330,7 +330,12 @@ def silly(p: Tree): String = {
 
 
 # Oppgaver
-PatternMatching.scala
+PatternMaching
+
+```scala
+sbt:
+> ~ test-only scalakurs.patternmatching.PatternMatchingTest
+```
 
 
 
@@ -466,4 +471,8 @@ object Email {
 
 
 # Oppgaver
-Extractors.scala
+Extractors
+
+```scala
+sbt:
+> ~ test-only scalakurs.patternmatching.ExtractorsTest
