@@ -6,8 +6,8 @@ import org.scalatest.matchers.ShouldMatchers
 
 class FileCensorTest extends FlatSpec with ShouldMatchers {
 
-//  import solutions.FileCensor._
-  import FileCensor._
+  import solutions.FileCensor._
+//  import FileCensor._
 
   lazy val erroneousFile = new File("src/test/resources/either/scala-propaganda.txt")
   lazy val anonymousFile = new File("src/test/resources/either/unnamed-propaganda.txt")
