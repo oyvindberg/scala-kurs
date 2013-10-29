@@ -209,9 +209,9 @@ def printTuple(x: Any) {
 ### Option matching ###
 ```scala
 foo match {
-  case Some(value) => println value
-  case None => _
-}
+    case Some(value) => println(value)
+    case None => println("None")
+  }
 ```
 
 
