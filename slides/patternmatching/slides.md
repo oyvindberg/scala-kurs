@@ -330,7 +330,7 @@ def silly(p: Tree): String = {
 
 
 # Oppgaver
-PatternMaching
+PatternMatching
 
 ```scala
 sbt:
