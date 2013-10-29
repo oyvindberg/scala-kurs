@@ -19,7 +19,7 @@ class BasicsTest extends FunSuite with ShouldMatchers {
 
   test("shout") (
     // Create method:
-    //shout("hello") should be("HELLO")
+    shout("hello") should be("HELLO")
   )
 
   test("method that adds two integers") {
@@ -48,10 +48,13 @@ class BasicsTest extends FunSuite with ShouldMatchers {
   test("sum of squares") {
     // lag en metode sumSquare som kombinerer sum og square, til sumSquare
 //    sumSquares(1, 3) should be(14)
+    fail("remove me and comment in line over")
   }
 
   test("reimplement sum of integer") {
     // reimplementer sumInt til å bruke sum-funskjonen med to parameterlister
+//    sumIntNew(1, 6) should be (21)
+    fail("remove me and comment in line over")
   }
 
 }
