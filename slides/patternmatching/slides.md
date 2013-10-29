@@ -293,7 +293,7 @@ Hva om vil vil at kompilatoren skal advare om at vi mangler patterns?
 ```scala
 sealed abstract class Tree
 case class Node(value: Int, left: Tree, right: Tree) extends Tree
-case class Leaf(value: Int) extends def
+case class Leaf(value: Int) extends Tree
 
 Tree sillyTreeMatch(tree: Tree) {
   tree match {
