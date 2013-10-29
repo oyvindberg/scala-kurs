@@ -15,8 +15,8 @@ package scalakurs.testrammeverk
 *  (der finnes også et par andre oppgavesett som anbefales :)
 * */
 
-class Oppgave1 extends solutions.MiniTest {
-
+class Oppgave1 extends MiniTest {
+  /*
   //success
   test("2 + 2 == 4"){
     assertEq(2 + 2, 4)
@@ -31,27 +31,28 @@ class Oppgave1 extends solutions.MiniTest {
   test("3 + 2 == 4"){
     assertEq(3 + 2, 4)
   }
+  */
 
 }
 
 class Oppgave2 extends Oppgave1 {
-
+  /*
   test("håndter exceptions"){
     sys.error("catch me if you can ;-)")
   }
-
+  */
 }
 
 class Oppgave3 extends Oppgave2 {
-
+  /*
   test("støtter pending tests"){
     pending("because I am lazy")
   }
-
+  */
 }
 
 class Oppgave4 extends Oppgave3 {
-
+  /*
   test("fancy syntax"){
     3 + 2 === 5
   }
@@ -67,11 +68,11 @@ class Oppgave4 extends Oppgave3 {
   test("fancy not syntax fail"){
     3 + 2 !== 5
   }
-
+  */
 }
 
 class Oppgave5 extends Oppgave4 {
-
+  /*
   var i = 0
 
   before {
@@ -93,7 +94,7 @@ class Oppgave5 extends Oppgave4 {
     // 0 + 5 + 10 + 5 == 20
     assertEq(i, 20)
   }
-
+  */
 }
 
 object RunTests extends Oppgave5 with App
