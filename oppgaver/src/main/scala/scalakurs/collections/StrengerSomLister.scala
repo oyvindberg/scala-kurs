@@ -3,9 +3,9 @@ package scalakurs.collections
 object StrengerSomLister {
   val engelskAlfabet = 'a' to 'z'
 
-  def char2int(c: Char): Int = ???
+  def alfabetPosisjon(c: Char): Int = ???
 
-  def int2char(i: Int): Char = ???
+  def alfabetBokstav(i: Int): Char = ???
 
   def listOfChars2String(l: List[Char]): String = ???
 

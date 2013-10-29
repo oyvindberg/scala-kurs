@@ -39,8 +39,8 @@ mutable.Map / immutable.Map <br/>
 List()        == Nil
 List(1, 2, 3) == 1 :: 2 :: 3 :: Nil
 
-1 :: List(2, 3)        => List(1, 2, 3): List[Int] // append
-List(1, 2) :+ 3        => List(1, 2, 3): List[Int] // prepend
+1 :: List(2, 3)        => List(1, 2, 3): List[Int] // prepend
+List(1, 2) :+ 3        => List(1, 2, 3): List[Int] // append
 List(1) ::: List(2, 3) => List(1, 2, 3): List[Int] // join
 ```
 
@@ -154,7 +154,7 @@ class List[A] {
 
 ```scala
 gamers.filter(_.clan == "aimbots")
-gamers.filter(_.rank > 10)
+gamers.filter(_.rank < 10)
 ```
 
 ---
@@ -177,7 +177,7 @@ class List[A] {
 ```scala
 val bestGamer = Gamer("Mrs. Robinson", "1337 Squad", 1)
 
-val allGamers = bestGamer :: gamers.map(g => g.copy(rank = g.rank + 1)
+val allGamers = bestGamer :: gamers.map(g => g.copy(rank = g.rank + 1))
 ```
 
 ---
@@ -211,3 +211,7 @@ NumeriskeListerTest (NLT)
 sbt:
 > ~ test-only scalakurs.collections.NumeriskeListerTest
 ```
+
+scaladoc: [immutable.List][1]
+
+[1]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List

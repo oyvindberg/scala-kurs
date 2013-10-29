@@ -13,28 +13,27 @@
 
 Greet-metode:
 ```scala
-sealed abstract class Gender
-case object MALE extends Gender
-case object FEMALE extends Gender
-
 case class Person(gender: Gender, name: String)
 
-def greet(person: Person) {
+def greet(person: Person) = {
   if (person.gender == MALE)
-    println("Hello, Mr. " + person.name)
+    "Hello, Mr. " + person.name
   else if (person.gender == FEMALE)
-    println("Hello, Mrs. " + person.name)
+    "Hello, Mrs. " + person.name
   else
-    println("Hello, " + person.name)
+    "Hello, " + person.name
 }
 ```
+
+
+
 Med pattern matching:
 ```scala
 def greet(person: Person) {
   person match {
-    case Person(MALE, name)   => println("Hello, Mr. " + name)
-    case Person(FEMALE, name) => println("Hello, Mrs. " + name)
-    case Person(_, name)      => println("Hello, " + name)
+    case Person(MALE, name)   => "Hello, Mr. " + name
+    case Person(FEMALE, name) => "Hello, Mrs. " + name
+    case Person(_, name)      => "Hello, " + name
   }
 }
 ```
@@ -49,13 +48,13 @@ def greet(person: Person) {
 ### Syntaks: ###
 > selector match { alternatives }
 
-Eksempel:
 ```scala
-def fib(n: Int) : Int = n match {
-  case 0 => 0
-  case 1 => 1
-  case _ => fib(n-1) + fib(n-2)
-}
+def fib(n: Int) : Int =
+  n match {
+    case 0 => 0
+    case 1 => 1
+    case _ => fib(n-1) + fib(n-2)
+  }
 ```
 
 
@@ -88,13 +87,13 @@ def describe(x: Any) = {
 
 
 ### Variable pattern: ###
-Matcher hva som helst (på samme måte som wildcard patterns), men binder
+Matcher hva som helst, men binder
 variabelen til objektet man matcher på:
 ```scala
-def printNameIfPerson(x: Any) = {
+def printIf42(x: Any) = {
   x match {
-    case Person(_, name) => println("Name: " + name)
-    case somethingElse => println("Not a person: " + somethingElse)
+    case 42 => println(42)
+    case something => println("Not 42: " + something)
   }
 }
 ```
@@ -118,12 +117,19 @@ def generalSize(x: Any) {
 ### Wildcard pattern ###
 _ matcher hva som helst:
 ```scala
-def printNameIfPerson(x: Any) = {
+def printIf42(x: Any) = {
   x match {
-    case Person(_, name) => println("Name: " + name)
-    case _ => println("Not a person")
+    case 42 => println(42)
+    case _ => println("Not 42, bleh")
   }
 }
+```
+
+
+
+### Case classes (repetisjon): ###
+```scala
+case class Person(name: String, age: Int)
 ```
 
 
@@ -131,13 +137,27 @@ def printNameIfPerson(x: Any) = {
 ### Constructor pattern: ###
 Sjekker klassetilhørighet og constructor-argumenter:
 ```scala
+def printNameIfPerson(x: Any) = {
+  x match {
+    case Person(name, age) => println("Name: " + name)
+    case something => println("Not a person: " + something)
+  }
+}
+
+```
+
+
+
+### Constructor pattern: ###
+Nøstede patterns:
+```scala
 abstract class Tree
 case class Node(value: Int, left: Tree, right: Tree) extends Tree
 case class Leaf(value: Int) extends Tree
 
 def bothDescendantsAreLeaves(tree: Tree) = {
   tree match {
-    case Node(_, Leaf(_), Leaf(_)) => true
+    case Node(value, Leaf(v1), Leaf(v2)) => true
     case _ => false
   }
 }
@@ -146,10 +166,10 @@ def bothDescendantsAreLeaves(tree: Tree) = {
 
 
 ### Sequence pattern: ###
-Kan matche på Sequences på samme måte som case-klasser:
+Kan matche på Sequences:
 ```scala
 seq match {
-  case Seq(0, _, _) => println("Found three-element seq starting with 0!")
+  case Seq(0, _, _) => println("Three-element with head=0!")
   case _ =>
 }
 ```
@@ -157,7 +177,7 @@ Kan bruke _* for å matche et vilkårlig antall elementer:
 
 ```scala
 seq match {
-  case Seq(0, _*) => println("Found list starting with 0!")
+  case Seq(0, _*) => println("List starting with 0!")
   case _ =>
 }
 ```
@@ -167,7 +187,7 @@ seq match {
 ### Annen syntaks for sequence matching (scala 2.10): ###
 ```scala
 seq match {
-    case 0 +: rest => println("Found list starting with 0!")
+    case 0 +: rest => println("List starting with 0!")
     case _ =>
 }
 ```
@@ -273,7 +293,7 @@ Hva om vil vil at kompilatoren skal advare om at vi mangler patterns?
 ```scala
 sealed abstract class Tree
 case class Node(value: Int, left: Tree, right: Tree) extends Tree
-case class Leaf(value: Int) extends def
+case class Leaf(value: Int) extends Tree
 
 Tree sillyTreeMatch(tree: Tree) {
   tree match {
@@ -285,7 +305,7 @@ warning: match is not exhaustive!
 
 
 
-### Patterns i variabel-definisjoer: ###
+### Patterns i variabel-definisjoner: ###
 ```scala
 val someTuple = (1,2)
 val (num1, num2) = someTuple
@@ -297,12 +317,12 @@ val (num1, num2) = someTuple
 > and decomposing data structures and objects with a known structure into its underlying parts.
 
 ```scala
-def lol(p: Tree): String = {
+def silly(p: Tree): String = {
   p match {
     case Node(v, _, _) if v < 18 => s"lol! Value is ${v}"
     case a@Node(20, _, _) => a.toString
     case t: Leaf => "Leaf"
-    case _ => "Whut?"
+    case _ => "I give up"
   }
 }
 ```
@@ -340,7 +360,7 @@ Men s er en String!
 
 
 
-Repetisjon case classes:
+Case classes (en gang til):
 
 ```scala
 case class Person(name: String, age: Int)

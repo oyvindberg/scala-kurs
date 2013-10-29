@@ -12,9 +12,9 @@ Map(1 -> 2, 2 -> 3) withDefaultValue 42
 ---
 
 ```scala
-Map(1 -> 1) + (2 -> 2)     == Map(1 -> 1, 2 -> 2)
-Map(1 -> 1, 2 -> 2) - 1    == Map(2 -> 2)
-Map(1 -> 1) ++ Map(2 -> 2) == Map(1 -> 1, 2 -> 2)
+Map(1 -> 1) + (2 -> 2)     == Map(1 -> 1, 2 -> 2) // put
+Map(1 -> 1, 2 -> 2) - 1    == Map(2 -> 2)         // remove
+Map(1 -> 1) ++ Map(2 -> 2) == Map(1 -> 1, 2 -> 2) // join
 ```
 
 ---
@@ -66,3 +66,7 @@ MapOppgaverTest (MOT)
 sbt:
 > ~ test-only scalakurs.collections.MapOppgaverTest
 ```
+
+scaladoc: [immutable.Map][1]
+
+[1]: http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map

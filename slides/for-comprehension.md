@@ -15,7 +15,7 @@ for (i <- 1 to 10) { println(i) }
 ```
 
 ```scala
-// type annotering kan være greit for debugging
+// type-annotering kan være greit for debugging
 for (i: Int <- 1 to 10) { println(i) }
 ```
 
@@ -29,7 +29,7 @@ i sin enkleste form veldig lik som i java
 // java
 List<Integer> list = new ArrayList<>();
 for (int i = 1; i <= 10; i++) {
-    list.add(i * 2)
+    list.add(i * 2);
 }
 ```
 
@@ -50,7 +50,7 @@ val list: Seq[Int] = for (i <- 1 to 10) yield i * 2
 List<Punkt> punkter = new ArrayList<>();
 for (int x = 1; x <= 10; x++) {
     for (int y = 1; y <= 10; y++) {
-        punkter.add(new Punkt(x, y))
+        punkter.add(new Punkt(x, y));
     }
 }
 ```
@@ -72,19 +72,19 @@ val punkter: Seq[Punkt] = for {
 
 ```java
 // java
-boolean even(int i) { ... }
+boolean even(int i) { return i % 2 == 0; }
 
 List<Integer> partall = new ArrayList<>();
 for (int i = 1; i <= 10; i++) {
     if (even(i)) {
-        heltall.add(i)
+        partall.add(i);
     }
 }
 ```
 
 ```scala
 // scala
-def even(i: Int): Boolean = ...
+def even(i: Int): Boolean = i % 2 == 0
 
 val partall: Seq[Int] = for {
     i <- 1 to 10
@@ -130,9 +130,9 @@ val listeMedStigmatiserendeNavn: List[String] = for {
 ```java
 // java
 List<String> listeMedStigmatiserendeNavn = new ArrayList<>();
-for (String fornavn: listeMedFornavn) {
-    for (String etternavn: listeMedEtternavn) {
-        listeMedStigmatiserendeNavn.add("%s %s".format(fornavn, etternavn))
+for (String fornavn : listeMedFornavn) {
+    for (String etternavn : listeMedEtternavn) {
+        listeMedStigmatiserendeNavn.add(fornavn + " " + etternavn);
     }
 }
 ```
@@ -144,14 +144,14 @@ for (String fornavn: listeMedFornavn) {
 ---
 
 ```scala
-def getNavn: Option[String] = ...
-def getAlder: Option[String] = ...
-def getAdresse: Option[String] = ...
+val navnOption: Option[String] = ...
+val alderOption: Option[Int] = ...
+val adresseOption: Option[String] = ...
 
 val person: Option[Person] = for {
-    navn <- getNavn
-    alder <- getAlder
-    adresse <- getAdresse
+  navn <- navnOption
+  alder <- alderOption
+  adresse <- adresseOption
 } yield new Person(navn, alder, adresse)
 ```
 
@@ -167,14 +167,14 @@ mer om Option senere <br/>
 
 ```java
 // java
-List<String> getNavn() { ... }
-List<String> getAlder() { ... }
-List<String> getAdresse() { ... }
+List<String> navnOption = ...
+List<Integer> alderOption = ...
+List<String> adresseOption = ...
 
-List<Person> p = emptyList();
-for (String navn: getNavn()) {
-    for (String alder: getAlder()) {
-        for (String adresse: getAdresse()) {
+List<Person> p = new ArrayList<>();
+for (String navn: navnOption) {
+    for (Integer alder: alderOption) {
+        for (String adresse: adresseOption) {
             p.add(new Person(navn, alder, adresse));
         }
     }

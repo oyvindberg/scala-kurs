@@ -4,7 +4,7 @@
 
 ### Scala er kompatibelt med java:
 
-- Scala bruker JVMen som standard-backend
+- Scala kompilerer til Java bytecode
 - Scala-klasser er Java-klasser (og motsatt)
 - I Java-kode kan man arve fra Scala-klasser (og motsatt)
 
@@ -24,7 +24,7 @@ $ javap Animal.class
 Compiled from Animal.scala"
 public class Animal {
   public java.lang.String sound();
-  public Anima();
+  public Animal();
 }
 ```
 

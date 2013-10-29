@@ -3,6 +3,7 @@ package scalakurs.futures
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 import scala.concurrent.duration._
+import scala.concurrent.{Await, Future}
 
 class PiCalculatorTest extends ShouldMatchers with FlatSpec {
 
@@ -16,24 +17,15 @@ class PiCalculatorTest extends ShouldMatchers with FlatSpec {
   }
 
   it should "be really fast, splitting up the problem, executing in parallel" in {
-    isImplemented {
-      onTime(100 milliseconds) {
-        calculate(nrOfElements = 100000000, nrOfWorkers = 1000000)
-      }
+    onTime(100 milliseconds) {
+      calculate(nrOfElements = 100000000, nrOfWorkers = 1000000)
     }
   }
 
-  def onTime[F](maxTime: Duration)(block: => F) = {
+  def onTime[F](maxTime: Duration)(block: => Future[F]) = {
     val start = System.currentTimeMillis()
-    block
+    Await.result(block, maxTime)
     val time = System.currentTimeMillis() - start
     time should be <= maxTime.toMillis
   }
-
-  def isImplemented[R](block: => R): R = {
-    try block catch {
-      case e : scala.NotImplementedError => fail("not implemented")
-    }
-  }
-
 }

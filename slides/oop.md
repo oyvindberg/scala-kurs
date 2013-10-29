@@ -60,7 +60,7 @@ scala>val p = new Person(29, "nina")
 
 ```scala
 class Person(@BeanProperty val id: Int,
-             @BeanProperty val name: String) {
+             @BeanProperty var name: String) {
   // def getName(): String
   // def setName(name:String): Unit
   // def getId:Int
@@ -163,7 +163,7 @@ p: Person = (1, Ola, None)
 ### Traits ###
 ```scala
 trait DatabaseConnection {
-
+  def db: DB
 }
 ```
 <aside class="notes">
@@ -204,8 +204,6 @@ class DoubleThenIncrement extends Incrementing with Doubling {
 > q.put(2)
 // 5
 ```
-
-
 <aside class="notes">
 - multiple inheritance - ambiguity
 - traits are mixins - not really inheritance - no ambiguity
@@ -232,6 +230,27 @@ trait BilforsikringRepositoryTest extends InMemoryDbConnection {
 }
 
 ```
+<aside class="notes">
+    NB: Extends her betyr ikke arv, Scala syntax
+    krever at det må være først
+</aside>
+
+
+
+```scala
+trait Loggable {
+ self =>
+
+ val logger = Slf4jLoggerFactory.getLogger(self.getClass())
+
+ def debug[T](msg: => T):Unit = {
+      if (logger.isDebugEnabled()) logger.debug(msg.toString)
+  }
+}
+```
+<aside class='notes'>
+        self type -> trait vet hvilken klasse den er mikset inn i
+</aside>
 
 
 
@@ -399,6 +418,10 @@ public final class Person$ extends scala.runtime.AbstractFunction2 implements sc
 - keywords private og protected
 - private virker som i Java
 - protected veldig forskjellig.
+<aside class='notes'>
+   private[this] også mulig, da er det kun samme instans
+   som har tilgang - det er som oftest dette du vil
+</aside>
 
 
 

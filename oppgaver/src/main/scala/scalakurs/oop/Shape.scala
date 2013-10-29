@@ -10,8 +10,9 @@ abstract class Shape(val center: Point) {
 }
 
 trait Drawing extends Shape {
-  def draw = s"Drawing $name with area $area and circumference $circumference with center at $center"
+  def draw(): Unit = println(s"Drawing $name with area $area and circumference $circumference with center at $center")
 }
+
 
 class Circle(center:Point, radius: Double) extends Shape(center) {
 
@@ -19,7 +20,7 @@ class Circle(center:Point, radius: Double) extends Shape(center) {
 
   def area: Double = math.Pi * radius * radius
 
-  def circumference: Double = math.Pi
+  def circumference: Double = 2 * math.Pi * radius
 }
 
 // TODO:
@@ -29,3 +30,9 @@ class Circle(center:Point, radius: Double) extends Shape(center) {
 
 case class Point(x: Int, y:Int)
 
+
+object Shapes {
+  
+  def draw(shapes: List[Drawing]): Unit = shapes.foreach(_.draw())
+  
+}

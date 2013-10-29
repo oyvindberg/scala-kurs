@@ -1,7 +1,7 @@
 # Type classes #
 From Haskell with love
 
----
+--
 
 ## Historie ##
 - Opprinnelig fra Haskell-verdenen
@@ -9,14 +9,14 @@ From Haskell with love
 - Ikke en språkkonstrukt, men et pattern
 - Ikke en del av Scala-dokumentasjonen
 
----
+--
 
 ## Definisjon ##
 - En kontrakt som definerer oppførselen til en type
 - Er definert utenfor typen - kan utvide lukkede typer
 - Alle typer som er definert for typeklassen har typeklassens oppførsel
 
----
+--
 
 ## Eksempel ##
 - Man driver med kommunikasjon over flere protokoller, hvor boolean er definert forskjellig
@@ -98,3 +98,9 @@ res4: Boolean = true
 scala> 123.boolean
 res5: Boolean = false
 ```
+
+--
+
+## Oppgaver ##
+- `scalakurs.typeclasses.BooleanLikeTest`
+- `scalakurs.typeclasses.OptionalTailTest`

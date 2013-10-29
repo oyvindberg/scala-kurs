@@ -2,14 +2,14 @@ package scalakurs.for_comprehensions
 
 object ForComprehensions {
   implicit class IntWithPower(i: Int) {
-    def **(pow: Int) = math.pow(i, pow)
+    def **(pow: Int) = math.pow(i, pow).toInt
   }
 
   def alleFaktorerAv(x: Int): Seq[Int] = ???
 
   /**
    * Et pytagoreisk trippel er (a, b, c) der
-   * a^2 + b^2 = c^2 og
+   * a ** 2 + b ** 2 = c ** 2 og
    * a < b < c
    *
    * Hint: begynn med å generere alle permutasjoner av (a, b, c) der

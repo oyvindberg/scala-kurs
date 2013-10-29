@@ -3,45 +3,21 @@ scala-kurs
 
 3-dagers Scala-kurs for nybegynnere 29.-31. oktober i [Teknologihuset](http://www.teknologihuset.no "Teknologihuset")
 
-# TODOs:
+Slides kan sees [her](http://finn-no.github.io/scala-kurs/slides "her")
 
-### Slides og oppgaver: Scala-intro (Øyvind)
-- var 
-- val 
-- def 
-- ingen primitiver 
-- ingen operatorer 
-- paranteser osv frivillig 
-- tupler 
-- anonyme funksjoner 
-- Options 
-- husk = !!! ("def foo() = {") 
-- Unit/Nothing +++ 
+# Agenda
 
-### Slides og oppgaver: For-comprehensions (Erik)
+## Dag 1 - the basics
+- basics
+- funksjonelle konsepter
+- collections
+- objekt-orientert programmering i Scala
 
-### Slides og oppgaver: Funksjonelle konsepter (Nina)
-- immutable
-- referential transparency
+## Dag 2 - litt avansert
+- pattern matching
+- feilhåndtering
+- avanserte konsepter som varians, typer og implicits
+- futures
 
-### Slides og oppgaver: Feilhåndtering (option/either exception) (Kåre)
-
-### Slides (kanskje oppgaver?): interoperabilitet (Stig)
-
-### Slides: "Andre temaer"
-- futures (Kåre)
-- erfaringer (fint som "pause"-tema) (Stig)
-
-### Slides: Oppsummering
-- Kjapp oppsummering av gjennomgåtte språk-features
-- Java 8 vs Scala kanskje?
-
-### Dag 3: 
-- Forberede scalatron-intro (Stig og Hans Kristian)
-   - Oppsett
-   - Oppgaver
-- Forberede startprosjekt (unfiltered?) som bruker api-iad (Kåre)
-- Forberede liten presentasjon av andre ting man kan gjøre (Nina)
-   - Euler
-   - Scala koans
-   - Topcoder-liknende ting
+## Dag 3
+- Større oppgaver

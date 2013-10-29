@@ -16,7 +16,8 @@ def decimalYear(dt: org.joda.time.DateTime): Double = {
     dt.getYear + dt.getDayOfYear / daysInYear
 }
 
-implicit def date2datetime(d: java.util.Date) = new DateTime(d.getTime())
+implicit def date2datetime(d: java.util.Date): DateTime =
+  new DateTime(d.getTime())
 
 decimalYear(new java.util.Date)
 //res0: Double = 2013.813698630137

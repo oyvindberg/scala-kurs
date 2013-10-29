@@ -17,7 +17,7 @@ class UserRepositoryTest extends FlatSpec with ShouldMatchers {
   }
 
   it should "return all users" in {
-    findAll.size should be (3)
+    findAll.size should be (4)
   }
 
   it should "return all users with a spouse" in {
@@ -35,7 +35,7 @@ class UserRepositoryTest extends FlatSpec with ShouldMatchers {
   }
 
   it should "return a printable name with title based on gender and marital status" in {
-    findAll.map(_.printable) should be (Seq("Mr. John Doe", "Mrs. Jane Doe", "Doni Doe"))
+    findAll.map(_.printable) should be (Seq("Mr. John Doe", "Mrs. Jane Doe", "Doni Doe", "Ms. Honey Ryder"))
   }
 
 }

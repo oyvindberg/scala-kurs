@@ -65,3 +65,8 @@ def weatherStatus(lat: Double, lon: Double): Future[WeatherStatus] = {
   } yield weather.status
 }
 ```
+
+--
+
+## Oppgaver ##
+- `scalakurs.futures.PiCalculatorTest`

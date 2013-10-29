@@ -61,7 +61,7 @@ val adOpt = getAd(1337)
 val orgOpt = if (adOpt.isDefined) getOrg(adOpt.get.orgId) else None
 ```
 
-`map` og `flatMap` til unsetning!
+`map` til unsetning!
 ```
 // Option[Option[Organisation]], hmmm!
 val orgOptOpt = getAd(1337).map(ad => getOrg(ad.orgId)) 
@@ -69,10 +69,7 @@ val orgOptOpt = getAd(1337).map(ad => getOrg(ad.orgId))
 val orgOpt = orgOptOpt.flatten
 ```
 
---
-
-### Just `flatMap` that shit ###
-
+eller bare `flatMap` that shit
 ```
 getAd(1337).flatMap(ad => getOrg(ad.orgId)) 
 ```
@@ -102,8 +99,15 @@ request.getParameter("name") match {
   case Some(param) if param.trim.nonEmpty => println(param.trim.toUpperCase)
   case _ => println("")
 }
-
+// Selv om man her kanskje heller ville gjort
+println(request.getParameter("name").map(_.trim.toUpperCase).filter(_.nonEmpty).getOrElse(""))
 ```
+
+--
+
+## Oppgaver ##
+- `scalakurs.option.OptionTreeTest`
+- `scalakurs.option.UserRepositoryTest`
 
 ---
 
@@ -128,24 +132,27 @@ case class Right[+A, +B](b: B) extends Either[A, B]
 
 ## Hvordan? ##
 
-`Either.fold(..)` er bra praksis for Eithers, siden man uansett har bare to mulige cases
+Ofte trenger man å returnere ulike resultater basert på om man har en Left- eller Right-projection. «Imperativ» løsning:
 ```
-scala> val fooOrBar: Either[String, String] = Right("bar")
-scala> fooOrBar.fold(
-     |   l => s"This is a LEFTY-$l", 
-     |   r => s"This is a RIGHTY-$r")
-res0: String = This is a RIGHTY-bar
+val either: Either[Int, Double] = {...}
+if (either.isLeft) {
+  "Left: " + either.left.get.toString
+} else {
+  "Right: " + either.right.get.toString
+}
 ```
-
-Men man kan også bruke pattern matching
-
+Sexy løsning:
 ```
-scala> val fooOrBar: Either[String, String] = Left("foo")
-scala> fooOrBar match {
-     |   case Left(l) => s"This is a LEFTY-$l"
-     |   case Right(r) => s"This is a RIGHTY-$r"
+either.fold("Right: " + _.toString, "Left: " + _.toString)
+```
+Men man kan også bruke pattern matching hvis man trenger å uttrykkeseg litt kraftigere
+```
+scala> val timeOrDate: Either[String, String] = Left("16:15")
+scala> timeOrDate match {
+     |   case Left(Time(time))  => s"The time is $time"
+     |   case Right(Date(date)) => s"The date is $date"
      | }
-res1: String = This is a LEFTY-foo
+res1: String = The time is 4:15 PM
 ```
 
 --
@@ -185,3 +192,8 @@ Det finnes noe deilig sukker for dette også, som man kan bruke om man vil
 scala> scala.util.control.Exception.allCatch.either(getThatAd(1337))
 res0: scala.util.Either[Throwable,String] = Left(...)
 ```
+
+--
+
+## Oppgaver ##
+- `scalakurs.either.FileCensorTest`
