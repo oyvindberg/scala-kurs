@@ -13,10 +13,6 @@
 
 Greet-metode:
 ```scala
-sealed abstract class Gender
-case object MALE extends Gender
-case object FEMALE extends Gender
-
 case class Person(gender: Gender, name: String)
 
 def greet(person: Person) {
