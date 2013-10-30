@@ -30,11 +30,12 @@ object MyFutures {
     ???
   }
 
-  /* Future.recoverWith */
+  /* Future.recoverWith eller Future.fallbackTo */
   def computeRiskySumFallbackOnSafeSum(riskyWork: SumSequence, safeWork: SumSequence): Future[Int] = {
     ???
   }
 
+  /* Trenger ikke regne ut max faktor for alle elementene i lista i parallell. Det er neste oppgave */
   def findSumOfAllMaxFactors(work: Seq[FactorNumber]): Future[Long] = {
     ???
   }
