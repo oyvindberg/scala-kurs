@@ -106,8 +106,9 @@ println(request.getParameter("name").map(_.trim.toUpperCase).filter(_.nonEmpty).
 --
 
 ## Oppgaver ##
-- `scalakurs.option.OptionTreeTest`
+- `scalakurs.option.SimpleOptionTest`
 - `scalakurs.option.UserRepositoryTest`
+- `scalakurs.option.OptionTreeTest`
 
 ---
 
