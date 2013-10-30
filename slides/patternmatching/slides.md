@@ -209,9 +209,9 @@ def printTuple(x: Any) {
 ### Option matching ###
 ```scala
 foo match {
-  case Some(value) => println value
-  case None => _
-}
+    case Some(value) => println(value)
+    case None => println("None")
+  }
 ```
 
 
@@ -330,7 +330,12 @@ def silly(p: Tree): String = {
 
 
 # Oppgaver
-PatternMatching.scala
+PatternMatching
+
+```scala
+sbt:
+> ~ test-only scalakurs.patternmatching.PatternMatchingTest
+```
 
 
 
@@ -466,4 +471,9 @@ object Email {
 
 
 # Oppgaver
-Extractors.scala
+Extractors
+
+```scala
+sbt:
+> ~ test-only scalakurs.patternmatching.ExtractorsTest
+```
