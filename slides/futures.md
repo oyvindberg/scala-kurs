@@ -69,4 +69,8 @@ def weatherStatus(lat: Double, lon: Double): Future[WeatherStatus] = {
 --
 
 ## Oppgaver ##
+Gjør disse for introduksjon til Futures
+- `scalakurs.myfutures.MyFuturesTest`
+Gjør disse som en bonus for å gjøre litt arbeid i parallell
 - `scalakurs.futures.PiCalculatorTest`
+
